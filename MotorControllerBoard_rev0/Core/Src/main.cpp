@@ -167,6 +167,7 @@ int main(void)
 		  newCANPacket = false;
 		  auxPacket = aux0.GetOldestDataPacket(nullptr);
 	  }
+	  // test
 	  if(newCruiseInput)
 	  {
 		  newCruiseInput = false;
