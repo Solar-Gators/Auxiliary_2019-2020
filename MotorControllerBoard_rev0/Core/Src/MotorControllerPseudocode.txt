@@ -10,5 +10,5 @@
  * 		Once started up, turn on system at 4.8 seconds
  *		-> MCCOIL OUTPUT 3.3V
  *		-> MPPTCOIL OUTPUT 3.3V
- * -> If 
+ * -> If given
  */
