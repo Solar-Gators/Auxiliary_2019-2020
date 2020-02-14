@@ -71,12 +71,12 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
 	else if (GPIO_Pin == LT_in_Pin || GPIO_Pin == RT_in_Pin ||
 			GPIO_Pin == Headlights_in_Pin || GPIO_Pin == Regen_in_Pin){
 		swtchSignal_flag = true;
-
 	}
 }
 
 //For timer interrupt
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
+	HAL_TIM_Base_Stop_IT(&htim2);
 	if (HAL_GPIO_ReadPin(CPlus_in_GPIO_Port, CPlus_in_Pin) == GPIO_PIN_SET){
 		btnSignal_flag = true;
 	}
@@ -89,7 +89,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 	else if (HAL_GPIO_ReadPin(Horn_in_GPIO_Port, Horn_in_Pin) == GPIO_PIN_SET){
 		btnSignal_flag = true;
 	}
-	HAL_TIM_Base_Stop_IT(&htim2);
+
 }
 /* USER CODE END 0 */
 
@@ -133,7 +133,6 @@ int main(void)
   SUBSYSTEM_DATA_MODULE::StartCAN(&hcan);
 
   /* USER CODE END 2 */
-
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1){
