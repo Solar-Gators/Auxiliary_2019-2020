@@ -1,0 +1,6 @@
+main.cpp:505:6:void AuxReceive(SUBSYSTEM_DATA_MODULE*)	0	static
+main.cpp:195:6:void SystemClock_Config()	80	static
+main.cpp:91:5:int main()	120	static
+main.cpp:454:6:void HAL_GPIO_EXTI_Callback(uint16_t)	8	static,ignoring_inline_asm
+main.cpp:469:6:void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef*)	8	static,ignoring_inline_asm
+main.cpp:515:6:void Error_Handler()	0	static

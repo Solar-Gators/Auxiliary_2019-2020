@@ -3,6 +3,7 @@
 	<name>MotorControllerBoard_rev0</name>
 	<comment></comment>
 	<projects>
+		<project>MotorControllerBoard_rev0</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

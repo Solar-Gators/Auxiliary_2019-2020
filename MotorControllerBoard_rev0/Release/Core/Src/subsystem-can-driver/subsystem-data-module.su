@@ -1,0 +1,12 @@
+subsystem-data-module.cpp:54:1:SUBSYSTEM_DATA_MODULE::SUBSYSTEM_DATA_MODULE(uint32_t, uint8_t, bool)	8	static
+subsystem-data-module.cpp:58:24:static SUBSYSTEM_DATA_MODULE* SUBSYSTEM_DATA_MODULE::FindReceivingModule(uint32_t)	8	static
+subsystem-data-module.cpp:63:6:void SUBSYSTEM_DATA_MODULE::SetupReceive(subsystemReceiveCallback)	8	static
+subsystem-data-module.cpp:81:6:void SUBSYSTEM_DATA_MODULE::CallReceiveCallback()	8	static
+subsystem-data-module.cpp:89:6:static void SUBSYSTEM_DATA_MODULE::StartCAN(CAN_HandleTypeDef*)	48	static
+subsystem-data-module.cpp:129:6:void SUBSYSTEM_DATA_MODULE::sendTransmitBufferData()	48	static
+subsystem-data-module.cpp:75:6:void SUBSYSTEM_DATA_MODULE::SendData()	8	static
+subsystem-data-module.cpp:156:6:bool SUBSYSTEM_DATA_MODULE::isFifoEmpty()	0	static
+subsystem-data-module.cpp:161:6:bool SUBSYSTEM_DATA_MODULE::isFifoFull()	0	static
+subsystem-data-module.cpp:166:6:bool SUBSYSTEM_DATA_MODULE::addToFifo(uint8_t*)	24	static
+subsystem-data-module.cpp:24:6:void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef*)	64	static
+subsystem-data-module.cpp:171:1:cpp)	8	static
