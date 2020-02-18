@@ -131,9 +131,11 @@ int main(void)
   HAL_GPIO_WritePin(RegenSS_GPIO_Port, RegenSS_Pin, GPIO_PIN_RESET);
   HAL_SPI_Transmit(&hspi2, &initializeDAC[0], 3, HAL_MAX_DELAY);
   HAL_GPIO_WritePin(RegenSS_GPIO_Port, RegenSS_Pin, GPIO_PIN_SET);
+  while(HAL_SPI_GetState(&hspi2) != HAL_SPI_STATE_READY);
   HAL_GPIO_WritePin(CruiseSS_GPIO_Port, CruiseSS_Pin, GPIO_PIN_RESET);
   HAL_SPI_Transmit(&hspi2, &initializeDAC[0], 3, HAL_MAX_DELAY);
   HAL_GPIO_WritePin(CruiseSS_GPIO_Port, CruiseSS_Pin, GPIO_PIN_SET);
+  while(HAL_SPI_GetState(&hspi2) != HAL_SPI_STATE_READY);
 
   uint8_t turnOnDAC[3] = {0x30, 0xFF, 0xFF};
   uint8_t turnOffDAC[3] = {0x40, 0x00, 0x00};
@@ -141,6 +143,7 @@ int main(void)
   HAL_GPIO_WritePin(CruiseSS_GPIO_Port, CruiseSS_Pin, GPIO_PIN_RESET);
   HAL_SPI_Transmit(&hspi2, &turnOnDAC[0], 3, HAL_MAX_DELAY);
   HAL_GPIO_WritePin(CruiseSS_GPIO_Port, CruiseSS_Pin, GPIO_PIN_SET);
+  while(HAL_SPI_GetState(&hspi2) != HAL_SPI_STATE_READY);
 
   /* USER CODE END 2 */
  
@@ -194,6 +197,7 @@ int main(void)
 	  HAL_GPIO_WritePin(RegenSS_GPIO_Port, RegenSS_Pin, GPIO_PIN_RESET);
 	  HAL_SPI_Transmit(&hspi2, &turnOnDAC[0], 3, HAL_MAX_DELAY);
 	  HAL_GPIO_WritePin(RegenSS_GPIO_Port, RegenSS_Pin, GPIO_PIN_SET);
+	  while(HAL_SPI_GetState(&hspi2) != HAL_SPI_STATE_READY);
   }
   /* USER CODE END 3 */
 }
