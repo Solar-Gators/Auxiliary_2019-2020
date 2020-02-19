@@ -1,17 +1,17 @@
 [PreviousGenFiles]
 AdvancedFolderStructure=true
 HeaderFileListSize=3
-HeaderFiles#0=C:/Users/m37/Google Drive/Solar Gators/mcb_rev1/Core/Inc/stm32f0xx_it.h
-HeaderFiles#1=C:/Users/m37/Google Drive/Solar Gators/mcb_rev1/Core/Inc/stm32f0xx_hal_conf.h
-HeaderFiles#2=C:/Users/m37/Google Drive/Solar Gators/mcb_rev1/Core/Inc/main.h
+HeaderFiles#0=C:/Users/m37/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev1/Core/Inc/stm32f0xx_it.h
+HeaderFiles#1=C:/Users/m37/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev1/Core/Inc/stm32f0xx_hal_conf.h
+HeaderFiles#2=C:/Users/m37/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev1/Core/Inc/main.h
 HeaderFolderListSize=1
-HeaderPath#0=C:/Users/m37/Google Drive/Solar Gators/mcb_rev1/Core/Inc
+HeaderPath#0=C:/Users/m37/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev1/Core/Inc
 SourceFileListSize=3
-SourceFiles#0=C:/Users/m37/Google Drive/Solar Gators/mcb_rev1/Core/Src/stm32f0xx_it.c
-SourceFiles#1=C:/Users/m37/Google Drive/Solar Gators/mcb_rev1/Core/Src/stm32f0xx_hal_msp.c
-SourceFiles#2=C:/Users/m37/Google Drive/Solar Gators/mcb_rev1/Core/Src/main.c
+SourceFiles#0=C:/Users/m37/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev1/Core/Src/stm32f0xx_it.c
+SourceFiles#1=C:/Users/m37/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev1/Core/Src/stm32f0xx_hal_msp.c
+SourceFiles#2=C:/Users/m37/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev1/Core/Src/main.c
 SourceFolderListSize=1
-SourcePath#0=C:/Users/m37/Google Drive/Solar Gators/mcb_rev1/Core/Src
+SourcePath#0=C:/Users/m37/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev1/Core/Src
 HeaderFiles=;
 SourceFiles=;
 

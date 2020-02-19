@@ -137,7 +137,7 @@ int main(void)
   HAL_GPIO_WritePin(CruiseSS_GPIO_Port, CruiseSS_Pin, GPIO_PIN_SET);
   while(HAL_SPI_GetState(&hspi2) != HAL_SPI_STATE_READY);
 
-  uint8_t turnOnDAC[3] = {0x30, 0xFF, 0xFF};
+  uint8_t turnOnDAC[3] = {0x30, 0xFF, 0xF0};
   uint8_t turnOffDAC[3] = {0x40, 0x00, 0x00};
 
   HAL_GPIO_WritePin(CruiseSS_GPIO_Port, CruiseSS_Pin, GPIO_PIN_RESET);
@@ -194,9 +194,9 @@ int main(void)
 //		  }
 //	  }
 
-	  HAL_GPIO_WritePin(RegenSS_GPIO_Port, RegenSS_Pin, GPIO_PIN_RESET);
-	  HAL_SPI_Transmit(&hspi2, &turnOnDAC[0], 3, HAL_MAX_DELAY);
-	  HAL_GPIO_WritePin(RegenSS_GPIO_Port, RegenSS_Pin, GPIO_PIN_SET);
+	  HAL_GPIO_WritePin(CruiseSS_GPIO_Port, CruiseSS_Pin, GPIO_PIN_RESET);
+	  HAL_SPI_Transmit(&hspi2, turnOnDAC, sizeof(turnOnDAC), HAL_MAX_DELAY);
+	  HAL_GPIO_WritePin(CruiseSS_GPIO_Port, CruiseSS_Pin, GPIO_PIN_SET);
 	  while(HAL_SPI_GetState(&hspi2) != HAL_SPI_STATE_READY);
   }
   /* USER CODE END 3 */
@@ -290,8 +290,8 @@ static void MX_SPI2_Init(void)
   /* SPI2 parameter configuration*/
   hspi2.Instance = SPI2;
   hspi2.Init.Mode = SPI_MODE_MASTER;
-  hspi2.Init.Direction = SPI_DIRECTION_1LINE;
-  hspi2.Init.DataSize = SPI_DATASIZE_12BIT;
+  hspi2.Init.Direction = SPI_DIRECTION_2LINES;
+  hspi2.Init.DataSize = SPI_DATASIZE_8BIT;
   hspi2.Init.CLKPolarity = SPI_POLARITY_HIGH;
   hspi2.Init.CLKPhase = SPI_PHASE_2EDGE;
   hspi2.Init.NSS = SPI_NSS_SOFT;
