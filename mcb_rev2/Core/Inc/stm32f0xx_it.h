@@ -1,9 +1,8 @@
 /* USER CODE BEGIN Header */
 /**
   ******************************************************************************
-  * @file           : main.h
-  * @brief          : Header for main.c file.
-  *                   This file contains the common defines of the application.
+  * @file    stm32f0xx_it.h
+  * @brief   This file contains the headers of the interrupt handlers.
   ******************************************************************************
   * @attention
   *
@@ -15,20 +14,17 @@
   * License. You may obtain a copy of the License at:
   *                        opensource.org/licenses/BSD-3-Clause
   *
-  ******************************************************************************
+ ******************************************************************************
   */
 /* USER CODE END Header */
 
 /* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __MAIN_H
-#define __MAIN_H
+#ifndef __STM32F0xx_IT_H
+#define __STM32F0xx_IT_H
 
 #ifdef __cplusplus
-extern "C" {
-#endif
-
-/* Includes ------------------------------------------------------------------*/
-#include "stm32f0xx_hal.h"
+ extern "C" {
+#endif 
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -51,40 +47,19 @@ extern "C" {
 /* USER CODE END EM */
 
 /* Exported functions prototypes ---------------------------------------------*/
-void Error_Handler(void);
-
+void NMI_Handler(void);
+void HardFault_Handler(void);
+void SVC_Handler(void);
+void PendSV_Handler(void);
+void SysTick_Handler(void);
 /* USER CODE BEGIN EFP */
 
 /* USER CODE END EFP */
-
-/* Private defines -----------------------------------------------------------*/
-#define MC_PRE_Pin GPIO_PIN_5
-#define MC_PRE_GPIO_Port GPIOA
-#define MPPT_PRE_Pin GPIO_PIN_6
-#define MPPT_PRE_GPIO_Port GPIOA
-#define MC_COIL_Pin GPIO_PIN_7
-#define MC_COIL_GPIO_Port GPIOA
-#define MPPT_COIL_Pin GPIO_PIN_4
-#define MPPT_COIL_GPIO_Port GPIOC
-#define CHARGE_TRIP_Pin GPIO_PIN_0
-#define CHARGE_TRIP_GPIO_Port GPIOB
-#define CHARGE_TRIP_EXTI_IRQn EXTI0_1_IRQn
-#define REGEN_BRK_Pin GPIO_PIN_1
-#define REGEN_BRK_GPIO_Port GPIOB
-#define CRUISE_IN_Pin GPIO_PIN_10
-#define CRUISE_IN_GPIO_Port GPIOB
-#define SS_REGEN_Pin GPIO_PIN_12
-#define SS_REGEN_GPIO_Port GPIOB
-#define SS_CRUISE_Pin GPIO_PIN_14
-#define SS_CRUISE_GPIO_Port GPIOB
-/* USER CODE BEGIN Private defines */
-
-/* USER CODE END Private defines */
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif /* __MAIN_H */
+#endif /* __STM32F0xx_IT_H */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

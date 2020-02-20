@@ -58,25 +58,6 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
-#define MC_PRE_Pin GPIO_PIN_5
-#define MC_PRE_GPIO_Port GPIOA
-#define MPPT_PRE_Pin GPIO_PIN_6
-#define MPPT_PRE_GPIO_Port GPIOA
-#define MC_COIL_Pin GPIO_PIN_7
-#define MC_COIL_GPIO_Port GPIOA
-#define MPPT_COIL_Pin GPIO_PIN_4
-#define MPPT_COIL_GPIO_Port GPIOC
-#define CHARGE_TRIP_Pin GPIO_PIN_0
-#define CHARGE_TRIP_GPIO_Port GPIOB
-#define CHARGE_TRIP_EXTI_IRQn EXTI0_1_IRQn
-#define REGEN_BRK_Pin GPIO_PIN_1
-#define REGEN_BRK_GPIO_Port GPIOB
-#define CRUISE_IN_Pin GPIO_PIN_10
-#define CRUISE_IN_GPIO_Port GPIOB
-#define SS_REGEN_Pin GPIO_PIN_12
-#define SS_REGEN_GPIO_Port GPIOB
-#define SS_CRUISE_Pin GPIO_PIN_14
-#define SS_CRUISE_GPIO_Port GPIOB
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
