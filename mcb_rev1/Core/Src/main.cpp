@@ -119,7 +119,6 @@ int main(void)
   MX_SPI2_Init();
   /* USER CODE BEGIN 2 */
   recharge = true;
-  HAL_TIM_Base_Start_IT(&htim2);
 
   AUX_MESSAGE_0 aux0;
   aux0.SetupReceive(AuxReceive);
@@ -147,6 +146,8 @@ int main(void)
   HAL_SPI_Transmit(&hspi2, &turnOnDAC[0], 3, HAL_MAX_DELAY);
   HAL_GPIO_WritePin(CruiseSS_GPIO_Port, CruiseSS_Pin, GPIO_PIN_SET);
   while(HAL_SPI_GetState(&hspi2) != HAL_SPI_STATE_READY);
+
+  HAL_TIM_Base_Start_IT(&htim2);
 
   /* USER CODE END 2 */
  
@@ -516,14 +517,6 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 				HAL_GPIO_WritePin(GPIOC, MPPT_COIL_Pin, GPIO_PIN_SET);
 			}
 			else tickCoil++;
-		}
-		if(cruiseActive)
-		{
-			if(tickRegen >= 10)
-			{
-
-			}
-			else tickRegen++;
 		}
 	}
 	else if(htim->Instance == TIM3)
