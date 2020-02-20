@@ -181,16 +181,13 @@ int main(void)
 		  auxPacket = aux0.GetOldestDataPacket(nullptr);
 
 		  // following if statement needs some rework or place somewhere else
-		  if(auxPacket.regenOn)
+		  if(auxPacket.regenOn && cruiseActive)
 		  {
-			  if(cruiseActive)
-			  {
-				  HAL_GPIO_WritePin(RegenBrk_GPIO_Port, RegenBrk_Pin, GPIO_PIN_SET);
-			  }
-			  else
-			  {
-				  HAL_GPIO_WritePin(RegenBrk_GPIO_Port, RegenBrk_Pin, GPIO_PIN_RESET);
-			  }
+			  HAL_GPIO_WritePin(RegenBrk_GPIO_Port, RegenBrk_Pin, GPIO_PIN_SET);
+		  }
+		  else
+		  {
+			  HAL_GPIO_WritePin(RegenBrk_GPIO_Port, RegenBrk_Pin, GPIO_PIN_RESET);
 		  }
 	  }
 	  if(newCruiseInput)
@@ -199,13 +196,13 @@ int main(void)
 		  if(cruiseActive)
 		  {
 			  HAL_GPIO_WritePin(CruiseSS_GPIO_Port, CruiseSS_Pin, GPIO_PIN_RESET);
-			  HAL_SPI_Transmit(&hspi2, &turnOnDAC[0], 3, 10);
+			  HAL_SPI_Transmit(&hspi2, &turnOnDAC[0], 3, HAL_MAX_DELAY);
 			  HAL_GPIO_WritePin(CruiseSS_GPIO_Port, CruiseSS_Pin, GPIO_PIN_SET);
 		  }
 		  else
 		  {
 			  HAL_GPIO_WritePin(CruiseSS_GPIO_Port, CruiseSS_Pin, GPIO_PIN_RESET);
-			  HAL_SPI_Transmit(&hspi2, &turnOffDAC[0], 3, 10);
+			  HAL_SPI_Transmit(&hspi2, &turnOffDAC[0], 3, HAL_MAX_DELAY);
 			  HAL_GPIO_WritePin(CruiseSS_GPIO_Port, CruiseSS_Pin, GPIO_PIN_SET);
 		  }
 	  }
