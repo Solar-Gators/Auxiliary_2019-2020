@@ -42,9 +42,19 @@
 
 /* Private variables ---------------------------------------------------------*/
 SPI_HandleTypeDef hspi2;
+
 TIM_HandleTypeDef htim2;
 
 /* USER CODE BEGIN PV */
+
+// ------------------------------
+// CAN-related objects
+//CAN_HandleTypeDef hcan;
+
+//static AUX_MESSAGE_0_DATA_PACKET aux0Packet;
+//static AUX_MESSAGE_0 aux0;
+
+// ------------------------------
 
 // ------------------------------
 // ISR-affected booleans and other variables
