@@ -28,6 +28,8 @@ OBJCOPY_BIN :=
 # Every subdirectory with source files must be described here
 SUBDIRS := \
 Core/Src \
+Core/Src/subsystem-can-driver \
+Core/Src/subsystem-can-driver/helper-code \
 Core/Startup \
 Drivers/STM32F0xx_HAL_Driver/Src \
 

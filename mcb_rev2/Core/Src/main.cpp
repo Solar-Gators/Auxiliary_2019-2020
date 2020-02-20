@@ -23,12 +23,17 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "subsystem-data-module.hpp"
+#include "aux-data-module.hpp"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-
+typedef enum slave
+{
+	cruiseDAC = 0,
+	regenDAC = 1,
+} slave_t;
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -49,11 +54,8 @@ TIM_HandleTypeDef htim2;
 
 // ------------------------------
 // CAN-related objects
-//CAN_HandleTypeDef hcan;
-
-//static AUX_MESSAGE_0_DATA_PACKET aux0Packet;
-//static AUX_MESSAGE_0 aux0;
-
+static AUX_MESSAGE_0_DATA_PACKET aux0Packet;
+static AUX_MESSAGE_0 aux0;
 // ------------------------------
 
 // ------------------------------
@@ -69,6 +71,8 @@ static bool sysCoilActive = false;
 
 static int tickPrecharge = 0;
 static int tickCoil = 0;
+
+static bool newInput_CAN = false;
 // ------------------------------
 
 /* USER CODE END PV */
@@ -80,9 +84,19 @@ static void MX_TIM2_Init(void);
 static void MX_SPI2_Init(void);
 /* USER CODE BEGIN PFP */
 
+// ----------------------------------
+// --- INTERRUPT PROTOTYPE(S) -------
+// ----------------------------------
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_PIN);
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim);
 void AUX_MotherReceive_Callback(SUBSYSTEM_DATA_MODULE*);
+// ----------------------------------
+
+// ---------------------------------
+// --- FUNCTION PROTOTYPE(S) -------
+// ---------------------------------
+int DAC_Write(slave_t slave, uint8_t *data);
+// ---------------------------------
 
 /* USER CODE END PFP */
 
@@ -98,7 +112,9 @@ void AUX_MotherReceive_Callback(SUBSYSTEM_DATA_MODULE*);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-
+  uint8_t DAC_Init[3] = {0x70, 0x00, 0x00};		// Set external voltage reference (5V)
+  uint8_t DAC_PowerOn[3] = {0x30, 0xFF, 0xF0};	// Power on DAC with max output
+  uint8_t DAC_PowerOff[3] = {0x40, 0x00, 0x00};	// Power off DAC
   /* USER CODE END 1 */
   
 
@@ -123,13 +139,16 @@ int main(void)
   MX_TIM2_Init();
   MX_SPI2_Init();
   /* USER CODE BEGIN 2 */
-
+  aux0.SetupReceive(AUX_MotherReceive_Callback);
+  SUBSYSTEM_DATA_MODULE::StartCAN();
   /* USER CODE END 2 */
  
  
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  DAC_Write(cruiseDAC, DAC_Init);
+  DAC_Write(regenDAC, DAC_Init);
   while (1)
   {
     /* USER CODE END WHILE */
@@ -325,16 +344,16 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_PIN)
 {
 	// read pins and do relevant operations
 	// before setting newInput
-	if(GPIO_Pin == CHARGE_TRIP_Pin)
+	if(GPIO_PIN == CHARGE_TRIP_Pin)
 	{
 		active_CT = !HAL_GPIO_ReadPin(CHARGE_TRIP_GPIO_Port, CHARGE_TRIP_Pin);
 		if(active_CT) sysPrecharge = false;
 		else sysPrecharge = true;
 		newInput_CT = true;
 	}
-	else if(GPIO_Pin == CRUISE_IN_Pin)
+	else if(GPIO_PIN == CRUISE_IN_Pin)
 	{
-		active_Cruise = HAL_GPIO_ReadPin(CRUISE_IN_GPIO, CRUISE_IN_Pin);
+		active_Cruise = HAL_GPIO_ReadPin(CRUISE_IN_GPIO_Port, CRUISE_IN_Pin);
 		newInput_Cruise = true;
 	}
 	else __NOP();
@@ -369,7 +388,38 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 	}
 	else __NOP();
 }
-void AUX_MotherReceive_Callback(SUBSYSTEM_DATA_MODULE*);
+void AUX_MotherReceive_Callback(SUBSYSTEM_DATA_MODULE*)
+{
+	if(!aux0.isFifoEmpty())
+		aux0Packet = aux0.GetOldestDataPacket(&newInput_CAN);
+}
+
+// ----------------------------------
+// --- FUNCTION DEFINITION(S) -------
+// ----------------------------------
+int DAC_Write(slave_t slave, uint8_t *data)
+{
+	GPIO_TypeDef* currentPort;
+	uint16_t currentPin;
+	if(slave == cruiseDAC)
+	{
+		currentPort = SS_CRUISE_GPIO_Port;
+		currentPin = SS_CRUISE_Pin;
+	}
+	else if(slave == regenDAC)
+	{
+		currentPort = SS_REGEN_GPIO_Port;
+		currentPin = SS_REGEN_Pin;
+	}
+	else return -1;
+
+	HAL_GPIO_WritePin(currentPort, currentPin, GPIO_PIN_RESET);
+	HAL_SPI_Transmit(&hspi2, data, 3, HAL_MAX_DELAY);
+	HAL_GPIO_WritePin(currentPort, currentPin, GPIO_PIN_SET);
+	while(HAL_SPI_GetState(&hspi2) != HAL_SPI_STATE_READY);
+	return 0;
+}
+// ----------------------------------
 
 /* USER CODE END 4 */
 
