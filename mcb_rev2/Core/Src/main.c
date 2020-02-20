@@ -46,6 +46,21 @@ TIM_HandleTypeDef htim2;
 
 /* USER CODE BEGIN PV */
 
+// ------------------------------
+// ISR-affected booleans and other variables
+static bool active_CT = false;
+static bool active_Cruise = false;
+
+static bool newInput_CT	= false;
+static bool newInput_Cruise = false;
+
+static bool sysPrecharge = false;
+static bool sysCoilActive = false;
+
+static int tickPrecharge = 0;
+static int tickCoil = 0;
+// ------------------------------
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -54,6 +69,10 @@ static void MX_GPIO_Init(void);
 static void MX_TIM2_Init(void);
 static void MX_SPI2_Init(void);
 /* USER CODE BEGIN PFP */
+
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_PIN);
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim);
+void AUX_MotherReceive_Callback(SUBSYSTEM_DATA_MODULE*);
 
 /* USER CODE END PFP */
 
@@ -291,6 +310,56 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_PIN)
+{
+	// read pins and do relevant operations
+	// before setting newInput
+	if(GPIO_Pin == CHARGE_TRIP_Pin)
+	{
+		active_CT = !HAL_GPIO_ReadPin(CHARGE_TRIP_GPIO_Port, CHARGE_TRIP_Pin);
+		if(active_CT) sysPrecharge = false;
+		else sysPrecharge = true;
+		newInput_CT = true;
+	}
+	else if(GPIO_Pin == CRUISE_IN_Pin)
+	{
+		active_Cruise = HAL_GPIO_ReadPin(CRUISE_IN_GPIO, CRUISE_IN_Pin);
+		newInput_Cruise = true;
+	}
+	else __NOP();
+}
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+{
+	if(htim->Instance == TIM2)
+	{
+		if(sysPrecharge)
+		{
+			if(tickPrecharge >= 50)	// value is adjustable
+			{
+				tickPrecharge = 0;	// reset tick count
+				// turn off precharge
+				HAL_GPIO_WritePin(GPIOA, MC_PRE_Pin|MPPT_PRE_Pin, GPIO_PIN_RESET);
+				sysPrecharge = false;
+			}
+			else ++tickPrecharge;
+		}
+		else if(!sysCoilActive)
+		{
+			if(tickCoil >= 48) // value is adjustable
+			{
+				tickCoil = 0;
+				// turn on coils
+				HAL_GPIO_WritePin(MC_COIL_GPIO_Port, MC_COIL_Pin, GPIO_PIN_SET);
+				HAL_GPIO_WritePin(MPPT_COIL_GPIO_Port, MPPT_COIL_Pin, GPIO_PIN_SET);
+				sysCoilActive = true;
+			}
+			else ++tickCoil;
+		}
+	}
+	else __NOP();
+}
+void AUX_MotherReceive_Callback(SUBSYSTEM_DATA_MODULE*);
 
 /* USER CODE END 4 */
 
