@@ -162,9 +162,9 @@ int main(void)
 		if(active_CT)
 		{
 			// Turn off MPPT coil
-			HAL_GPIO_WritePin(MPPT_COIL_GPIO_Port, MC_COIL_Pin, GPIO_PIN_RESET);
+			HAL_GPIO_WritePin(MPPT_COIL_GPIO_Port, MPPT_COIL_Pin, GPIO_PIN_RESET);
 			// Ensure MPPT precharge is off
-			HAL_GPIO_WritePin(MPPT_PRE_GPIO_Port, MC_PRE_Pin, GPIO_PIN_RESET);
+			HAL_GPIO_WritePin(MPPT_PRE_GPIO_Port, MPPT_PRE_Pin, GPIO_PIN_RESET);
 
 			// Reset timer
 			HAL_TIM_Base_Stop_IT(&htim2);
