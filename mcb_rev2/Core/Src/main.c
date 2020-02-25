@@ -117,7 +117,6 @@ int main(void)
   uint8_t DAC_PowerOn[3] = {0x30, 0xFF, 0xF0};	// Power on DAC with max output
   uint8_t DAC_PowerOff[3] = {0x40, 0x00, 0x00};	// Power off DAC
   /* USER CODE END 1 */
-  
 
   /* MCU Configuration--------------------------------------------------------*/
 
@@ -145,79 +144,79 @@ int main(void)
 
   HAL_TIM_Base_Start_IT(&htim2);
   /* USER CODE END 2 */
- 
- 
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   DAC_Write(cruiseDAC, DAC_Init);
-  DAC_Write(regenDAC, DAC_Init);	// when is regen DAC used
+//  DAC_Write(regenDAC, DAC_Init);	// when is regen DAC used
   while(1)
   {
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	if(newInput_CT)
-	{
-		if(active_CT)
-		{
-			// Turn off MPPT coil
-			HAL_GPIO_WritePin(MPPT_COIL_GPIO_Port, MPPT_COIL_Pin, GPIO_PIN_RESET);
-			// Ensure MPPT precharge is off
-			HAL_GPIO_WritePin(MPPT_PRE_GPIO_Port, MPPT_PRE_Pin, GPIO_PIN_RESET);
-
-			// Reset timer
-			HAL_TIM_Base_Stop_IT(&htim2);
-			__HAL_TIM_SET_COUNTER(&htim2, 0);
-
-			// Reset ticks
-			tickPrecharge = 0;
-			tickCoil = 0;
-
-			// Set MPPT Coil active bool
-			sysMPPTCoilActive = false;
-		}
-		else if(!active_CT && sysPrecharge && !sysMPPTCoilActive) // maybe get rid of sysMPPTCoilActive
-		{
-			HAL_GPIO_WritePin(MPPT_PRE_GPIO_Port, MPPT_PRE_Pin, GPIO_PIN_SET);
-			HAL_TIM_Base_Start_IT(&htim2);
-		}
-		newInput_CT = false;
-	}
-	if(newInput_CAN)
-	{
-		if(aux0Packet.regenOn && active_Cruise)
-		{
-			// Turn on regen brake
-			HAL_GPIO_WritePin(REGEN_BRK_GPIO_Port, REGEN_BRK_Pin, GPIO_PIN_SET);
-		}
-		else if(aux0Packet.regenOn)
-		{
-			DAC_Write(regenDAC, DAC_PowerOn);
-		}
-		else
-		{
-			// might need to separate these two functionalities somehow
-			// need to ask Stephen
-			// Turn off regen brake
-			HAL_GPIO_WritePin(REGEN_BRK_GPIO_Port, REGEN_BRK_Pin, GPIO_PIN_RESET);
-			// turn off regen DAC
-			DAC_Write(regenDAC, DAC_PowerOff);
-		}
-		newInput_CAN = false;
-	}
-	if(newInput_Cruise)
-	{
-		if(active_Cruise)
-		{
-			DAC_Write(cruiseDAC, DAC_PowerOn);
-		}
-		else
-		{
-			DAC_Write(cruiseDAC, DAC_PowerOff);
-		}
-		newInput_Cruise = false;
-	}
+//	if(newInput_CT)
+//	{
+//		if(active_CT)
+//		{
+//			// Turn off MPPT coil
+//			HAL_GPIO_WritePin(MPPT_COIL_GPIO_Port, MPPT_COIL_Pin, GPIO_PIN_RESET);
+//			// Ensure MPPT precharge is off
+//			HAL_GPIO_WritePin(MPPT_PRE_GPIO_Port, MPPT_PRE_Pin, GPIO_PIN_RESET);
+//
+//			// Reset timer
+//			HAL_TIM_Base_Stop_IT(&htim2);
+//			__HAL_TIM_SET_COUNTER(&htim2, 0);
+//
+//			// Reset ticks
+//			tickPrecharge = 0;
+//			tickCoil = 0;
+//
+//			// Set MPPT Coil active bool
+//			sysMPPTCoilActive = false;
+//		}
+//		else if(!active_CT && sysPrecharge && !sysMPPTCoilActive) // maybe get rid of sysMPPTCoilActive
+//		{
+//			HAL_GPIO_WritePin(MPPT_PRE_GPIO_Port, MPPT_PRE_Pin, GPIO_PIN_SET);
+//			HAL_TIM_Base_Start_IT(&htim2);
+//		}
+//		newInput_CT = false;
+//	}
+//	if(newInput_CAN)
+//	{
+//		if(aux0Packet.regenOn && active_Cruise)
+//		{
+//			// Turn on regen brake
+//			HAL_GPIO_WritePin(REGEN_BRK_GPIO_Port, REGEN_BRK_Pin, GPIO_PIN_SET);
+//		}
+//		else if(aux0Packet.regenOn)
+//		{
+//			DAC_Write(regenDAC, DAC_PowerOn);
+//		}
+//		else
+//		{
+//			// might need to separate these two functionalities somehow
+//			// need to ask Stephen
+//			// Turn off regen brake
+//			HAL_GPIO_WritePin(REGEN_BRK_GPIO_Port, REGEN_BRK_Pin, GPIO_PIN_RESET);
+//			// turn off regen DAC
+//			DAC_Write(regenDAC, DAC_PowerOff);
+//		}
+//		newInput_CAN = false;
+//	}
+//	if(newInput_Cruise)
+//	{
+//		if(active_Cruise)
+//		{
+//			DAC_Write(cruiseDAC, DAC_PowerOn);
+//		}
+//		else
+//		{
+//			DAC_Write(cruiseDAC, DAC_PowerOff);
+//		}
+//		newInput_Cruise = false;
+//	}
+	  DAC_Write(cruiseDAC, DAC_PowerOn);
+	  DAC_Write(cruiseDAC, DAC_PowerOff);
   }
   /* USER CODE END 3 */
 }
@@ -509,7 +508,7 @@ void Error_Handler(void)
   * @param  line: assert_param error line source number
   * @retval None
   */
-void assert_failed(char *file, uint32_t line)
+void assert_failed(uint8_t *file, uint32_t line)
 { 
   /* USER CODE BEGIN 6 */
   /* User can add his own implementation to report the file name and line number,
