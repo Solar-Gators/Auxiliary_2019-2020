@@ -57,8 +57,8 @@ mcb_rev2.bin \
 all: mcb_rev2.elf secondary-outputs
 
 # Tool invocations
-mcb_rev2.elf: $(OBJS) $(USER_OBJS) C:\Users\m37\Google\ Drive\Solar\ Gators\Auxiliary_2019-2020\mcb_rev2\STM32F072RBTX_FLASH.ld
-	arm-none-eabi-g++ -o "mcb_rev2.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m0 -T"C:\Users\m37\Google Drive\Solar Gators\Auxiliary_2019-2020\mcb_rev2\STM32F072RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="mcb_rev2.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+mcb_rev2.elf: $(OBJS) $(USER_OBJS) C:\Users\Mark\Google\ Drive\Solar\ Gators\Auxiliary_2019-2020\mcb_rev2\STM32F072RBTX_FLASH.ld
+	arm-none-eabi-g++ -o "mcb_rev2.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m0 -T"C:\Users\Mark\Google Drive\Solar Gators\Auxiliary_2019-2020\mcb_rev2\STM32F072RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="mcb_rev2.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

@@ -52,6 +52,14 @@ TIM_HandleTypeDef htim2;
 
 /* USER CODE BEGIN PV */
 
+uint16_t sine[50] = {0x800,0x905,0xa07,0xb00,0xbec,0xcc8,0xd90,0xe40,
+		0xed6,0xf50,0xfaa,0xfe5,0xffe,0xff6,0xfcc,0xf81,
+		0xf17,0xe8f,0xdeb,0xd2f,0xc5c,0xb78,0xa85,0x987,
+		0x883,0x77c,0x678,0x57a,0x487,0x3a3,0x2d0,0x214,
+		0x170,0xe8,0x7e,0x33,0x9,0x1,0x1a,0x55,
+		0xaf,0x129,0x1bf,0x26f,0x337,0x413,0x4ff,0x5f8,
+		0x6fa,0x800};
+
 // ------------------------------
 // CAN-related objects
 static AUX_MESSAGE_0_DATA_PACKET aux0Packet;
@@ -97,6 +105,10 @@ void AUX_MotherReceive_Callback(SUBSYSTEM_DATA_MODULE*);
 // --- FUNCTION PROTOTYPE(S) -------
 // ---------------------------------
 int DAC_Write(slave_t slave, uint8_t *data);
+/**
+ * @assuming right-adjusted, 16-bit data
+ */
+int DAC_SpliceWrite(slave_t slave, uint8_t command, uint16_t *data);
 // ---------------------------------
 
 /* USER CODE END PFP */
@@ -113,9 +125,9 @@ int DAC_Write(slave_t slave, uint8_t *data);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-  uint8_t DAC_Init[3] = {0x70, 0x00, 0x00};		// Set external voltage reference (5V)
-  uint8_t DAC_PowerOn[3] = {0x30, 0xFF, 0xF0};	// Power on DAC with max output
-  uint8_t DAC_PowerOff[3] = {0x40, 0x00, 0x00};	// Power off DAC
+  static uint8_t DAC_Init[3] = {0x70, 0x00, 0x00};		// Set external voltage reference (5V)
+  static uint8_t DAC_PowerOn[3] = {0x30, 0xFF, 0xF0};	// Power on DAC with max output
+  static uint8_t DAC_PowerOff[3] = {0x40, 0x00, 0x00};	// Power off DAC
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -141,6 +153,8 @@ int main(void)
   /* USER CODE BEGIN 2 */
   aux0.SetupReceive(AUX_MotherReceive_Callback);
   SUBSYSTEM_DATA_MODULE::StartCAN();
+//  aux0.txData = {0};
+//  aux0.SendData();
 
   HAL_TIM_Base_Start_IT(&htim2);
   /* USER CODE END 2 */
@@ -148,75 +162,81 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   DAC_Write(cruiseDAC, DAC_Init);
-//  DAC_Write(regenDAC, DAC_Init);	// when is regen DAC used
+  DAC_Write(regenDAC, DAC_Init);	// when is regen DAC used
   while(1)
   {
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-//	if(newInput_CT)
-//	{
-//		if(active_CT)
-//		{
-//			// Turn off MPPT coil
-//			HAL_GPIO_WritePin(MPPT_COIL_GPIO_Port, MPPT_COIL_Pin, GPIO_PIN_RESET);
-//			// Ensure MPPT precharge is off
-//			HAL_GPIO_WritePin(MPPT_PRE_GPIO_Port, MPPT_PRE_Pin, GPIO_PIN_RESET);
-//
-//			// Reset timer
-//			HAL_TIM_Base_Stop_IT(&htim2);
-//			__HAL_TIM_SET_COUNTER(&htim2, 0);
-//
-//			// Reset ticks
-//			tickPrecharge = 0;
-//			tickCoil = 0;
-//
-//			// Set MPPT Coil active bool
-//			sysMPPTCoilActive = false;
-//		}
-//		else if(!active_CT && sysPrecharge && !sysMPPTCoilActive) // maybe get rid of sysMPPTCoilActive
-//		{
-//			HAL_GPIO_WritePin(MPPT_PRE_GPIO_Port, MPPT_PRE_Pin, GPIO_PIN_SET);
-//			HAL_TIM_Base_Start_IT(&htim2);
-//		}
-//		newInput_CT = false;
-//	}
-//	if(newInput_CAN)
-//	{
-//		if(aux0Packet.regenOn && active_Cruise)
-//		{
-//			// Turn on regen brake
-//			HAL_GPIO_WritePin(REGEN_BRK_GPIO_Port, REGEN_BRK_Pin, GPIO_PIN_SET);
-//		}
-//		else if(aux0Packet.regenOn)
-//		{
-//			DAC_Write(regenDAC, DAC_PowerOn);
-//		}
-//		else
-//		{
-//			// might need to separate these two functionalities somehow
-//			// need to ask Stephen
-//			// Turn off regen brake
-//			HAL_GPIO_WritePin(REGEN_BRK_GPIO_Port, REGEN_BRK_Pin, GPIO_PIN_RESET);
-//			// turn off regen DAC
-//			DAC_Write(regenDAC, DAC_PowerOff);
-//		}
-//		newInput_CAN = false;
-//	}
-//	if(newInput_Cruise)
-//	{
-//		if(active_Cruise)
-//		{
-//			DAC_Write(cruiseDAC, DAC_PowerOn);
-//		}
-//		else
-//		{
-//			DAC_Write(cruiseDAC, DAC_PowerOff);
-//		}
-//		newInput_Cruise = false;
-//	}
-	  DAC_Write(cruiseDAC, DAC_PowerOn);
-	  DAC_Write(cruiseDAC, DAC_PowerOff);
+	if(newInput_CT)
+	{
+		if(active_CT)
+		{
+			// Turn off MPPT coil
+			HAL_GPIO_WritePin(MPPT_COIL_GPIO_Port, MPPT_COIL_Pin, GPIO_PIN_RESET);
+			// Ensure MPPT precharge is off
+			HAL_GPIO_WritePin(MPPT_PRE_GPIO_Port, MPPT_PRE_Pin, GPIO_PIN_RESET);
+
+			// Reset timer
+			HAL_TIM_Base_Stop_IT(&htim2);
+			__HAL_TIM_SET_COUNTER(&htim2, 0);
+
+			// Reset ticks
+			tickPrecharge = 0;
+			tickCoil = 0;
+
+			// Set MPPT Coil active bool
+			sysMPPTCoilActive = false;
+		}
+		else if(!active_CT && sysPrecharge && !sysMPPTCoilActive) // maybe get rid of sysMPPTCoilActive
+		{
+			HAL_GPIO_WritePin(MPPT_PRE_GPIO_Port, MPPT_PRE_Pin, GPIO_PIN_SET);
+			HAL_TIM_Base_Start_IT(&htim2);
+		}
+		newInput_CT = false;
+	}
+	if(newInput_CAN)
+	{
+		if(aux0Packet.regenOn && active_Cruise)
+		{
+			// Turn on regen brake
+			HAL_GPIO_WritePin(REGEN_BRK_GPIO_Port, REGEN_BRK_Pin, GPIO_PIN_SET);
+		}
+		else if(aux0Packet.regenOn)
+		{
+			DAC_Write(regenDAC, DAC_PowerOn);
+		}
+		else
+		{
+			// might need to separate these two functionalities somehow
+			// need to ask Stephen
+			// Turn off regen brake
+			HAL_GPIO_WritePin(REGEN_BRK_GPIO_Port, REGEN_BRK_Pin, GPIO_PIN_RESET);
+			// turn off regen DAC
+			DAC_Write(regenDAC, DAC_PowerOff);
+		}
+		newInput_CAN = false;
+	}
+	if(newInput_Cruise)
+	{
+		if(active_Cruise)
+		{
+			DAC_Write(cruiseDAC, DAC_PowerOn);
+		}
+		else
+		{
+			DAC_Write(cruiseDAC, DAC_PowerOff);
+		}
+		newInput_Cruise = false;
+	}
+
+//	  DAC_Write(cruiseDAC, DAC_PowerOn);
+//	  DAC_Write(cruiseDAC, DAC_PowerOff);
+
+//	  for(int i = 0; i < 50; i++)
+//	  {
+//		  DAC_SpliceWrite(cruiseDAC, 0x30, &sine[i]);
+//	  }
   }
   /* USER CODE END 3 */
 }
@@ -482,6 +502,18 @@ int DAC_Write(slave_t slave, uint8_t *data)
 	HAL_SPI_Transmit(&hspi2, data, 3, HAL_MAX_DELAY);
 	HAL_GPIO_WritePin(currentPort, currentPin, GPIO_PIN_SET);
 	while(HAL_SPI_GetState(&hspi2) != HAL_SPI_STATE_READY);
+	return 0;
+}
+
+int DAC_SpliceWrite(slave_t slave, uint8_t command, uint16_t *data)
+{
+	uint8_t temp[3] = {0};
+	temp[0] = command;
+	temp[1] = ((*data) >> 4) & 0xFF;
+	temp[2] = ((*data) << 4) & 0xFF;
+
+	DAC_Write(slave, temp);
+
 	return 0;
 }
 // ----------------------------------

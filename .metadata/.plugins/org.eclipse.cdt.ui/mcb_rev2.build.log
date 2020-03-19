@@ -1,0 +1,32 @@
+19:37:23 **** Incremental Build of configuration Debug for project mcb_rev2 ****
+make -j12 all 
+arm-none-eabi-g++ "../Core/Src/main.cpp" -mcpu=cortex-m0 -std=gnu++14 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Include -I../Core/Inc -I"C:/Users/Mark/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev2/Core/Src/subsystem-can-driver" -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-threadsafe-statics -fno-use-cxa-atexit -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.cpp: In function 'int main()':
+../Core/Src/main.cpp:129:18: warning: unused variable 'DAC_PowerOn' [-Wunused-variable]
+   static uint8_t DAC_PowerOn[3] = {0x30, 0xFF, 0xFF}; // Power on DAC with max output
+                  ^~~~~~~~~~~
+../Core/Src/main.cpp:130:18: warning: unused variable 'DAC_PowerOff' [-Wunused-variable]
+   static uint8_t DAC_PowerOff[3] = {0x40, 0x00, 0x00}; // Power off DAC
+                  ^~~~~~~~~~~~
+../Core/Src/main.cpp: At global scope:
+../Core/Src/main.cpp:130:18: warning: 'DAC_PowerOff' defined but not used [-Wunused-variable]
+../Core/Src/main.cpp:129:18: warning: 'DAC_PowerOn' defined but not used [-Wunused-variable]
+   static uint8_t DAC_PowerOn[3] = {0x30, 0xFF, 0xFF}; // Power on DAC with max output
+                  ^~~~~~~~~~~
+arm-none-eabi-g++ -o "mcb_rev2.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\Mark\Google Drive\Solar Gators\Auxiliary_2019-2020\mcb_rev2\STM32F072RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="mcb_rev2.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: mcb_rev2.elf
+ 
+arm-none-eabi-objdump -h -S  mcb_rev2.elf  > "mcb_rev2.list"
+arm-none-eabi-objcopy  -O binary  mcb_rev2.elf  "mcb_rev2.bin"
+arm-none-eabi-size   mcb_rev2.elf 
+   text	   data	    bss	    dec	    hex	filename
+  17824	    236	   1924	  19984	   4e10	mcb_rev2.elf
+Finished building: default.size.stdout
+ 
+Finished building: mcb_rev2.bin
+ 
+Finished building: mcb_rev2.list
+ 
+
+19:37:25 Build Finished. 0 errors, 4 warnings. (took 1s.792ms)
+
