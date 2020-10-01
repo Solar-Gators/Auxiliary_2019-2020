@@ -306,32 +306,10 @@ static void MX_GPIO_Init(void)
 // -----------------------------
 // --- ISR DEFINITION(S) -------
 // -----------------------------
-void HAL_GPIO_EXTI_Callback(uint16_t GPIO_PIN)
-{
-	// check which pin triggered interrupt
-	if(GPIO_PIN == CHG_TRIP_Pin)
-	{
 
-	}
-	else if(GPIO_PIN == CRUISE_IN_Pin)
-	{
-
-	}
-	else __NOP();	// no operation
-}
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
-{
-	// check which timer triggered interrupt
-	if(htim->Instance == TIM2)
-	{
-
-	}
-	else __NOP();	// no operation
-}
-void AUX_MotherReceive_Callback(SUBSYSTEM_DATA_MODULE*)
-{
-
-}
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_PIN);
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim);
+void AUX_MotherReceive_Callback(SUBSYSTEM_DATA_MODULE*);
 
 
 /* USER CODE END 4 */

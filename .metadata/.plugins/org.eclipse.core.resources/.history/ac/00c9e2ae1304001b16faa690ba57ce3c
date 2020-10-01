@@ -321,12 +321,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_PIN)
 }
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
-	// check which timer triggered interrupt
-	if(htim->Instance == TIM2)
-	{
 
-	}
-	else __NOP();	// no operation
 }
 void AUX_MotherReceive_Callback(SUBSYSTEM_DATA_MODULE*)
 {
