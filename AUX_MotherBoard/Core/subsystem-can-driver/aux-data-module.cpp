@@ -31,14 +31,15 @@ void AUX_MESSAGE_0::dataPacketToArray(AUX_MESSAGE_0_DATA_PACKET input, uint8_t o
 {
 	assert_param(output != nullptr);
 	output[0] = 0;
-	output[0] |= static_cast<uint32_t>(input.hazardsOn) << 0;
-	output[0] |= static_cast<uint32_t>(input.headlightsOn) << 1;
-	output[0] |= static_cast<uint32_t>(input.leftOn) << 2;
-	output[0] |= static_cast<uint32_t>(input.rightOn) << 3;
-	output[0] |= static_cast<uint32_t>(input.cplusOn) << 4;
-	output[0] |= static_cast<uint32_t>(input.cminusOn) << 5;
-	output[0] |= static_cast<uint32_t>(input.hornOn) << 6;
-	output[0] |= static_cast<uint32_t>(input.regenOn) << 7;
+
+	output[0] |= static_cast<uint8_t>(input.hazardsOn) << 0;
+	output[0] |= static_cast<uint8_t>(input.headlightsOn) << 1;
+	output[0] |= static_cast<uint8_t>(input.leftOn) << 2;
+	output[0] |= static_cast<uint8_t>(input.rightOn) << 3;
+	output[0] |= static_cast<uint8_t>(input.cplusOn) << 4;
+	output[0] |= static_cast<uint8_t>(input.cminusOn) << 5;
+	output[0] |= static_cast<uint8_t>(input.hornOn) << 6;
+	output[0] |= static_cast<uint8_t>(input.regenOn) << 7;
 }
 
 AUX_MESSAGE_0_DATA_PACKET AUX_MESSAGE_0::arrayToDataPacket(uint8_t input[NUM_BYTES])
@@ -60,5 +61,5 @@ AUX_MESSAGE_0_DATA_PACKET AUX_MESSAGE_0::arrayToDataPacket(uint8_t input[NUM_BYT
 
 //Public Function Definitions
 AUX_MESSAGE_0::AUX_MESSAGE_0():
-SUBSYSTEM_DATA_MODULE_TEMPLATE_INTERFACE<AUX_MESSAGE_0, AUX_MESSAGE_0_DATA_PACKET>{subsystem_info::AUX0_MSG_ID,subsystem_info::AUX0_MSG_LENGTH, false}
+SUBSYSTEM_DATA_MODULE_TEMPLATE_INTERFACE<AUX_MESSAGE_0, AUX_MESSAGE_0_DATA_PACKET>{subsystem_info::AUX0_MSG_ID,subsystem_info::AUX0_MSG_LENGTH, false, false, false}
 {}

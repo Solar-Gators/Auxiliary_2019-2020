@@ -54,8 +54,8 @@ AUX_MotherBoard.list \
 all: AUX_MotherBoard.elf secondary-outputs
 
 # Tool invocations
-AUX_MotherBoard.elf: $(OBJS) $(USER_OBJS) C:\Users\jenni\STM32CubeIDE\workspace_1.0.1\AUX_MotherBoard\STM32F072RBTX_FLASH.ld
-	arm-none-eabi-g++ -o "AUX_MotherBoard.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m0 -T"C:\Users\jenni\STM32CubeIDE\workspace_1.0.1\AUX_MotherBoard\STM32F072RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="AUX_MotherBoard.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+AUX_MotherBoard.elf: $(OBJS) $(USER_OBJS) C:\Users\jenni\Documents\Solar\ Gators\Auxiliary_2019-2020\AUX_MotherBoard\STM32F072RBTX_FLASH.ld
+	arm-none-eabi-g++ -o "AUX_MotherBoard.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m0 -T"C:\Users\jenni\Documents\Solar Gators\Auxiliary_2019-2020\AUX_MotherBoard\STM32F072RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="AUX_MotherBoard.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

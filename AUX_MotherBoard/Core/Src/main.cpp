@@ -130,7 +130,7 @@ int main(void)
   /* USER CODE BEGIN 2 */
   AUX_MESSAGE_0 auxHandler0;
   auxHandler0.SetupReceive(nullptr);
-  SUBSYSTEM_DATA_MODULE::StartCAN(&hcan);
+  SUBSYSTEM_DATA_MODULE::StartCAN(); //removed &hcan in parameter?
 
   /* USER CODE END 2 */
   /* Infinite loop */
@@ -197,6 +197,8 @@ int main(void)
 			auxHandler0.txData.regenOn = false;
 		}
 	  }
+		auxHandler0.txData.headlightsOn = true;
+		auxHandler0.txData.rightOn = true;
 	  auxHandler0.SendData();
   }
   /* USER CODE END 3 */
