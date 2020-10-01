@@ -6,8 +6,12 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="can"/>
+		<item key="selection" value="DAC_Write"/>
 		<list key="findhistory">
+			<item value="DAC_Write"/>
+			<item value="temp"/>
+			<item value="splicewrite"/>
+			<item value="hcan"/>
 			<item value="CAN"/>
 			<item value="newInput"/>
 			<item value="precharge"/>

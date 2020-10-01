@@ -31,7 +31,11 @@
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
 
-// enumeration for the SPI slave devices this uC will communicate with
+/**
+ * Enumeration for the SPI slave devices this uC will communicate with
+ * 	- cruiseDAC is a LTC2630ISC6-LM12
+ * 	- regenDAC is a LTC2630ISC6-LM12
+ */
 typedef enum slave
 {
 	cruiseDAC = 0,
@@ -56,6 +60,26 @@ TIM_HandleTypeDef htim2;
 
 /* USER CODE BEGIN PV */
 
+// CAN-related objects and variables
+static AUX_MESSAGE_0_DATA_PACKET aux0Packet;
+static AUX_MESSAGE_0 aux0;
+
+// ISR-affected objects and variables
+static bool active_CT = false;
+static bool active_Cruise = false;
+
+static bool newInput_CT	= false;
+static bool newInput_Cruise = false;
+
+static bool sysPrecharge = false;
+static bool sysMCCoilActive = false;
+static bool sysMPPTCoilActive = false;
+
+static int tickPrecharge = 0;
+static int tickCoil = 0;
+
+static bool newInput_CAN = false;
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -68,9 +92,30 @@ static void MX_TIM2_Init(void);
 // ----------------------------
 // --- ISR PROTOTYPE(S) -------
 // ----------------------------
+/**
+ *
+ */
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_PIN);
+/**
+ *
+ */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim);
+/**
+ *
+ */
 void AUX_MotherReceive_Callback(SUBSYSTEM_DATA_MODULE*);
+
+// ---------------------------------
+// --- FUNCTION PROTOTYPE(S) -------
+// ---------------------------------
+/**
+ *
+ */
+int DAC_Write(slave_t slave, uint8_t *data);
+/**
+ *
+ */
+int DAC_SpliceWrite(slave_t slave, uint8_t command, uint16_t *data);
 
 /* USER CODE END PFP */
 
@@ -86,6 +131,13 @@ void AUX_MotherReceive_Callback(SUBSYSTEM_DATA_MODULE*);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
+	// DAC Commands
+	static uint8_t DAC_Init[3]		= {0x70, 0x00, 0x00};	// Set external voltage reference (5V)
+//	static uint8_t DAC_PowerOn[3]	= {0x30, 0xFF, 0xF0};	// Power on DAC with max output voltage
+															// ! USE ONLY FOR TESTING DAC !
+															// ! DO NOT USE ON FINAL BOARD !
+	static uint8_t DAC_PowerOn[3]	= {0x30, 0x00, 0x00};	// Power on DAC
+	static uint8_t DAC_PowerOff[3]	= {0x40, 0x00, 0x00};	// Power off DAC
 
   /* USER CODE END 1 */
 
@@ -309,30 +361,83 @@ static void MX_GPIO_Init(void)
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_PIN)
 {
 	// check which pin triggered interrupt
-	if(GPIO_PIN == CHG_TRIP_Pin)
+	switch(GPIO_PIN)
 	{
+	case CHG_TRIP_Pin:
 
-	}
-	else if(GPIO_PIN == CRUISE_IN_Pin)
-	{
+		break;
+	case CRUISE_IN_Pin:
 
+		break;
+	default:
+		__NOP();	// no operation
 	}
-	else __NOP();	// no operation
 }
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
 	// check which timer triggered interrupt
-	if(htim->Instance == TIM2)
+	switch(htim->Instance)
 	{
-
+	case TIM2:
+		break;
+	default:
+		__NOP();	// no operation
 	}
-	else __NOP();	// no operation
 }
 void AUX_MotherReceive_Callback(SUBSYSTEM_DATA_MODULE*)
 {
-
+	if(!aux0.isFifoEmpty())
+		aux0Packet = aux0.GetOldestDataPacket(&newInput_CAN);
 }
 
+// ----------------------------------
+// --- FUNCTION DEFINITION(S) -------
+// ----------------------------------
+int DAC_Write(slave_t slave, uint8_t *data)
+{
+	GPIO_TypeDef* currentPort;
+	uint16_t currentPin;
+
+	// identify which slave select to use for this transaction
+	switch(slave)
+	{
+	case cruiseDAC:
+		currentPort = SS_CRUISE_GPIO_Port;
+		currentPin = SS_CRUISE_Pin;
+		break;
+	case regenDAC:
+		currentPort = SS_REGEN_GPIO_Port;
+		currentPin = SS_REGEN_Pin;
+		break;
+	default:
+		// invalid slave select
+		return -1;	// unsuccessful transaction
+		break;
+	}
+
+	// pull slave select low
+	HAL_GPIO_WritePin(currentPort, currentPin, GPIO_PIN_RESET);
+	// transmit an array of 3 8-bit values
+	HAL_SPI_Transmit(&hspi2, data, 3, HAL_MAX_DELAY);
+	// pull slave select high
+	HAL_GPIO_WritePin(currentPort, currentPin, GPIO_PIN_SET);
+	// poll for SPI ready
+	while(HAL_SPI_GetState(&hspi2) != HAL_SPI_STATE_READY);
+
+	return 0;	// successful transaction
+}
+int DAC_SpliceWrite(slave_t slave, uint8_t command, uint16_t *data)
+{
+	uint8_t temp[3] = {0};				// initialize an array of size 3 to 0
+
+	// splice the data into DAC's required format
+	temp[0] = command;					// first 8 bits is command and 4 don't care bits
+	temp[1] = ((*data) >> 4) & 0xFF;	// second 8 bits is data[11:4]
+	temp[2] = ((*data) << 4) & 0xFF;	// third 8 bits is data[3:0] in the upper nibble
+										// and 4 don't care bits in the lower nibble
+	// write spliced data to DAC
+	return DAC_Write(slave, temp);
+}
 
 /* USER CODE END 4 */
 
