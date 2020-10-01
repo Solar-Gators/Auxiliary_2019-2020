@@ -446,6 +446,12 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 	// check which timer triggered interrupt
 	if(htim->Instance == TIM2)
 	{
+
+	}
+	else __NOP();	// no operation
+	switch(htim->Instance)
+	{
+	case TIM2:
 		if(sysPrecharge)
 		{
 			if(tickPrecharge >= 50)
@@ -469,8 +475,10 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 			}
 			else ++tickCoil;
 		}
+		break;
+	default:
+		__NOP();	// no operation
 	}
-	else __NOP();	// no operation
 }
 void AUX_MotherReceive_Callback(SUBSYSTEM_DATA_MODULE*)
 {

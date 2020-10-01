@@ -197,7 +197,7 @@ int main(void)
 			}
 			else if(!active_CT && sysPrecharge && !sysMPPTCoilActive) // maybe get rid of sysMPPTCoilActive
 			{
-				HAL_GPIO_WritePin(PRE_MPPT_GPIO_Port, PRE_MPPT_Pin, GPIO_PIN_SET);
+				HAL_GPIO_WritePin(MPPT_PRE_GPIO_Port, MPPT_PRE_Pin, GPIO_PIN_SET);
 				HAL_TIM_Base_Start_IT(&htim2);
 			}
 			newInput_CT = false;
@@ -444,8 +444,9 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_PIN)
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
 	// check which timer triggered interrupt
-	if(htim->Instance == TIM2)
+	switch(htim->Instance)
 	{
+	case TIM2:
 		if(sysPrecharge)
 		{
 			if(tickPrecharge >= 50)
@@ -469,8 +470,10 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 			}
 			else ++tickCoil;
 		}
+		break;
+	default:
+		__NOP();	// no operation
 	}
-	else __NOP();	// no operation
 }
 void AUX_MotherReceive_Callback(SUBSYSTEM_DATA_MODULE*)
 {

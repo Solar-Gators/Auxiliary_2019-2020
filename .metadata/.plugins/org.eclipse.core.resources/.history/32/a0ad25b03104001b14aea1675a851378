@@ -469,8 +469,16 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 			}
 			else ++tickCoil;
 		}
+
 	}
 	else __NOP();	// no operation
+	switch(htim->Instance)
+	{
+	case TIM2:
+		break;
+	default:
+		__NOP();	// no operation
+	}
 }
 void AUX_MotherReceive_Callback(SUBSYSTEM_DATA_MODULE*)
 {

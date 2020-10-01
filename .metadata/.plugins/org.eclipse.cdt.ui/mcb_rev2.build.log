@@ -1,4 +1,4 @@
-16:27:25 **** Incremental Build of configuration Debug for project mcb_rev2 ****
+18:00:01 **** Incremental Build of configuration Debug for project mcb_rev2 ****
 make -j12 all 
 Core/Src/subdir.mk:41: warning: overriding recipe for target 'Core/Src/main.o'
 Core/Src/subdir.mk:39: warning: ignoring old recipe for target 'Core/Src/main.o'
@@ -8,13 +8,8 @@ arm-none-eabi-g++ "../Core/Src/subsystem-can-driver/bms-data-module.cpp" -mcpu=c
 arm-none-eabi-g++ "../Core/Src/subsystem-can-driver/mppt-data-module.cpp" -mcpu=cortex-m0 -std=gnu++14 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Include -I../Core/Inc -I"C:/Users/Mark/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev2/Core/Src/subsystem-can-driver" -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-threadsafe-statics -fno-use-cxa-atexit -Wall -fstack-usage -MMD -MP -MF"Core/Src/subsystem-can-driver/mppt-data-module.d" -MT"Core/Src/subsystem-can-driver/mppt-data-module.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/subsystem-can-driver/mppt-data-module.o"
 arm-none-eabi-g++ "../Core/Src/subsystem-can-driver/subsystem-data-module.cpp" -mcpu=cortex-m0 -std=gnu++14 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Include -I../Core/Inc -I"C:/Users/Mark/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev2/Core/Src/subsystem-can-driver" -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-threadsafe-statics -fno-use-cxa-atexit -Wall -fstack-usage -MMD -MP -MF"Core/Src/subsystem-can-driver/subsystem-data-module.d" -MT"Core/Src/subsystem-can-driver/subsystem-data-module.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/subsystem-can-driver/subsystem-data-module.o"
 arm-none-eabi-g++ "../Core/Src/main.cpp" -mcpu=cortex-m0 -std=gnu++14 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Include -I../Core/Inc -I"C:/Users/Mark/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev2/Core/Src/subsystem-can-driver" -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-threadsafe-statics -fno-use-cxa-atexit -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-In file included from ../Core/Src/subsystem-can-driver/helper-code/rx-module-binary-tree.cpp:6:0:
-../Core/Src/subsystem-can-driver/helper-code/../subsystem-data-module.hpp:111:8: error: 'CAN_HandleTypeDef' does not name a type; did you mean 'TIM_HandleTypeDef'?
- static CAN_HandleTypeDef hcan;
-        ^~~~~~~~~~~~~~~~~
-        TIM_HandleTypeDef
-In file included from ../Core/Src/subsystem-can-driver/aux-data-module.hpp:9:0,
-                 from ../Core/Src/subsystem-can-driver/aux-data-module.cpp:5:
+In file included from ../Core/Src/subsystem-can-driver/mppt-data-module.hpp:9:0,
+                 from ../Core/Src/subsystem-can-driver/mppt-data-module.cpp:5:
 ../Core/Src/subsystem-can-driver/subsystem-data-module.hpp:111:8: error: 'CAN_HandleTypeDef' does not name a type; did you mean 'TIM_HandleTypeDef'?
  static CAN_HandleTypeDef hcan;
         ^~~~~~~~~~~~~~~~~
@@ -25,21 +20,29 @@ In file included from ../Core/Src/subsystem-can-driver/bms-data-module.hpp:9:0,
  static CAN_HandleTypeDef hcan;
         ^~~~~~~~~~~~~~~~~
         TIM_HandleTypeDef
+In file included from ../Core/Src/subsystem-can-driver/aux-data-module.hpp:9:0,
+                 from ../Core/Src/subsystem-can-driver/aux-data-module.cpp:5:
+../Core/Src/subsystem-can-driver/subsystem-data-module.hpp:111:8: error: 'CAN_HandleTypeDef' does not name a type; did you mean 'TIM_HandleTypeDef'?
+ static CAN_HandleTypeDef hcan;
+        ^~~~~~~~~~~~~~~~~
+        TIM_HandleTypeDef
+In file included from ../Core/Src/subsystem-can-driver/helper-code/rx-module-binary-tree.cpp:6:0:
+../Core/Src/subsystem-can-driver/helper-code/../subsystem-data-module.hpp:111:8: error: 'CAN_HandleTypeDef' does not name a type; did you mean 'TIM_HandleTypeDef'?
+ static CAN_HandleTypeDef hcan;
+        ^~~~~~~~~~~~~~~~~
+        TIM_HandleTypeDef
 In file included from ../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:5:0:
 ../Core/Src/subsystem-can-driver/subsystem-data-module.hpp:111:8: error: 'CAN_HandleTypeDef' does not name a type; did you mean 'TIM_HandleTypeDef'?
  static CAN_HandleTypeDef hcan;
         ^~~~~~~~~~~~~~~~~
         TIM_HandleTypeDef
-In file included from ../Core/Src/subsystem-can-driver/mppt-data-module.hpp:9:0,
-                 from ../Core/Src/subsystem-can-driver/mppt-data-module.cpp:5:
-../Core/Src/subsystem-can-driver/subsystem-data-module.hpp:111:8: error: 'CAN_HandleTypeDef' does not name a type; did you mean 'TIM_HandleTypeDef'?
+In file included from ../Core/Src/main.cpp:26:0:
+C:/Users/Mark/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev2/Core/Src/subsystem-can-driver/subsystem-data-module.hpp:111:8: error: 'CAN_HandleTypeDef' does not name a type; did you mean 'TIM_HandleTypeDef'?
  static CAN_HandleTypeDef hcan;
         ^~~~~~~~~~~~~~~~~
         TIM_HandleTypeDef
-make: *** [Core/Src/subsystem-can-driver/subdir.mk:29: Core/Src/subsystem-can-driver/bms-data-module.o] Error 1
+make: *** [Core/Src/subsystem-can-driver/subdir.mk:31: Core/Src/subsystem-can-driver/mppt-data-module.o] Error 1
 make: *** Waiting for unfinished jobs....
-make: *** [Core/Src/subsystem-can-driver/helper-code/subdir.mk:18: Core/Src/subsystem-can-driver/helper-code/rx-module-binary-tree.o] Error 1
-make: *** [Core/Src/subsystem-can-driver/subdir.mk:27: Core/Src/subsystem-can-driver/aux-data-module.o] Error 1
 ../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:11:2: error: 'CAN_HandleTypeDef' does not name a type; did you mean 'TIM_HandleTypeDef'?
   CAN_HandleTypeDef SUBSYSTEM_DATA_MODULE::hcan;
   ^~~~~~~~~~~~~~~~~
@@ -48,12 +51,9 @@ make: *** [Core/Src/subsystem-can-driver/subdir.mk:27: Core/Src/subsystem-can-dr
  void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
                                         ^~~~~~~~~~~~~~~~~
 ../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:26:40: error: 'CAN_HandleTypeDef' was not declared in this scope
-In file included from ../Core/Src/main.cpp:26:0:
-C:/Users/Mark/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev2/Core/Src/subsystem-can-driver/subsystem-data-module.hpp:111:8: error: 'CAN_HandleTypeDef' does not name a type; did you mean 'TIM_HandleTypeDef'?
- static CAN_HandleTypeDef hcan;
-        ^~~~~~~~~~~~~~~~~
-        TIM_HandleTypeDef
-make: *** [Core/Src/subsystem-can-driver/subdir.mk:31: Core/Src/subsystem-can-driver/mppt-data-module.o] Error 1
+make: *** [Core/Src/subsystem-can-driver/subdir.mk:29: Core/Src/subsystem-can-driver/bms-data-module.o] Error 1
+make: *** [Core/Src/subsystem-can-driver/subdir.mk:27: Core/Src/subsystem-can-driver/aux-data-module.o] Error 1
+make: *** [Core/Src/subsystem-can-driver/helper-code/subdir.mk:18: Core/Src/subsystem-can-driver/helper-code/rx-module-binary-tree.o] Error 1
 ../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:26:40: note: suggested alternative: 'TIM_HandleTypeDef'
  void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
                                         ^~~~~~~~~~~~~~~~~
@@ -222,5 +222,5 @@ make: *** [Core/Src/subdir.mk:41: Core/Src/main.o] Error 1
 make: *** [Core/Src/subsystem-can-driver/subdir.mk:33: Core/Src/subsystem-can-driver/subsystem-data-module.o] Error 1
 "make -j12 all" terminated with exit code 2. Build might be incomplete.
 
-16:27:26 Build Failed. 48 errors, 2 warnings. (took 916ms)
+18:00:02 Build Failed. 48 errors, 2 warnings. (took 1s.25ms)
 

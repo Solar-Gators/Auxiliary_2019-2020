@@ -167,73 +167,11 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  DAC_Write(cruiseDAC, DAC_Init);
-  DAC_Write(regenDAC, DAC_Init);
   while (1)
   {
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-
-		if(newInput_CT)
-		{
-			if(active_CT)
-			{
-				// Turn off MPPT coil
-				HAL_GPIO_WritePin(CON_MPPT_GPIO_Port, CON_MPPT_Pin, GPIO_PIN_RESET);
-				// Ensure MPPT precharge is off
-				HAL_GPIO_WritePin(PRE_MPPT_GPIO_Port, PRE_MPPT_Pin, GPIO_PIN_RESET);
-
-				// Reset timer
-				HAL_TIM_Base_Stop_IT(&htim2);
-				__HAL_TIM_SET_COUNTER(&htim2, 0);
-
-				// Reset ticks
-				tickPrecharge = 0;
-				tickCoil = 0;
-
-				// Set MPPT Coil active bool
-				sysMPPTCoilActive = false;
-			}
-			else if(!active_CT && sysPrecharge && !sysMPPTCoilActive) // maybe get rid of sysMPPTCoilActive
-			{
-				HAL_GPIO_WritePin(PRE_MPPT_GPIO_Port, PRE_MPPT_Pin, GPIO_PIN_SET);
-				HAL_TIM_Base_Start_IT(&htim2);
-			}
-			newInput_CT = false;
-		}
-		if(newInput_CAN)
-		{
-			if(aux0Packet.regenOn && active_Cruise)
-			{
-				// Turn on regen brake
-				HAL_GPIO_WritePin(REGEN_BRK_GPIO_Port, REGEN_BRK_Pin, GPIO_PIN_SET);
-			}
-			else if(aux0Packet.regenOn)
-			{
-				DAC_Write(regenDAC, DAC_PowerOn);
-			}
-			else
-			{
-				// Turn off regen brake
-				HAL_GPIO_WritePin(REGEN_BRK_GPIO_Port, REGEN_BRK_Pin, GPIO_PIN_RESET);
-				// turn off regen DAC
-				DAC_Write(regenDAC, DAC_PowerOff);
-			}
-			newInput_CAN = false;
-		}
-		if(newInput_Cruise)
-		{
-			if(active_Cruise)
-			{
-				DAC_Write(cruiseDAC, DAC_PowerOn);
-			}
-			else
-			{
-				DAC_Write(cruiseDAC, DAC_PowerOff);
-			}
-			newInput_Cruise = false;
-		}
   }
   /* USER CODE END 3 */
 }
@@ -444,16 +382,14 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_PIN)
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
 	// check which timer triggered interrupt
-	if(htim->Instance == TIM2)
+	switch(htim->Instance)
 	{
+	case TIM2:
 		if(sysPrecharge)
 		{
 			if(tickPrecharge >= 50)
 			{
 				tickPrecharge = 0;
-				HAL_GPIO_WritePin(PRE_MOTOR_GPIO_Port, PRE_MOTOR_Pin, GPIO_PIN_RESET);
-				HAL_GPIO_WritePin(PRE_MPPT_GPIO_Port, PRE_MPPT_Pin, GPIO_PIN_RESET);
-				sysPrecharge = false;
 			}
 			else ++tickPrecharge;
 		}
@@ -461,16 +397,14 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 		{
 			if(tickCoil >= 48)
 			{
-				tickCoil = 0;
-				HAL_GPIO_WritePin(CON_MOTOR_GPIO_Port, CON_MOTOR_Pin, GPIO_PIN_SET);
-				HAL_GPIO_WritePin(CON_MPPT_GPIO_Port, CON_MPPT_Pin, GPIO_PIN_SET);
-				sysMCCoilActive = true;
-				sysMPPTCoilActive = true;
+
 			}
 			else ++tickCoil;
 		}
+		break;
+	default:
+		__NOP();	// no operation
 	}
-	else __NOP();	// no operation
 }
 void AUX_MotherReceive_Callback(SUBSYSTEM_DATA_MODULE*)
 {

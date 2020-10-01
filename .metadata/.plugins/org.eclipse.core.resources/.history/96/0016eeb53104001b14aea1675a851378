@@ -471,6 +471,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 		}
 	}
 	else __NOP();	// no operation
+	}
 }
 void AUX_MotherReceive_Callback(SUBSYSTEM_DATA_MODULE*)
 {

@@ -1,6 +1,15 @@
-main.cpp:74:5:int main()	8	static
-main.cpp:119:6:void SystemClock_Config()	88	static
-main.cpp:154:13:void MX_SPI2_Init()	8	static
-main.cpp:194:13:void MX_TIM2_Init()	32	static
-main.cpp:239:13:void MX_GPIO_Init()	48	static
-main.cpp:300:6:void Error_Handler()	8	static
+main.cpp:131:5:int main()	8	static
+main.cpp:245:6:void SystemClock_Config()	88	static
+main.cpp:280:13:void MX_SPI2_Init()	8	static
+main.cpp:320:13:void MX_TIM2_Init()	32	static
+main.cpp:365:13:void MX_GPIO_Init()	48	static
+main.cpp:423:6:void HAL_GPIO_EXTI_Callback(uint16_t)	16	static,ignoring_inline_asm
+main.cpp:444:6:void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef*)	16	static,ignoring_inline_asm
+main.cpp:475:6:void AUX_MotherReceive_Callback(SUBSYSTEM_DATA_MODULE*)	32	static
+main.cpp:484:5:int DAC_Write(slave_t, uint8_t*)	32	static
+main.cpp:517:5:int DAC_SpliceWrite(slave_t, uint8_t, uint16_t*)	32	static
+main.cpp:536:6:void Error_Handler()	8	static
+subsystem-data-module.hpp:177:13:CHILD_DATA SUBSYSTEM_DATA_MODULE_TEMPLATE_INTERFACE<CHILD_OBJ, CHILD_DATA>::GetOldestDataPacket(bool*) [with CHILD_OBJ = AUX_MESSAGE_0; CHILD_DATA = AUX_MESSAGE_0_DATA_PACKET]	48	static
+helper-fifo.hpp:82:8:T* HELPER_FIFO<T, DEPTH, SIZE>::PopFront(bool*) [with T = unsigned char; short unsigned int DEPTH = 3; short unsigned int SIZE = 8]	24	static
+main.cpp:542:1:void __static_initialization_and_destruction_0(int, int)	16	static
+main.cpp:542:1:cpp)	8	static
