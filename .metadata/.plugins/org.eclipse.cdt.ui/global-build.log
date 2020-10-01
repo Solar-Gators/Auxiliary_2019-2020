@@ -601,3 +601,840 @@ Finished building: mcb_rev2.bin
  
 Finished building: mcb_rev2.list
  
+15:38:21 **** Build of configuration Debug for project mcb_rev3 ****
+make -j12 all 
+arm-none-eabi-gcc "../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal.d" -MT"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal.o"
+arm-none-eabi-gcc "../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_can.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_can.d" -MT"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_can.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_can.o"
+arm-none-eabi-gcc "../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_cortex.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_cortex.d" -MT"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_cortex.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_cortex.o"
+arm-none-eabi-gcc "../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_dma.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_dma.d" -MT"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_dma.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_dma.o"
+arm-none-eabi-gcc "../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_exti.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_exti.d" -MT"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_exti.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_exti.o"
+arm-none-eabi-gcc "../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_flash.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_flash.d" -MT"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_flash.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_flash.o"
+arm-none-eabi-gcc "../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_flash_ex.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_flash_ex.d" -MT"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_flash_ex.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_flash_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_gpio.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_gpio.d" -MT"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_gpio.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_gpio.o"
+arm-none-eabi-gcc "../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_i2c.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_i2c.d" -MT"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_i2c.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_i2c.o"
+arm-none-eabi-gcc "../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_i2c_ex.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_i2c_ex.d" -MT"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_i2c_ex.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_i2c_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr.d" -MT"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr.o"
+arm-none-eabi-gcc "../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr_ex.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr_ex.d" -MT"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr_ex.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rcc.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rcc.d" -MT"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rcc.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rcc.o"
+arm-none-eabi-gcc "../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rcc_ex.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rcc_ex.d" -MT"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rcc_ex.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rcc_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_spi.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_spi.d" -MT"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_spi.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_spi.o"
+arm-none-eabi-gcc "../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_spi_ex.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_spi_ex.d" -MT"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_spi_ex.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_spi_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_tim.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_tim.d" -MT"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_tim.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_tim.o"
+arm-none-eabi-gcc "../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_tim_ex.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_tim_ex.d" -MT"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_tim_ex.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_tim_ex.o"
+arm-none-eabi-gcc -mcpu=cortex-m0 -g3 -c -x assembler-with-cpp -MMD -MP -MF"Core/Startup/startup_stm32f072rbtx.d" -MT"Core/Startup/startup_stm32f072rbtx.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Startup/startup_stm32f072rbtx.o" "../Core/Startup/startup_stm32f072rbtx.s"
+arm-none-eabi-g++ "../Core/Src/subsystem-can-driver/helper-code/rx-module-binary-tree.cpp" -mcpu=cortex-m0 -std=gnu++14 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/Mark/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev3/Core/Src/subsystem-can-driver" -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-threadsafe-statics -fno-use-cxa-atexit -Wall -fstack-usage -MMD -MP -MF"Core/Src/subsystem-can-driver/helper-code/rx-module-binary-tree.d" -MT"Core/Src/subsystem-can-driver/helper-code/rx-module-binary-tree.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/subsystem-can-driver/helper-code/rx-module-binary-tree.o"
+arm-none-eabi-g++ "../Core/Src/subsystem-can-driver/aux-data-module.cpp" -mcpu=cortex-m0 -std=gnu++14 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/Mark/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev3/Core/Src/subsystem-can-driver" -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-threadsafe-statics -fno-use-cxa-atexit -Wall -fstack-usage -MMD -MP -MF"Core/Src/subsystem-can-driver/aux-data-module.d" -MT"Core/Src/subsystem-can-driver/aux-data-module.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/subsystem-can-driver/aux-data-module.o"
+arm-none-eabi-g++ "../Core/Src/subsystem-can-driver/mitsuba-driver-data-module.cpp" -mcpu=cortex-m0 -std=gnu++14 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/Mark/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev3/Core/Src/subsystem-can-driver" -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-threadsafe-statics -fno-use-cxa-atexit -Wall -fstack-usage -MMD -MP -MF"Core/Src/subsystem-can-driver/mitsuba-driver-data-module.d" -MT"Core/Src/subsystem-can-driver/mitsuba-driver-data-module.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/subsystem-can-driver/mitsuba-driver-data-module.o"
+arm-none-eabi-g++ "../Core/Src/subsystem-can-driver/orion-data-module.cpp" -mcpu=cortex-m0 -std=gnu++14 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/Mark/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev3/Core/Src/subsystem-can-driver" -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-threadsafe-statics -fno-use-cxa-atexit -Wall -fstack-usage -MMD -MP -MF"Core/Src/subsystem-can-driver/orion-data-module.d" -MT"Core/Src/subsystem-can-driver/orion-data-module.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/subsystem-can-driver/orion-data-module.o"
+arm-none-eabi-g++ "../Core/Src/subsystem-can-driver/proton1-data-module.cpp" -mcpu=cortex-m0 -std=gnu++14 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/Mark/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev3/Core/Src/subsystem-can-driver" -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-threadsafe-statics -fno-use-cxa-atexit -Wall -fstack-usage -MMD -MP -MF"Core/Src/subsystem-can-driver/proton1-data-module.d" -MT"Core/Src/subsystem-can-driver/proton1-data-module.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/subsystem-can-driver/proton1-data-module.o"
+arm-none-eabi-g++ "../Core/Src/subsystem-can-driver/subsystem-data-module.cpp" -mcpu=cortex-m0 -std=gnu++14 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/Mark/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev3/Core/Src/subsystem-can-driver" -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-threadsafe-statics -fno-use-cxa-atexit -Wall -fstack-usage -MMD -MP -MF"Core/Src/subsystem-can-driver/subsystem-data-module.d" -MT"Core/Src/subsystem-can-driver/subsystem-data-module.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/subsystem-can-driver/subsystem-data-module.o"
+arm-none-eabi-g++ "../Core/Src/main.cpp" -mcpu=cortex-m0 -std=gnu++14 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/Mark/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev3/Core/Src/subsystem-can-driver" -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-threadsafe-statics -fno-use-cxa-atexit -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/stm32f0xx_hal_msp.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/stm32f0xx_hal_msp.d" -MT"Core/Src/stm32f0xx_hal_msp.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/stm32f0xx_hal_msp.o"
+arm-none-eabi-gcc "../Core/Src/stm32f0xx_it.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/stm32f0xx_it.d" -MT"Core/Src/stm32f0xx_it.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/stm32f0xx_it.o"
+arm-none-eabi-gcc "../Core/Src/syscalls.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/syscalls.d" -MT"Core/Src/syscalls.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/syscalls.o"
+arm-none-eabi-gcc "../Core/Src/sysmem.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/sysmem.d" -MT"Core/Src/sysmem.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/sysmem.o"
+arm-none-eabi-gcc "../Core/Src/system_stm32f0xx.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/system_stm32f0xx.d" -MT"Core/Src/system_stm32f0xx.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/system_stm32f0xx.o"
+arm-none-eabi-g++ -o "mcb_rev3.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\Mark\Google Drive\Solar Gators\Auxiliary_2019-2020\mcb_rev3\STM32F072RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="mcb_rev3.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Core/Src/subsystem-can-driver/subsystem-data-module.o: In function `HAL_CAN_MspInit':
+C:/Users/Mark/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev3/Debug/../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:74: multiple definition of `HAL_CAN_MspInit'
+Core/Src/stm32f0xx_hal_msp.o:C:/Users/Mark/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev3/Debug/../Core/Src/stm32f0xx_hal_msp.c:87: first defined here
+Core/Src/subsystem-can-driver/subsystem-data-module.o: In function `HAL_CAN_MspDeInit':
+C:/Users/Mark/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev3/Debug/../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:113: multiple definition of `HAL_CAN_MspDeInit'
+Core/Src/stm32f0xx_hal_msp.o:C:/Users/Mark/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev3/Debug/../Core/Src/stm32f0xx_hal_msp.c:123: first defined here
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:67: mcb_rev3.elf] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+15:40:31 **** Incremental Build of configuration Debug for project mcb_rev3 ****
+make -j12 all 
+arm-none-eabi-g++ "../Core/Src/main.cpp" -mcpu=cortex-m0 -std=gnu++14 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/Mark/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev3/Core/Src/subsystem-can-driver" -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-threadsafe-statics -fno-use-cxa-atexit -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/stm32f0xx_hal_msp.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/stm32f0xx_hal_msp.d" -MT"Core/Src/stm32f0xx_hal_msp.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/stm32f0xx_hal_msp.o"
+arm-none-eabi-g++ -o "mcb_rev3.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\Mark\Google Drive\Solar Gators\Auxiliary_2019-2020\mcb_rev3\STM32F072RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="mcb_rev3.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: mcb_rev3.elf
+ 
+arm-none-eabi-size   mcb_rev3.elf 
+arm-none-eabi-objdump -h -S  mcb_rev3.elf  > "mcb_rev3.list"
+arm-none-eabi-objcopy  -O binary  mcb_rev3.elf  "mcb_rev3.bin"
+   text	   data	    bss	    dec	    hex	filename
+   8892	     24	   1828	  10744	   29f8	mcb_rev3.elf
+Finished building: default.size.stdout
+ 
+Finished building: mcb_rev3.bin
+ 
+Finished building: mcb_rev3.list
+ 
+15:40:34 **** Incremental Build of configuration Debug for project mcb_rev3 ****
+make -j12 all 
+arm-none-eabi-size   mcb_rev3.elf 
+   text	   data	    bss	    dec	    hex	filename
+   8892	     24	   1828	  10744	   29f8	mcb_rev3.elf
+Finished building: default.size.stdout
+ 
+16:26:43 **** Incremental Build of configuration Debug for project mcb_rev2 ****
+make -j12 all 
+Core/Src/subdir.mk:41: warning: overriding recipe for target 'Core/Src/main.o'
+Core/Src/subdir.mk:39: warning: ignoring old recipe for target 'Core/Src/main.o'
+arm-none-eabi-gcc "../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal.d" -MT"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal.o"
+arm-none-eabi-gcc "../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_cortex.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_cortex.d" -MT"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_cortex.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_cortex.o"
+arm-none-eabi-gcc "../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_dma.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_dma.d" -MT"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_dma.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_dma.o"
+arm-none-eabi-gcc "../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_exti.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_exti.d" -MT"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_exti.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_exti.o"
+arm-none-eabi-gcc "../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_flash.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_flash.d" -MT"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_flash.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_flash.o"
+arm-none-eabi-gcc "../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_flash_ex.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_flash_ex.d" -MT"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_flash_ex.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_flash_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_gpio.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_gpio.d" -MT"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_gpio.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_gpio.o"
+arm-none-eabi-gcc "../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_i2c.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_i2c.d" -MT"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_i2c.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_i2c.o"
+arm-none-eabi-gcc "../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_i2c_ex.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_i2c_ex.d" -MT"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_i2c_ex.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_i2c_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr.d" -MT"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr.o"
+arm-none-eabi-gcc "../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr_ex.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr_ex.d" -MT"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr_ex.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rcc.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rcc.d" -MT"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rcc.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rcc.o"
+arm-none-eabi-gcc "../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rcc_ex.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rcc_ex.d" -MT"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rcc_ex.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rcc_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_spi.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_spi.d" -MT"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_spi.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_spi.o"
+arm-none-eabi-gcc "../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_spi_ex.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_spi_ex.d" -MT"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_spi_ex.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_spi_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_tim.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_tim.d" -MT"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_tim.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_tim.o"
+arm-none-eabi-gcc "../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_tim_ex.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_tim_ex.d" -MT"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_tim_ex.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_tim_ex.o"
+arm-none-eabi-g++ "../Core/Src/subsystem-can-driver/helper-code/rx-module-binary-tree.cpp" -mcpu=cortex-m0 -std=gnu++14 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Include -I../Core/Inc -I"C:/Users/Mark/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev2/Core/Src/subsystem-can-driver" -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-threadsafe-statics -fno-use-cxa-atexit -Wall -fstack-usage -MMD -MP -MF"Core/Src/subsystem-can-driver/helper-code/rx-module-binary-tree.d" -MT"Core/Src/subsystem-can-driver/helper-code/rx-module-binary-tree.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/subsystem-can-driver/helper-code/rx-module-binary-tree.o"
+arm-none-eabi-g++ "../Core/Src/subsystem-can-driver/aux-data-module.cpp" -mcpu=cortex-m0 -std=gnu++14 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Include -I../Core/Inc -I"C:/Users/Mark/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev2/Core/Src/subsystem-can-driver" -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-threadsafe-statics -fno-use-cxa-atexit -Wall -fstack-usage -MMD -MP -MF"Core/Src/subsystem-can-driver/aux-data-module.d" -MT"Core/Src/subsystem-can-driver/aux-data-module.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/subsystem-can-driver/aux-data-module.o"
+arm-none-eabi-g++ "../Core/Src/subsystem-can-driver/bms-data-module.cpp" -mcpu=cortex-m0 -std=gnu++14 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Include -I../Core/Inc -I"C:/Users/Mark/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev2/Core/Src/subsystem-can-driver" -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-threadsafe-statics -fno-use-cxa-atexit -Wall -fstack-usage -MMD -MP -MF"Core/Src/subsystem-can-driver/bms-data-module.d" -MT"Core/Src/subsystem-can-driver/bms-data-module.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/subsystem-can-driver/bms-data-module.o"
+arm-none-eabi-g++ "../Core/Src/subsystem-can-driver/mppt-data-module.cpp" -mcpu=cortex-m0 -std=gnu++14 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Include -I../Core/Inc -I"C:/Users/Mark/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev2/Core/Src/subsystem-can-driver" -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-threadsafe-statics -fno-use-cxa-atexit -Wall -fstack-usage -MMD -MP -MF"Core/Src/subsystem-can-driver/mppt-data-module.d" -MT"Core/Src/subsystem-can-driver/mppt-data-module.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/subsystem-can-driver/mppt-data-module.o"
+arm-none-eabi-g++ "../Core/Src/subsystem-can-driver/subsystem-data-module.cpp" -mcpu=cortex-m0 -std=gnu++14 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Include -I../Core/Inc -I"C:/Users/Mark/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev2/Core/Src/subsystem-can-driver" -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-threadsafe-statics -fno-use-cxa-atexit -Wall -fstack-usage -MMD -MP -MF"Core/Src/subsystem-can-driver/subsystem-data-module.d" -MT"Core/Src/subsystem-can-driver/subsystem-data-module.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/subsystem-can-driver/subsystem-data-module.o"
+arm-none-eabi-g++ "../Core/Src/main.cpp" -mcpu=cortex-m0 -std=gnu++14 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Include -I../Core/Inc -I"C:/Users/Mark/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev2/Core/Src/subsystem-can-driver" -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-threadsafe-statics -fno-use-cxa-atexit -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/stm32f0xx_hal_msp.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/stm32f0xx_hal_msp.d" -MT"Core/Src/stm32f0xx_hal_msp.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/stm32f0xx_hal_msp.o"
+arm-none-eabi-gcc "../Core/Src/stm32f0xx_it.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/stm32f0xx_it.d" -MT"Core/Src/stm32f0xx_it.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/stm32f0xx_it.o"
+arm-none-eabi-gcc "../Core/Src/system_stm32f0xx.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/system_stm32f0xx.d" -MT"Core/Src/system_stm32f0xx.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/system_stm32f0xx.o"
+In file included from ../Core/Src/main.cpp:26:0:
+C:/Users/Mark/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev2/Core/Src/subsystem-can-driver/subsystem-data-module.hpp:111:8: error: 'CAN_HandleTypeDef' does not name a type; did you mean 'TIM_HandleTypeDef'?
+ static CAN_HandleTypeDef hcan;
+        ^~~~~~~~~~~~~~~~~
+        TIM_HandleTypeDef
+In file included from ../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:5:0:
+../Core/Src/subsystem-can-driver/subsystem-data-module.hpp:111:8: error: 'CAN_HandleTypeDef' does not name a type; did you mean 'TIM_HandleTypeDef'?
+ static CAN_HandleTypeDef hcan;
+        ^~~~~~~~~~~~~~~~~
+        TIM_HandleTypeDef
+In file included from ../Core/Src/subsystem-can-driver/helper-code/rx-module-binary-tree.cpp:6:0:
+../Core/Src/subsystem-can-driver/helper-code/../subsystem-data-module.hpp:111:8: error: 'CAN_HandleTypeDef' does not name a type; did you mean 'TIM_HandleTypeDef'?
+ static CAN_HandleTypeDef hcan;
+        ^~~~~~~~~~~~~~~~~
+        TIM_HandleTypeDef
+In file included from ../Core/Src/subsystem-can-driver/mppt-data-module.hpp:9:0,
+                 from ../Core/Src/subsystem-can-driver/mppt-data-module.cpp:5:
+../Core/Src/subsystem-can-driver/subsystem-data-module.hpp:111:8: error: 'CAN_HandleTypeDef' does not name a type; did you mean 'TIM_HandleTypeDef'?
+ static CAN_HandleTypeDef hcan;
+        ^~~~~~~~~~~~~~~~~
+        TIM_HandleTypeDef
+In file included from ../Core/Src/subsystem-can-driver/aux-data-module.hpp:9:0,
+                 from ../Core/Src/subsystem-can-driver/aux-data-module.cpp:5:
+../Core/Src/subsystem-can-driver/subsystem-data-module.hpp:111:8: error: 'CAN_HandleTypeDef' does not name a type; did you mean 'TIM_HandleTypeDef'?
+ static CAN_HandleTypeDef hcan;
+        ^~~~~~~~~~~~~~~~~
+        TIM_HandleTypeDef
+In file included from ../Core/Src/subsystem-can-driver/bms-data-module.hpp:9:0,
+                 from ../Core/Src/subsystem-can-driver/bms-data-module.cpp:5:
+../Core/Src/subsystem-can-driver/subsystem-data-module.hpp:111:8: error: 'CAN_HandleTypeDef' does not name a type; did you mean 'TIM_HandleTypeDef'?
+ static CAN_HandleTypeDef hcan;
+        ^~~~~~~~~~~~~~~~~
+        TIM_HandleTypeDef
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:11:2: error: 'CAN_HandleTypeDef' does not name a type; did you mean 'TIM_HandleTypeDef'?
+  CAN_HandleTypeDef SUBSYSTEM_DATA_MODULE::hcan;
+  ^~~~~~~~~~~~~~~~~
+  TIM_HandleTypeDef
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:26:40: error: variable or field 'HAL_CAN_RxFifo0MsgPendingCallback' declared void
+ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
+                                        ^~~~~~~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:26:40: error: 'CAN_HandleTypeDef' was not declared in this scope
+make: *** [Core/Src/subdir.mk:41: Core/Src/main.o] Error 1
+make: *** Waiting for unfinished jobs....
+make: *** [Core/Src/subsystem-can-driver/helper-code/subdir.mk:18: Core/Src/subsystem-can-driver/helper-code/rx-module-binary-tree.o] Error 1
+make: *** [Core/Src/subsystem-can-driver/subdir.mk:31: Core/Src/subsystem-can-driver/mppt-data-module.o] Error 1
+make: *** [Core/Src/subsystem-can-driver/subdir.mk:29: Core/Src/subsystem-can-driver/bms-data-module.o] Error 1
+make: *** [Core/Src/subsystem-can-driver/subdir.mk:27: Core/Src/subsystem-can-driver/aux-data-module.o] Error 1
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:26:40: note: suggested alternative: 'TIM_HandleTypeDef'
+ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
+                                        ^~~~~~~~~~~~~~~~~
+                                        TIM_HandleTypeDef
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:26:59: error: 'hcan' was not declared in this scope
+ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
+                                                           ^~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp: In function 'void CEC_CAN_IRQHandler()':
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:61:46: error: 'hcan' is not a member of 'SUBSYSTEM_DATA_MODULE'
+   HAL_CAN_IRQHandler(&SUBSYSTEM_DATA_MODULE::hcan);
+                                              ^~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:61:3: error: 'HAL_CAN_IRQHandler' was not declared in this scope
+   HAL_CAN_IRQHandler(&SUBSYSTEM_DATA_MODULE::hcan);
+   ^~~~~~~~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:61:3: note: suggested alternative: 'CEC_CAN_IRQHandler'
+   HAL_CAN_IRQHandler(&SUBSYSTEM_DATA_MODULE::hcan);
+   ^~~~~~~~~~~~~~~~~~
+   CEC_CAN_IRQHandler
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp: At global scope:
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:73:22: error: variable or field 'HAL_CAN_MspInit' declared void
+ void HAL_CAN_MspInit(CAN_HandleTypeDef* hcan)
+                      ^~~~~~~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:73:22: error: 'CAN_HandleTypeDef' was not declared in this scope
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:73:22: note: suggested alternative: 'TIM_HandleTypeDef'
+ void HAL_CAN_MspInit(CAN_HandleTypeDef* hcan)
+                      ^~~~~~~~~~~~~~~~~
+                      TIM_HandleTypeDef
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:73:41: error: 'hcan' was not declared in this scope
+ void HAL_CAN_MspInit(CAN_HandleTypeDef* hcan)
+                                         ^~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:112:24: error: variable or field 'HAL_CAN_MspDeInit' declared void
+ void HAL_CAN_MspDeInit(CAN_HandleTypeDef* hcan)
+                        ^~~~~~~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:112:24: error: 'CAN_HandleTypeDef' was not declared in this scope
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:112:24: note: suggested alternative: 'TIM_HandleTypeDef'
+ void HAL_CAN_MspDeInit(CAN_HandleTypeDef* hcan)
+                        ^~~~~~~~~~~~~~~~~
+                        TIM_HandleTypeDef
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:112:43: error: 'hcan' was not declared in this scope
+ void HAL_CAN_MspDeInit(CAN_HandleTypeDef* hcan)
+                                           ^~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp: In static member function 'static void SUBSYSTEM_DATA_MODULE::StartCAN()':
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:179:2: error: 'hcan' was not declared in this scope
+  hcan.Instance = CAN;
+  ^~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:181:19: error: 'CAN_MODE_NORMAL' was not declared in this scope
+  hcan.Init.Mode = CAN_MODE_NORMAL;
+                   ^~~~~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:181:19: note: suggested alternative: 'PWR_PVD_MODE_NORMAL'
+  hcan.Init.Mode = CAN_MODE_NORMAL;
+                   ^~~~~~~~~~~~~~~
+                   PWR_PVD_MODE_NORMAL
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:183:28: error: 'CAN_SJW_1TQ' was not declared in this scope
+  hcan.Init.SyncJumpWidth = CAN_SJW_1TQ;
+                            ^~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:184:23: error: 'CAN_BS1_13TQ' was not declared in this scope
+  hcan.Init.TimeSeg1 = CAN_BS1_13TQ;
+                       ^~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:184:23: note: suggested alternative: 'CAN_BTR_TS2'
+  hcan.Init.TimeSeg1 = CAN_BS1_13TQ;
+                       ^~~~~~~~~~~~
+                       CAN_BTR_TS2
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:185:23: error: 'CAN_BS2_2TQ' was not declared in this scope
+  hcan.Init.TimeSeg2 = CAN_BS2_2TQ;
+                       ^~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:185:23: note: suggested alternative: 'CAN_BTR_TS2'
+  hcan.Init.TimeSeg2 = CAN_BS2_2TQ;
+                       ^~~~~~~~~~~
+                       CAN_BTR_TS2
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:192:6: error: 'HAL_CAN_Init' was not declared in this scope
+  if (HAL_CAN_Init(&hcan) != HAL_OK)
+      ^~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:192:6: note: suggested alternative: 'HAL_SPI_Init'
+  if (HAL_CAN_Init(&hcan) != HAL_OK)
+      ^~~~~~~~~~~~
+      HAL_SPI_Init
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:198:2: error: 'CAN_FilterTypeDef' was not declared in this scope
+  CAN_FilterTypeDef sFilterConfig;
+  ^~~~~~~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:198:2: note: suggested alternative: 'CAN_TypeDef'
+  CAN_FilterTypeDef sFilterConfig;
+  ^~~~~~~~~~~~~~~~~
+  CAN_TypeDef
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:199:2: error: 'sFilterConfig' was not declared in this scope
+  sFilterConfig.FilterActivation = CAN_FILTER_ENABLE; /*Enable the filter*/
+  ^~~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:199:2: note: suggested alternative: 'SysTick_Config'
+  sFilterConfig.FilterActivation = CAN_FILTER_ENABLE; /*Enable the filter*/
+  ^~~~~~~~~~~~~
+  SysTick_Config
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:199:35: error: 'CAN_FILTER_ENABLE' was not declared in this scope
+  sFilterConfig.FilterActivation = CAN_FILTER_ENABLE; /*Enable the filter*/
+                                   ^~~~~~~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:199:35: note: suggested alternative: 'CAN_IER_ERRIE'
+  sFilterConfig.FilterActivation = CAN_FILTER_ENABLE; /*Enable the filter*/
+                                   ^~~~~~~~~~~~~~~~~
+                                   CAN_IER_ERRIE
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:200:29: error: 'CAN_FILTERMODE_IDMASK' was not declared in this scope
+  sFilterConfig.FilterMode = CAN_FILTERMODE_IDMASK; /*Mask mode*/
+                             ^~~~~~~~~~~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:203:30: error: 'CAN_FILTERSCALE_32BIT' was not declared in this scope
+  sFilterConfig.FilterScale = CAN_FILTERSCALE_32BIT; /*One 32-bit filter*/
+                              ^~~~~~~~~~~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:206:2: error: 'HAL_CAN_ConfigFilter' was not declared in this scope
+  HAL_CAN_ConfigFilter(&hcan, &sFilterConfig);
+  ^~~~~~~~~~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:206:2: note: suggested alternative: 'HAL_PWR_ConfigPVD'
+  HAL_CAN_ConfigFilter(&hcan, &sFilterConfig);
+  ^~~~~~~~~~~~~~~~~~~~
+  HAL_PWR_ConfigPVD
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:209:38: error: 'CAN_IT_RX_FIFO0_MSG_PENDING' was not declared in this scope
+  HAL_CAN_ActivateNotification(&hcan, CAN_IT_RX_FIFO0_MSG_PENDING);
+                                      ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:209:2: error: 'HAL_CAN_ActivateNotification' was not declared in this scope
+  HAL_CAN_ActivateNotification(&hcan, CAN_IT_RX_FIFO0_MSG_PENDING);
+  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:212:2: error: 'HAL_CAN_Start' was not declared in this scope
+  HAL_CAN_Start(&hcan);
+  ^~~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:212:2: note: suggested alternative: 'HAL_DMA_Start'
+  HAL_CAN_Start(&hcan);
+  ^~~~~~~~~~~~~
+  HAL_DMA_Start
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp: In member function 'void SUBSYSTEM_DATA_MODULE::sendTransmitBufferData()':
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:218:5: error: 'hcan' was not declared in this scope
+  if(hcan.Instance != nullptr)
+     ^~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:221:10: error: 'HAL_CAN_GetTxMailboxesFreeLevel' was not declared in this scope
+   while(!HAL_CAN_GetTxMailboxesFreeLevel(&hcan));
+          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:225:3: error: 'CAN_TxHeaderTypeDef' was not declared in this scope
+   CAN_TxHeaderTypeDef pHeader;
+   ^~~~~~~~~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:225:3: note: suggested alternative: 'HAL_TickFreqTypeDef'
+   CAN_TxHeaderTypeDef pHeader;
+   ^~~~~~~~~~~~~~~~~~~
+   HAL_TickFreqTypeDef
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:226:3: error: 'pHeader' was not declared in this scope
+   pHeader.RTR = CAN_RTR_DATA;
+   ^~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:226:17: error: 'CAN_RTR_DATA' was not declared in this scope
+   pHeader.RTR = CAN_RTR_DATA;
+                 ^~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:226:17: note: suggested alternative: 'CAN_RDL1R_DATA0'
+   pHeader.RTR = CAN_RTR_DATA;
+                 ^~~~~~~~~~~~
+                 CAN_RDL1R_DATA0
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:231:18: error: 'CAN_ID_EXT' was not declared in this scope
+    pHeader.IDE = CAN_ID_EXT;
+                  ^~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:231:18: note: suggested alternative: 'CAN_MSR_TXM'
+    pHeader.IDE = CAN_ID_EXT;
+                  ^~~~~~~~~~
+                  CAN_MSR_TXM
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:235:18: error: 'CAN_ID_STD' was not declared in this scope
+    pHeader.IDE = CAN_ID_STD;
+                  ^~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:235:18: note: suggested alternative: 'CAN_RI1R_STID'
+    pHeader.IDE = CAN_ID_STD;
+                  ^~~~~~~~~~
+                  CAN_RI1R_STID
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:238:3: error: 'HAL_CAN_AddTxMessage' was not declared in this scope
+   HAL_CAN_AddTxMessage(&hcan, &pHeader, this->transmitBuffer, &pTxMailbox);
+   ^~~~~~~~~~~~~~~~~~~~
+make: *** [Core/Src/subsystem-can-driver/subdir.mk:33: Core/Src/subsystem-can-driver/subsystem-data-module.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+16:26:47 **** Incremental Build of configuration Debug for project mcb_rev3 ****
+make -j12 all 
+Core/Src/subdir.mk:41: warning: overriding recipe for target 'Core/Src/main.o'
+Core/Src/subdir.mk:39: warning: ignoring old recipe for target 'Core/Src/main.o'
+arm-none-eabi-gcc "../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal.d" -MT"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal.o"
+arm-none-eabi-gcc "../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_can.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_can.d" -MT"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_can.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_can.o"
+arm-none-eabi-gcc "../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_cortex.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_cortex.d" -MT"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_cortex.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_cortex.o"
+arm-none-eabi-gcc "../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_dma.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_dma.d" -MT"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_dma.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_dma.o"
+arm-none-eabi-gcc "../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_exti.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_exti.d" -MT"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_exti.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_exti.o"
+arm-none-eabi-gcc "../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_flash.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_flash.d" -MT"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_flash.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_flash.o"
+arm-none-eabi-gcc "../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_flash_ex.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_flash_ex.d" -MT"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_flash_ex.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_flash_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_gpio.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_gpio.d" -MT"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_gpio.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_gpio.o"
+arm-none-eabi-gcc "../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_i2c.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_i2c.d" -MT"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_i2c.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_i2c.o"
+arm-none-eabi-gcc "../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_i2c_ex.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_i2c_ex.d" -MT"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_i2c_ex.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_i2c_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr.d" -MT"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr.o"
+arm-none-eabi-gcc "../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr_ex.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr_ex.d" -MT"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr_ex.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rcc.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rcc.d" -MT"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rcc.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rcc.o"
+arm-none-eabi-gcc "../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rcc_ex.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rcc_ex.d" -MT"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rcc_ex.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rcc_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_spi.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_spi.d" -MT"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_spi.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_spi.o"
+arm-none-eabi-gcc "../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_spi_ex.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_spi_ex.d" -MT"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_spi_ex.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_spi_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_tim.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_tim.d" -MT"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_tim.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_tim.o"
+arm-none-eabi-gcc "../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_tim_ex.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_tim_ex.d" -MT"Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_tim_ex.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_tim_ex.o"
+arm-none-eabi-g++ "../Core/Src/subsystem-can-driver/helper-code/rx-module-binary-tree.cpp" -mcpu=cortex-m0 -std=gnu++14 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/Mark/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev3/Core/Src/subsystem-can-driver" -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-threadsafe-statics -fno-use-cxa-atexit -Wall -fstack-usage -MMD -MP -MF"Core/Src/subsystem-can-driver/helper-code/rx-module-binary-tree.d" -MT"Core/Src/subsystem-can-driver/helper-code/rx-module-binary-tree.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/subsystem-can-driver/helper-code/rx-module-binary-tree.o"
+arm-none-eabi-g++ "../Core/Src/subsystem-can-driver/aux-data-module.cpp" -mcpu=cortex-m0 -std=gnu++14 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/Mark/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev3/Core/Src/subsystem-can-driver" -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-threadsafe-statics -fno-use-cxa-atexit -Wall -fstack-usage -MMD -MP -MF"Core/Src/subsystem-can-driver/aux-data-module.d" -MT"Core/Src/subsystem-can-driver/aux-data-module.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/subsystem-can-driver/aux-data-module.o"
+arm-none-eabi-g++ "../Core/Src/subsystem-can-driver/mitsuba-driver-data-module.cpp" -mcpu=cortex-m0 -std=gnu++14 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/Mark/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev3/Core/Src/subsystem-can-driver" -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-threadsafe-statics -fno-use-cxa-atexit -Wall -fstack-usage -MMD -MP -MF"Core/Src/subsystem-can-driver/mitsuba-driver-data-module.d" -MT"Core/Src/subsystem-can-driver/mitsuba-driver-data-module.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/subsystem-can-driver/mitsuba-driver-data-module.o"
+arm-none-eabi-g++ "../Core/Src/subsystem-can-driver/orion-data-module.cpp" -mcpu=cortex-m0 -std=gnu++14 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/Mark/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev3/Core/Src/subsystem-can-driver" -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-threadsafe-statics -fno-use-cxa-atexit -Wall -fstack-usage -MMD -MP -MF"Core/Src/subsystem-can-driver/orion-data-module.d" -MT"Core/Src/subsystem-can-driver/orion-data-module.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/subsystem-can-driver/orion-data-module.o"
+arm-none-eabi-g++ "../Core/Src/subsystem-can-driver/proton1-data-module.cpp" -mcpu=cortex-m0 -std=gnu++14 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/Mark/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev3/Core/Src/subsystem-can-driver" -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-threadsafe-statics -fno-use-cxa-atexit -Wall -fstack-usage -MMD -MP -MF"Core/Src/subsystem-can-driver/proton1-data-module.d" -MT"Core/Src/subsystem-can-driver/proton1-data-module.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/subsystem-can-driver/proton1-data-module.o"
+arm-none-eabi-g++ "../Core/Src/subsystem-can-driver/subsystem-data-module.cpp" -mcpu=cortex-m0 -std=gnu++14 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/Mark/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev3/Core/Src/subsystem-can-driver" -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-threadsafe-statics -fno-use-cxa-atexit -Wall -fstack-usage -MMD -MP -MF"Core/Src/subsystem-can-driver/subsystem-data-module.d" -MT"Core/Src/subsystem-can-driver/subsystem-data-module.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/subsystem-can-driver/subsystem-data-module.o"
+arm-none-eabi-g++ "../Core/Src/main.cpp" -mcpu=cortex-m0 -std=gnu++14 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/Mark/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev3/Core/Src/subsystem-can-driver" -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-threadsafe-statics -fno-use-cxa-atexit -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/stm32f0xx_hal_msp.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/stm32f0xx_hal_msp.d" -MT"Core/Src/stm32f0xx_hal_msp.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/stm32f0xx_hal_msp.o"
+arm-none-eabi-gcc "../Core/Src/stm32f0xx_it.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/stm32f0xx_it.d" -MT"Core/Src/stm32f0xx_it.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/stm32f0xx_it.o"
+arm-none-eabi-gcc "../Core/Src/system_stm32f0xx.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/system_stm32f0xx.d" -MT"Core/Src/system_stm32f0xx.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/system_stm32f0xx.o"
+arm-none-eabi-g++ -o "mcb_rev3.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\Mark\Google Drive\Solar Gators\Auxiliary_2019-2020\mcb_rev3\STM32F072RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="mcb_rev3.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Core/Src/main.o:C:/Users/Mark/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev3/Debug/../Core/Src/main.cpp:52: multiple definition of `hcan'
+Core/Src/main.o:C:/Users/Mark/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev3/Debug/../Core/Src/main.cpp:52: first defined here
+Core/Src/main.o:C:/Users/Mark/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev3/Debug/../Core/Src/main.cpp:54: multiple definition of `hspi2'
+Core/Src/main.o:C:/Users/Mark/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev3/Debug/../Core/Src/main.cpp:54: first defined here
+Core/Src/main.o: In function `main':
+C:/Users/Mark/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev3/Debug/../Core/Src/main.cpp:78: multiple definition of `main'
+Core/Src/main.o:C:/Users/Mark/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev3/Debug/../Core/Src/main.cpp:78: first defined here
+Core/Src/main.o: In function `SystemClock_Config()':
+C:/Users/Mark/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev3/Debug/../Core/Src/main.cpp:122: multiple definition of `SystemClock_Config()'
+Core/Src/main.o:C:/Users/Mark/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev3/Debug/../Core/Src/main.cpp:122: first defined here
+Core/Src/main.o: In function `Error_Handler':
+C:/Users/Mark/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev3/Debug/../Core/Src/main.cpp:252: multiple definition of `Error_Handler'
+Core/Src/main.o:C:/Users/Mark/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev3/Debug/../Core/Src/main.cpp:252: first defined here
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:67: mcb_rev3.elf] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+16:27:19 **** Incremental Build of configuration Debug for project mcb_rev2 ****
+make -j12 all 
+Core/Src/subdir.mk:41: warning: overriding recipe for target 'Core/Src/main.o'
+Core/Src/subdir.mk:39: warning: ignoring old recipe for target 'Core/Src/main.o'
+arm-none-eabi-g++ "../Core/Src/subsystem-can-driver/helper-code/rx-module-binary-tree.cpp" -mcpu=cortex-m0 -std=gnu++14 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Include -I../Core/Inc -I"C:/Users/Mark/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev2/Core/Src/subsystem-can-driver" -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-threadsafe-statics -fno-use-cxa-atexit -Wall -fstack-usage -MMD -MP -MF"Core/Src/subsystem-can-driver/helper-code/rx-module-binary-tree.d" -MT"Core/Src/subsystem-can-driver/helper-code/rx-module-binary-tree.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/subsystem-can-driver/helper-code/rx-module-binary-tree.o"
+arm-none-eabi-g++ "../Core/Src/subsystem-can-driver/aux-data-module.cpp" -mcpu=cortex-m0 -std=gnu++14 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Include -I../Core/Inc -I"C:/Users/Mark/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev2/Core/Src/subsystem-can-driver" -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-threadsafe-statics -fno-use-cxa-atexit -Wall -fstack-usage -MMD -MP -MF"Core/Src/subsystem-can-driver/aux-data-module.d" -MT"Core/Src/subsystem-can-driver/aux-data-module.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/subsystem-can-driver/aux-data-module.o"
+arm-none-eabi-g++ "../Core/Src/subsystem-can-driver/bms-data-module.cpp" -mcpu=cortex-m0 -std=gnu++14 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Include -I../Core/Inc -I"C:/Users/Mark/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev2/Core/Src/subsystem-can-driver" -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-threadsafe-statics -fno-use-cxa-atexit -Wall -fstack-usage -MMD -MP -MF"Core/Src/subsystem-can-driver/bms-data-module.d" -MT"Core/Src/subsystem-can-driver/bms-data-module.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/subsystem-can-driver/bms-data-module.o"
+arm-none-eabi-g++ "../Core/Src/subsystem-can-driver/mppt-data-module.cpp" -mcpu=cortex-m0 -std=gnu++14 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Include -I../Core/Inc -I"C:/Users/Mark/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev2/Core/Src/subsystem-can-driver" -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-threadsafe-statics -fno-use-cxa-atexit -Wall -fstack-usage -MMD -MP -MF"Core/Src/subsystem-can-driver/mppt-data-module.d" -MT"Core/Src/subsystem-can-driver/mppt-data-module.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/subsystem-can-driver/mppt-data-module.o"
+arm-none-eabi-g++ "../Core/Src/subsystem-can-driver/subsystem-data-module.cpp" -mcpu=cortex-m0 -std=gnu++14 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Include -I../Core/Inc -I"C:/Users/Mark/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev2/Core/Src/subsystem-can-driver" -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-threadsafe-statics -fno-use-cxa-atexit -Wall -fstack-usage -MMD -MP -MF"Core/Src/subsystem-can-driver/subsystem-data-module.d" -MT"Core/Src/subsystem-can-driver/subsystem-data-module.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/subsystem-can-driver/subsystem-data-module.o"
+arm-none-eabi-g++ "../Core/Src/main.cpp" -mcpu=cortex-m0 -std=gnu++14 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Include -I../Core/Inc -I"C:/Users/Mark/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev2/Core/Src/subsystem-can-driver" -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-threadsafe-statics -fno-use-cxa-atexit -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+In file included from ../Core/Src/subsystem-can-driver/helper-code/rx-module-binary-tree.cpp:6:0:
+../Core/Src/subsystem-can-driver/helper-code/../subsystem-data-module.hpp:111:8: error: 'CAN_HandleTypeDef' does not name a type; did you mean 'TIM_HandleTypeDef'?
+ static CAN_HandleTypeDef hcan;
+        ^~~~~~~~~~~~~~~~~
+        TIM_HandleTypeDef
+In file included from ../Core/Src/subsystem-can-driver/bms-data-module.hpp:9:0,
+                 from ../Core/Src/subsystem-can-driver/bms-data-module.cpp:5:
+../Core/Src/subsystem-can-driver/subsystem-data-module.hpp:111:8: error: 'CAN_HandleTypeDef' does not name a type; did you mean 'TIM_HandleTypeDef'?
+ static CAN_HandleTypeDef hcan;
+        ^~~~~~~~~~~~~~~~~
+        TIM_HandleTypeDef
+make: *** [Core/Src/subsystem-can-driver/helper-code/subdir.mk:18: Core/Src/subsystem-can-driver/helper-code/rx-module-binary-tree.o] Error 1
+make: *** Waiting for unfinished jobs....
+In file included from ../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:5:0:
+../Core/Src/subsystem-can-driver/subsystem-data-module.hpp:111:8: error: 'CAN_HandleTypeDef' does not name a type; did you mean 'TIM_HandleTypeDef'?
+ static CAN_HandleTypeDef hcan;
+        ^~~~~~~~~~~~~~~~~
+        TIM_HandleTypeDef
+make: *** [Core/Src/subsystem-can-driver/subdir.mk:29: Core/Src/subsystem-can-driver/bms-data-module.o] Error 1
+In file included from ../Core/Src/subsystem-can-driver/aux-data-module.hpp:9:0,
+                 from ../Core/Src/subsystem-can-driver/aux-data-module.cpp:5:
+../Core/Src/subsystem-can-driver/subsystem-data-module.hpp:111:8: error: 'CAN_HandleTypeDef' does not name a type; did you mean 'TIM_HandleTypeDef'?
+ static CAN_HandleTypeDef hcan;
+        ^~~~~~~~~~~~~~~~~
+        TIM_HandleTypeDef
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:11:2: error: 'CAN_HandleTypeDef' does not name a type; did you mean 'TIM_HandleTypeDef'?
+  CAN_HandleTypeDef SUBSYSTEM_DATA_MODULE::hcan;
+  ^~~~~~~~~~~~~~~~~
+  TIM_HandleTypeDef
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:26:40: error: variable or field 'HAL_CAN_RxFifo0MsgPendingCallback' declared void
+ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
+                                        ^~~~~~~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:26:40: error: 'CAN_HandleTypeDef' was not declared in this scope
+In file included from ../Core/Src/subsystem-can-driver/mppt-data-module.hpp:9:0,
+                 from ../Core/Src/subsystem-can-driver/mppt-data-module.cpp:5:
+../Core/Src/subsystem-can-driver/subsystem-data-module.hpp:111:8: error: 'CAN_HandleTypeDef' does not name a type; did you mean 'TIM_HandleTypeDef'?
+ static CAN_HandleTypeDef hcan;
+        ^~~~~~~~~~~~~~~~~
+        TIM_HandleTypeDef
+make: *** [Core/Src/subsystem-can-driver/subdir.mk:27: Core/Src/subsystem-can-driver/aux-data-module.o] Error 1
+In file included from ../Core/Src/main.cpp:26:0:
+C:/Users/Mark/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev2/Core/Src/subsystem-can-driver/subsystem-data-module.hpp:111:8: error: 'CAN_HandleTypeDef' does not name a type; did you mean 'TIM_HandleTypeDef'?
+ static CAN_HandleTypeDef hcan;
+        ^~~~~~~~~~~~~~~~~
+        TIM_HandleTypeDef
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:26:40: note: suggested alternative: 'TIM_HandleTypeDef'
+ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
+                                        ^~~~~~~~~~~~~~~~~
+                                        TIM_HandleTypeDef
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:26:59: error: 'hcan' was not declared in this scope
+ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
+                                                           ^~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp: In function 'void CEC_CAN_IRQHandler()':
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:61:46: error: 'hcan' is not a member of 'SUBSYSTEM_DATA_MODULE'
+   HAL_CAN_IRQHandler(&SUBSYSTEM_DATA_MODULE::hcan);
+                                              ^~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:61:3: error: 'HAL_CAN_IRQHandler' was not declared in this scope
+   HAL_CAN_IRQHandler(&SUBSYSTEM_DATA_MODULE::hcan);
+   ^~~~~~~~~~~~~~~~~~
+make: *** [Core/Src/subsystem-can-driver/subdir.mk:31: Core/Src/subsystem-can-driver/mppt-data-module.o] Error 1
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:61:3: note: suggested alternative: 'CEC_CAN_IRQHandler'
+   HAL_CAN_IRQHandler(&SUBSYSTEM_DATA_MODULE::hcan);
+   ^~~~~~~~~~~~~~~~~~
+   CEC_CAN_IRQHandler
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp: At global scope:
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:73:22: error: variable or field 'HAL_CAN_MspInit' declared void
+ void HAL_CAN_MspInit(CAN_HandleTypeDef* hcan)
+                      ^~~~~~~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:73:22: error: 'CAN_HandleTypeDef' was not declared in this scope
+make: *** [Core/Src/subdir.mk:41: Core/Src/main.o] Error 1
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:73:22: note: suggested alternative: 'TIM_HandleTypeDef'
+ void HAL_CAN_MspInit(CAN_HandleTypeDef* hcan)
+                      ^~~~~~~~~~~~~~~~~
+                      TIM_HandleTypeDef
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:73:41: error: 'hcan' was not declared in this scope
+ void HAL_CAN_MspInit(CAN_HandleTypeDef* hcan)
+                                         ^~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:112:24: error: variable or field 'HAL_CAN_MspDeInit' declared void
+ void HAL_CAN_MspDeInit(CAN_HandleTypeDef* hcan)
+                        ^~~~~~~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:112:24: error: 'CAN_HandleTypeDef' was not declared in this scope
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:112:24: note: suggested alternative: 'TIM_HandleTypeDef'
+ void HAL_CAN_MspDeInit(CAN_HandleTypeDef* hcan)
+                        ^~~~~~~~~~~~~~~~~
+                        TIM_HandleTypeDef
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:112:43: error: 'hcan' was not declared in this scope
+ void HAL_CAN_MspDeInit(CAN_HandleTypeDef* hcan)
+                                           ^~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp: In static member function 'static void SUBSYSTEM_DATA_MODULE::StartCAN()':
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:179:2: error: 'hcan' was not declared in this scope
+  hcan.Instance = CAN;
+  ^~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:181:19: error: 'CAN_MODE_NORMAL' was not declared in this scope
+  hcan.Init.Mode = CAN_MODE_NORMAL;
+                   ^~~~~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:181:19: note: suggested alternative: 'PWR_PVD_MODE_NORMAL'
+  hcan.Init.Mode = CAN_MODE_NORMAL;
+                   ^~~~~~~~~~~~~~~
+                   PWR_PVD_MODE_NORMAL
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:183:28: error: 'CAN_SJW_1TQ' was not declared in this scope
+  hcan.Init.SyncJumpWidth = CAN_SJW_1TQ;
+                            ^~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:184:23: error: 'CAN_BS1_13TQ' was not declared in this scope
+  hcan.Init.TimeSeg1 = CAN_BS1_13TQ;
+                       ^~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:184:23: note: suggested alternative: 'CAN_BTR_TS2'
+  hcan.Init.TimeSeg1 = CAN_BS1_13TQ;
+                       ^~~~~~~~~~~~
+                       CAN_BTR_TS2
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:185:23: error: 'CAN_BS2_2TQ' was not declared in this scope
+  hcan.Init.TimeSeg2 = CAN_BS2_2TQ;
+                       ^~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:185:23: note: suggested alternative: 'CAN_BTR_TS2'
+  hcan.Init.TimeSeg2 = CAN_BS2_2TQ;
+                       ^~~~~~~~~~~
+                       CAN_BTR_TS2
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:192:6: error: 'HAL_CAN_Init' was not declared in this scope
+  if (HAL_CAN_Init(&hcan) != HAL_OK)
+      ^~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:192:6: note: suggested alternative: 'HAL_SPI_Init'
+  if (HAL_CAN_Init(&hcan) != HAL_OK)
+      ^~~~~~~~~~~~
+      HAL_SPI_Init
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:198:2: error: 'CAN_FilterTypeDef' was not declared in this scope
+  CAN_FilterTypeDef sFilterConfig;
+  ^~~~~~~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:198:2: note: suggested alternative: 'CAN_TypeDef'
+  CAN_FilterTypeDef sFilterConfig;
+  ^~~~~~~~~~~~~~~~~
+  CAN_TypeDef
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:199:2: error: 'sFilterConfig' was not declared in this scope
+  sFilterConfig.FilterActivation = CAN_FILTER_ENABLE; /*Enable the filter*/
+  ^~~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:199:2: note: suggested alternative: 'SysTick_Config'
+  sFilterConfig.FilterActivation = CAN_FILTER_ENABLE; /*Enable the filter*/
+  ^~~~~~~~~~~~~
+  SysTick_Config
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:199:35: error: 'CAN_FILTER_ENABLE' was not declared in this scope
+  sFilterConfig.FilterActivation = CAN_FILTER_ENABLE; /*Enable the filter*/
+                                   ^~~~~~~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:199:35: note: suggested alternative: 'CAN_IER_ERRIE'
+  sFilterConfig.FilterActivation = CAN_FILTER_ENABLE; /*Enable the filter*/
+                                   ^~~~~~~~~~~~~~~~~
+                                   CAN_IER_ERRIE
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:200:29: error: 'CAN_FILTERMODE_IDMASK' was not declared in this scope
+  sFilterConfig.FilterMode = CAN_FILTERMODE_IDMASK; /*Mask mode*/
+                             ^~~~~~~~~~~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:203:30: error: 'CAN_FILTERSCALE_32BIT' was not declared in this scope
+  sFilterConfig.FilterScale = CAN_FILTERSCALE_32BIT; /*One 32-bit filter*/
+                              ^~~~~~~~~~~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:206:2: error: 'HAL_CAN_ConfigFilter' was not declared in this scope
+  HAL_CAN_ConfigFilter(&hcan, &sFilterConfig);
+  ^~~~~~~~~~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:206:2: note: suggested alternative: 'HAL_PWR_ConfigPVD'
+  HAL_CAN_ConfigFilter(&hcan, &sFilterConfig);
+  ^~~~~~~~~~~~~~~~~~~~
+  HAL_PWR_ConfigPVD
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:209:38: error: 'CAN_IT_RX_FIFO0_MSG_PENDING' was not declared in this scope
+  HAL_CAN_ActivateNotification(&hcan, CAN_IT_RX_FIFO0_MSG_PENDING);
+                                      ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:209:2: error: 'HAL_CAN_ActivateNotification' was not declared in this scope
+  HAL_CAN_ActivateNotification(&hcan, CAN_IT_RX_FIFO0_MSG_PENDING);
+  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:212:2: error: 'HAL_CAN_Start' was not declared in this scope
+  HAL_CAN_Start(&hcan);
+  ^~~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:212:2: note: suggested alternative: 'HAL_DMA_Start'
+  HAL_CAN_Start(&hcan);
+  ^~~~~~~~~~~~~
+  HAL_DMA_Start
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp: In member function 'void SUBSYSTEM_DATA_MODULE::sendTransmitBufferData()':
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:218:5: error: 'hcan' was not declared in this scope
+  if(hcan.Instance != nullptr)
+     ^~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:221:10: error: 'HAL_CAN_GetTxMailboxesFreeLevel' was not declared in this scope
+   while(!HAL_CAN_GetTxMailboxesFreeLevel(&hcan));
+          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:225:3: error: 'CAN_TxHeaderTypeDef' was not declared in this scope
+   CAN_TxHeaderTypeDef pHeader;
+   ^~~~~~~~~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:225:3: note: suggested alternative: 'HAL_TickFreqTypeDef'
+   CAN_TxHeaderTypeDef pHeader;
+   ^~~~~~~~~~~~~~~~~~~
+   HAL_TickFreqTypeDef
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:226:3: error: 'pHeader' was not declared in this scope
+   pHeader.RTR = CAN_RTR_DATA;
+   ^~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:226:17: error: 'CAN_RTR_DATA' was not declared in this scope
+   pHeader.RTR = CAN_RTR_DATA;
+                 ^~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:226:17: note: suggested alternative: 'CAN_RDL1R_DATA0'
+   pHeader.RTR = CAN_RTR_DATA;
+                 ^~~~~~~~~~~~
+                 CAN_RDL1R_DATA0
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:231:18: error: 'CAN_ID_EXT' was not declared in this scope
+    pHeader.IDE = CAN_ID_EXT;
+                  ^~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:231:18: note: suggested alternative: 'CAN_MSR_TXM'
+    pHeader.IDE = CAN_ID_EXT;
+                  ^~~~~~~~~~
+                  CAN_MSR_TXM
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:235:18: error: 'CAN_ID_STD' was not declared in this scope
+    pHeader.IDE = CAN_ID_STD;
+                  ^~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:235:18: note: suggested alternative: 'CAN_RI1R_STID'
+    pHeader.IDE = CAN_ID_STD;
+                  ^~~~~~~~~~
+                  CAN_RI1R_STID
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:238:3: error: 'HAL_CAN_AddTxMessage' was not declared in this scope
+   HAL_CAN_AddTxMessage(&hcan, &pHeader, this->transmitBuffer, &pTxMailbox);
+   ^~~~~~~~~~~~~~~~~~~~
+make: *** [Core/Src/subsystem-can-driver/subdir.mk:33: Core/Src/subsystem-can-driver/subsystem-data-module.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+16:27:20 **** Incremental Build of configuration Debug for project mcb_rev3 ****
+make -j12 all 
+arm-none-eabi-g++ "../Core/Src/main.cpp" -mcpu=cortex-m0 -std=gnu++14 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/Mark/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev3/Core/Src/subsystem-can-driver" -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-threadsafe-statics -fno-use-cxa-atexit -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-g++ -o "mcb_rev3.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\Mark\Google Drive\Solar Gators\Auxiliary_2019-2020\mcb_rev3\STM32F072RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="mcb_rev3.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: mcb_rev3.elf
+ 
+arm-none-eabi-objdump -h -S  mcb_rev3.elf  > "mcb_rev3.list"
+arm-none-eabi-objcopy  -O binary  mcb_rev3.elf  "mcb_rev3.bin"
+arm-none-eabi-size   mcb_rev3.elf 
+   text	   data	    bss	    dec	    hex	filename
+   8920	     24	   1828	  10772	   2a14	mcb_rev3.elf
+Finished building: default.size.stdout
+ 
+Finished building: mcb_rev3.bin
+ 
+Finished building: mcb_rev3.list
+ 
+16:27:25 **** Incremental Build of configuration Debug for project mcb_rev2 ****
+make -j12 all 
+Core/Src/subdir.mk:41: warning: overriding recipe for target 'Core/Src/main.o'
+Core/Src/subdir.mk:39: warning: ignoring old recipe for target 'Core/Src/main.o'
+arm-none-eabi-g++ "../Core/Src/subsystem-can-driver/helper-code/rx-module-binary-tree.cpp" -mcpu=cortex-m0 -std=gnu++14 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Include -I../Core/Inc -I"C:/Users/Mark/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev2/Core/Src/subsystem-can-driver" -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-threadsafe-statics -fno-use-cxa-atexit -Wall -fstack-usage -MMD -MP -MF"Core/Src/subsystem-can-driver/helper-code/rx-module-binary-tree.d" -MT"Core/Src/subsystem-can-driver/helper-code/rx-module-binary-tree.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/subsystem-can-driver/helper-code/rx-module-binary-tree.o"
+arm-none-eabi-g++ "../Core/Src/subsystem-can-driver/aux-data-module.cpp" -mcpu=cortex-m0 -std=gnu++14 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Include -I../Core/Inc -I"C:/Users/Mark/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev2/Core/Src/subsystem-can-driver" -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-threadsafe-statics -fno-use-cxa-atexit -Wall -fstack-usage -MMD -MP -MF"Core/Src/subsystem-can-driver/aux-data-module.d" -MT"Core/Src/subsystem-can-driver/aux-data-module.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/subsystem-can-driver/aux-data-module.o"
+arm-none-eabi-g++ "../Core/Src/subsystem-can-driver/bms-data-module.cpp" -mcpu=cortex-m0 -std=gnu++14 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Include -I../Core/Inc -I"C:/Users/Mark/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev2/Core/Src/subsystem-can-driver" -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-threadsafe-statics -fno-use-cxa-atexit -Wall -fstack-usage -MMD -MP -MF"Core/Src/subsystem-can-driver/bms-data-module.d" -MT"Core/Src/subsystem-can-driver/bms-data-module.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/subsystem-can-driver/bms-data-module.o"
+arm-none-eabi-g++ "../Core/Src/subsystem-can-driver/mppt-data-module.cpp" -mcpu=cortex-m0 -std=gnu++14 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Include -I../Core/Inc -I"C:/Users/Mark/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev2/Core/Src/subsystem-can-driver" -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-threadsafe-statics -fno-use-cxa-atexit -Wall -fstack-usage -MMD -MP -MF"Core/Src/subsystem-can-driver/mppt-data-module.d" -MT"Core/Src/subsystem-can-driver/mppt-data-module.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/subsystem-can-driver/mppt-data-module.o"
+arm-none-eabi-g++ "../Core/Src/subsystem-can-driver/subsystem-data-module.cpp" -mcpu=cortex-m0 -std=gnu++14 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Include -I../Core/Inc -I"C:/Users/Mark/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev2/Core/Src/subsystem-can-driver" -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-threadsafe-statics -fno-use-cxa-atexit -Wall -fstack-usage -MMD -MP -MF"Core/Src/subsystem-can-driver/subsystem-data-module.d" -MT"Core/Src/subsystem-can-driver/subsystem-data-module.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/subsystem-can-driver/subsystem-data-module.o"
+arm-none-eabi-g++ "../Core/Src/main.cpp" -mcpu=cortex-m0 -std=gnu++14 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Include -I../Core/Inc -I"C:/Users/Mark/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev2/Core/Src/subsystem-can-driver" -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-threadsafe-statics -fno-use-cxa-atexit -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+In file included from ../Core/Src/subsystem-can-driver/helper-code/rx-module-binary-tree.cpp:6:0:
+../Core/Src/subsystem-can-driver/helper-code/../subsystem-data-module.hpp:111:8: error: 'CAN_HandleTypeDef' does not name a type; did you mean 'TIM_HandleTypeDef'?
+ static CAN_HandleTypeDef hcan;
+        ^~~~~~~~~~~~~~~~~
+        TIM_HandleTypeDef
+In file included from ../Core/Src/subsystem-can-driver/aux-data-module.hpp:9:0,
+                 from ../Core/Src/subsystem-can-driver/aux-data-module.cpp:5:
+../Core/Src/subsystem-can-driver/subsystem-data-module.hpp:111:8: error: 'CAN_HandleTypeDef' does not name a type; did you mean 'TIM_HandleTypeDef'?
+ static CAN_HandleTypeDef hcan;
+        ^~~~~~~~~~~~~~~~~
+        TIM_HandleTypeDef
+In file included from ../Core/Src/subsystem-can-driver/bms-data-module.hpp:9:0,
+                 from ../Core/Src/subsystem-can-driver/bms-data-module.cpp:5:
+../Core/Src/subsystem-can-driver/subsystem-data-module.hpp:111:8: error: 'CAN_HandleTypeDef' does not name a type; did you mean 'TIM_HandleTypeDef'?
+ static CAN_HandleTypeDef hcan;
+        ^~~~~~~~~~~~~~~~~
+        TIM_HandleTypeDef
+In file included from ../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:5:0:
+../Core/Src/subsystem-can-driver/subsystem-data-module.hpp:111:8: error: 'CAN_HandleTypeDef' does not name a type; did you mean 'TIM_HandleTypeDef'?
+ static CAN_HandleTypeDef hcan;
+        ^~~~~~~~~~~~~~~~~
+        TIM_HandleTypeDef
+In file included from ../Core/Src/subsystem-can-driver/mppt-data-module.hpp:9:0,
+                 from ../Core/Src/subsystem-can-driver/mppt-data-module.cpp:5:
+../Core/Src/subsystem-can-driver/subsystem-data-module.hpp:111:8: error: 'CAN_HandleTypeDef' does not name a type; did you mean 'TIM_HandleTypeDef'?
+ static CAN_HandleTypeDef hcan;
+        ^~~~~~~~~~~~~~~~~
+        TIM_HandleTypeDef
+make: *** [Core/Src/subsystem-can-driver/subdir.mk:29: Core/Src/subsystem-can-driver/bms-data-module.o] Error 1
+make: *** Waiting for unfinished jobs....
+make: *** [Core/Src/subsystem-can-driver/helper-code/subdir.mk:18: Core/Src/subsystem-can-driver/helper-code/rx-module-binary-tree.o] Error 1
+make: *** [Core/Src/subsystem-can-driver/subdir.mk:27: Core/Src/subsystem-can-driver/aux-data-module.o] Error 1
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:11:2: error: 'CAN_HandleTypeDef' does not name a type; did you mean 'TIM_HandleTypeDef'?
+  CAN_HandleTypeDef SUBSYSTEM_DATA_MODULE::hcan;
+  ^~~~~~~~~~~~~~~~~
+  TIM_HandleTypeDef
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:26:40: error: variable or field 'HAL_CAN_RxFifo0MsgPendingCallback' declared void
+ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
+                                        ^~~~~~~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:26:40: error: 'CAN_HandleTypeDef' was not declared in this scope
+In file included from ../Core/Src/main.cpp:26:0:
+C:/Users/Mark/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev2/Core/Src/subsystem-can-driver/subsystem-data-module.hpp:111:8: error: 'CAN_HandleTypeDef' does not name a type; did you mean 'TIM_HandleTypeDef'?
+ static CAN_HandleTypeDef hcan;
+        ^~~~~~~~~~~~~~~~~
+        TIM_HandleTypeDef
+make: *** [Core/Src/subsystem-can-driver/subdir.mk:31: Core/Src/subsystem-can-driver/mppt-data-module.o] Error 1
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:26:40: note: suggested alternative: 'TIM_HandleTypeDef'
+ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
+                                        ^~~~~~~~~~~~~~~~~
+                                        TIM_HandleTypeDef
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:26:59: error: 'hcan' was not declared in this scope
+ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
+                                                           ^~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp: In function 'void CEC_CAN_IRQHandler()':
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:61:46: error: 'hcan' is not a member of 'SUBSYSTEM_DATA_MODULE'
+   HAL_CAN_IRQHandler(&SUBSYSTEM_DATA_MODULE::hcan);
+                                              ^~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:61:3: error: 'HAL_CAN_IRQHandler' was not declared in this scope
+   HAL_CAN_IRQHandler(&SUBSYSTEM_DATA_MODULE::hcan);
+   ^~~~~~~~~~~~~~~~~~
+make: *** [Core/Src/subdir.mk:41: Core/Src/main.o] Error 1
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:61:3: note: suggested alternative: 'CEC_CAN_IRQHandler'
+   HAL_CAN_IRQHandler(&SUBSYSTEM_DATA_MODULE::hcan);
+   ^~~~~~~~~~~~~~~~~~
+   CEC_CAN_IRQHandler
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp: At global scope:
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:73:22: error: variable or field 'HAL_CAN_MspInit' declared void
+ void HAL_CAN_MspInit(CAN_HandleTypeDef* hcan)
+                      ^~~~~~~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:73:22: error: 'CAN_HandleTypeDef' was not declared in this scope
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:73:22: note: suggested alternative: 'TIM_HandleTypeDef'
+ void HAL_CAN_MspInit(CAN_HandleTypeDef* hcan)
+                      ^~~~~~~~~~~~~~~~~
+                      TIM_HandleTypeDef
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:73:41: error: 'hcan' was not declared in this scope
+ void HAL_CAN_MspInit(CAN_HandleTypeDef* hcan)
+                                         ^~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:112:24: error: variable or field 'HAL_CAN_MspDeInit' declared void
+ void HAL_CAN_MspDeInit(CAN_HandleTypeDef* hcan)
+                        ^~~~~~~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:112:24: error: 'CAN_HandleTypeDef' was not declared in this scope
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:112:24: note: suggested alternative: 'TIM_HandleTypeDef'
+ void HAL_CAN_MspDeInit(CAN_HandleTypeDef* hcan)
+                        ^~~~~~~~~~~~~~~~~
+                        TIM_HandleTypeDef
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:112:43: error: 'hcan' was not declared in this scope
+ void HAL_CAN_MspDeInit(CAN_HandleTypeDef* hcan)
+                                           ^~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp: In static member function 'static void SUBSYSTEM_DATA_MODULE::StartCAN()':
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:179:2: error: 'hcan' was not declared in this scope
+  hcan.Instance = CAN;
+  ^~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:181:19: error: 'CAN_MODE_NORMAL' was not declared in this scope
+  hcan.Init.Mode = CAN_MODE_NORMAL;
+                   ^~~~~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:181:19: note: suggested alternative: 'PWR_PVD_MODE_NORMAL'
+  hcan.Init.Mode = CAN_MODE_NORMAL;
+                   ^~~~~~~~~~~~~~~
+                   PWR_PVD_MODE_NORMAL
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:183:28: error: 'CAN_SJW_1TQ' was not declared in this scope
+  hcan.Init.SyncJumpWidth = CAN_SJW_1TQ;
+                            ^~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:184:23: error: 'CAN_BS1_13TQ' was not declared in this scope
+  hcan.Init.TimeSeg1 = CAN_BS1_13TQ;
+                       ^~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:184:23: note: suggested alternative: 'CAN_BTR_TS2'
+  hcan.Init.TimeSeg1 = CAN_BS1_13TQ;
+                       ^~~~~~~~~~~~
+                       CAN_BTR_TS2
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:185:23: error: 'CAN_BS2_2TQ' was not declared in this scope
+  hcan.Init.TimeSeg2 = CAN_BS2_2TQ;
+                       ^~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:185:23: note: suggested alternative: 'CAN_BTR_TS2'
+  hcan.Init.TimeSeg2 = CAN_BS2_2TQ;
+                       ^~~~~~~~~~~
+                       CAN_BTR_TS2
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:192:6: error: 'HAL_CAN_Init' was not declared in this scope
+  if (HAL_CAN_Init(&hcan) != HAL_OK)
+      ^~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:192:6: note: suggested alternative: 'HAL_SPI_Init'
+  if (HAL_CAN_Init(&hcan) != HAL_OK)
+      ^~~~~~~~~~~~
+      HAL_SPI_Init
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:198:2: error: 'CAN_FilterTypeDef' was not declared in this scope
+  CAN_FilterTypeDef sFilterConfig;
+  ^~~~~~~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:198:2: note: suggested alternative: 'CAN_TypeDef'
+  CAN_FilterTypeDef sFilterConfig;
+  ^~~~~~~~~~~~~~~~~
+  CAN_TypeDef
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:199:2: error: 'sFilterConfig' was not declared in this scope
+  sFilterConfig.FilterActivation = CAN_FILTER_ENABLE; /*Enable the filter*/
+  ^~~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:199:2: note: suggested alternative: 'SysTick_Config'
+  sFilterConfig.FilterActivation = CAN_FILTER_ENABLE; /*Enable the filter*/
+  ^~~~~~~~~~~~~
+  SysTick_Config
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:199:35: error: 'CAN_FILTER_ENABLE' was not declared in this scope
+  sFilterConfig.FilterActivation = CAN_FILTER_ENABLE; /*Enable the filter*/
+                                   ^~~~~~~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:199:35: note: suggested alternative: 'CAN_IER_ERRIE'
+  sFilterConfig.FilterActivation = CAN_FILTER_ENABLE; /*Enable the filter*/
+                                   ^~~~~~~~~~~~~~~~~
+                                   CAN_IER_ERRIE
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:200:29: error: 'CAN_FILTERMODE_IDMASK' was not declared in this scope
+  sFilterConfig.FilterMode = CAN_FILTERMODE_IDMASK; /*Mask mode*/
+                             ^~~~~~~~~~~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:203:30: error: 'CAN_FILTERSCALE_32BIT' was not declared in this scope
+  sFilterConfig.FilterScale = CAN_FILTERSCALE_32BIT; /*One 32-bit filter*/
+                              ^~~~~~~~~~~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:206:2: error: 'HAL_CAN_ConfigFilter' was not declared in this scope
+  HAL_CAN_ConfigFilter(&hcan, &sFilterConfig);
+  ^~~~~~~~~~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:206:2: note: suggested alternative: 'HAL_PWR_ConfigPVD'
+  HAL_CAN_ConfigFilter(&hcan, &sFilterConfig);
+  ^~~~~~~~~~~~~~~~~~~~
+  HAL_PWR_ConfigPVD
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:209:38: error: 'CAN_IT_RX_FIFO0_MSG_PENDING' was not declared in this scope
+  HAL_CAN_ActivateNotification(&hcan, CAN_IT_RX_FIFO0_MSG_PENDING);
+                                      ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:209:2: error: 'HAL_CAN_ActivateNotification' was not declared in this scope
+  HAL_CAN_ActivateNotification(&hcan, CAN_IT_RX_FIFO0_MSG_PENDING);
+  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:212:2: error: 'HAL_CAN_Start' was not declared in this scope
+  HAL_CAN_Start(&hcan);
+  ^~~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:212:2: note: suggested alternative: 'HAL_DMA_Start'
+  HAL_CAN_Start(&hcan);
+  ^~~~~~~~~~~~~
+  HAL_DMA_Start
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp: In member function 'void SUBSYSTEM_DATA_MODULE::sendTransmitBufferData()':
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:218:5: error: 'hcan' was not declared in this scope
+  if(hcan.Instance != nullptr)
+     ^~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:221:10: error: 'HAL_CAN_GetTxMailboxesFreeLevel' was not declared in this scope
+   while(!HAL_CAN_GetTxMailboxesFreeLevel(&hcan));
+          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:225:3: error: 'CAN_TxHeaderTypeDef' was not declared in this scope
+   CAN_TxHeaderTypeDef pHeader;
+   ^~~~~~~~~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:225:3: note: suggested alternative: 'HAL_TickFreqTypeDef'
+   CAN_TxHeaderTypeDef pHeader;
+   ^~~~~~~~~~~~~~~~~~~
+   HAL_TickFreqTypeDef
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:226:3: error: 'pHeader' was not declared in this scope
+   pHeader.RTR = CAN_RTR_DATA;
+   ^~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:226:17: error: 'CAN_RTR_DATA' was not declared in this scope
+   pHeader.RTR = CAN_RTR_DATA;
+                 ^~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:226:17: note: suggested alternative: 'CAN_RDL1R_DATA0'
+   pHeader.RTR = CAN_RTR_DATA;
+                 ^~~~~~~~~~~~
+                 CAN_RDL1R_DATA0
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:231:18: error: 'CAN_ID_EXT' was not declared in this scope
+    pHeader.IDE = CAN_ID_EXT;
+                  ^~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:231:18: note: suggested alternative: 'CAN_MSR_TXM'
+    pHeader.IDE = CAN_ID_EXT;
+                  ^~~~~~~~~~
+                  CAN_MSR_TXM
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:235:18: error: 'CAN_ID_STD' was not declared in this scope
+    pHeader.IDE = CAN_ID_STD;
+                  ^~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:235:18: note: suggested alternative: 'CAN_RI1R_STID'
+    pHeader.IDE = CAN_ID_STD;
+                  ^~~~~~~~~~
+                  CAN_RI1R_STID
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:238:3: error: 'HAL_CAN_AddTxMessage' was not declared in this scope
+   HAL_CAN_AddTxMessage(&hcan, &pHeader, this->transmitBuffer, &pTxMailbox);
+   ^~~~~~~~~~~~~~~~~~~~
+make: *** [Core/Src/subsystem-can-driver/subdir.mk:33: Core/Src/subsystem-can-driver/subsystem-data-module.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+16:27:26 **** Incremental Build of configuration Debug for project mcb_rev3 ****
+make -j12 all 
+arm-none-eabi-size   mcb_rev3.elf 
+   text	   data	    bss	    dec	    hex	filename
+   8920	     24	   1828	  10772	   2a14	mcb_rev3.elf
+Finished building: default.size.stdout
+ 
+16:27:33 **** Incremental Build of configuration Debug for project mcb_rev3 ****
+make -j12 all 
+arm-none-eabi-size   mcb_rev3.elf 
+   text	   data	    bss	    dec	    hex	filename
+   8920	     24	   1828	  10772	   2a14	mcb_rev3.elf
+Finished building: default.size.stdout
+ 

@@ -1,32 +1,226 @@
-19:37:23 **** Incremental Build of configuration Debug for project mcb_rev2 ****
+16:27:25 **** Incremental Build of configuration Debug for project mcb_rev2 ****
 make -j12 all 
+Core/Src/subdir.mk:41: warning: overriding recipe for target 'Core/Src/main.o'
+Core/Src/subdir.mk:39: warning: ignoring old recipe for target 'Core/Src/main.o'
+arm-none-eabi-g++ "../Core/Src/subsystem-can-driver/helper-code/rx-module-binary-tree.cpp" -mcpu=cortex-m0 -std=gnu++14 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Include -I../Core/Inc -I"C:/Users/Mark/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev2/Core/Src/subsystem-can-driver" -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-threadsafe-statics -fno-use-cxa-atexit -Wall -fstack-usage -MMD -MP -MF"Core/Src/subsystem-can-driver/helper-code/rx-module-binary-tree.d" -MT"Core/Src/subsystem-can-driver/helper-code/rx-module-binary-tree.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/subsystem-can-driver/helper-code/rx-module-binary-tree.o"
+arm-none-eabi-g++ "../Core/Src/subsystem-can-driver/aux-data-module.cpp" -mcpu=cortex-m0 -std=gnu++14 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Include -I../Core/Inc -I"C:/Users/Mark/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev2/Core/Src/subsystem-can-driver" -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-threadsafe-statics -fno-use-cxa-atexit -Wall -fstack-usage -MMD -MP -MF"Core/Src/subsystem-can-driver/aux-data-module.d" -MT"Core/Src/subsystem-can-driver/aux-data-module.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/subsystem-can-driver/aux-data-module.o"
+arm-none-eabi-g++ "../Core/Src/subsystem-can-driver/bms-data-module.cpp" -mcpu=cortex-m0 -std=gnu++14 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Include -I../Core/Inc -I"C:/Users/Mark/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev2/Core/Src/subsystem-can-driver" -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-threadsafe-statics -fno-use-cxa-atexit -Wall -fstack-usage -MMD -MP -MF"Core/Src/subsystem-can-driver/bms-data-module.d" -MT"Core/Src/subsystem-can-driver/bms-data-module.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/subsystem-can-driver/bms-data-module.o"
+arm-none-eabi-g++ "../Core/Src/subsystem-can-driver/mppt-data-module.cpp" -mcpu=cortex-m0 -std=gnu++14 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Include -I../Core/Inc -I"C:/Users/Mark/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev2/Core/Src/subsystem-can-driver" -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-threadsafe-statics -fno-use-cxa-atexit -Wall -fstack-usage -MMD -MP -MF"Core/Src/subsystem-can-driver/mppt-data-module.d" -MT"Core/Src/subsystem-can-driver/mppt-data-module.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/subsystem-can-driver/mppt-data-module.o"
+arm-none-eabi-g++ "../Core/Src/subsystem-can-driver/subsystem-data-module.cpp" -mcpu=cortex-m0 -std=gnu++14 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Include -I../Core/Inc -I"C:/Users/Mark/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev2/Core/Src/subsystem-can-driver" -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-threadsafe-statics -fno-use-cxa-atexit -Wall -fstack-usage -MMD -MP -MF"Core/Src/subsystem-can-driver/subsystem-data-module.d" -MT"Core/Src/subsystem-can-driver/subsystem-data-module.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/subsystem-can-driver/subsystem-data-module.o"
 arm-none-eabi-g++ "../Core/Src/main.cpp" -mcpu=cortex-m0 -std=gnu++14 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Include -I../Core/Inc -I"C:/Users/Mark/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev2/Core/Src/subsystem-can-driver" -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-threadsafe-statics -fno-use-cxa-atexit -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-../Core/Src/main.cpp: In function 'int main()':
-../Core/Src/main.cpp:129:18: warning: unused variable 'DAC_PowerOn' [-Wunused-variable]
-   static uint8_t DAC_PowerOn[3] = {0x30, 0xFF, 0xFF}; // Power on DAC with max output
-                  ^~~~~~~~~~~
-../Core/Src/main.cpp:130:18: warning: unused variable 'DAC_PowerOff' [-Wunused-variable]
-   static uint8_t DAC_PowerOff[3] = {0x40, 0x00, 0x00}; // Power off DAC
-                  ^~~~~~~~~~~~
-../Core/Src/main.cpp: At global scope:
-../Core/Src/main.cpp:130:18: warning: 'DAC_PowerOff' defined but not used [-Wunused-variable]
-../Core/Src/main.cpp:129:18: warning: 'DAC_PowerOn' defined but not used [-Wunused-variable]
-   static uint8_t DAC_PowerOn[3] = {0x30, 0xFF, 0xFF}; // Power on DAC with max output
-                  ^~~~~~~~~~~
-arm-none-eabi-g++ -o "mcb_rev2.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\Mark\Google Drive\Solar Gators\Auxiliary_2019-2020\mcb_rev2\STM32F072RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="mcb_rev2.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
-Finished building target: mcb_rev2.elf
- 
-arm-none-eabi-objdump -h -S  mcb_rev2.elf  > "mcb_rev2.list"
-arm-none-eabi-objcopy  -O binary  mcb_rev2.elf  "mcb_rev2.bin"
-arm-none-eabi-size   mcb_rev2.elf 
-   text	   data	    bss	    dec	    hex	filename
-  17824	    236	   1924	  19984	   4e10	mcb_rev2.elf
-Finished building: default.size.stdout
- 
-Finished building: mcb_rev2.bin
- 
-Finished building: mcb_rev2.list
- 
+In file included from ../Core/Src/subsystem-can-driver/helper-code/rx-module-binary-tree.cpp:6:0:
+../Core/Src/subsystem-can-driver/helper-code/../subsystem-data-module.hpp:111:8: error: 'CAN_HandleTypeDef' does not name a type; did you mean 'TIM_HandleTypeDef'?
+ static CAN_HandleTypeDef hcan;
+        ^~~~~~~~~~~~~~~~~
+        TIM_HandleTypeDef
+In file included from ../Core/Src/subsystem-can-driver/aux-data-module.hpp:9:0,
+                 from ../Core/Src/subsystem-can-driver/aux-data-module.cpp:5:
+../Core/Src/subsystem-can-driver/subsystem-data-module.hpp:111:8: error: 'CAN_HandleTypeDef' does not name a type; did you mean 'TIM_HandleTypeDef'?
+ static CAN_HandleTypeDef hcan;
+        ^~~~~~~~~~~~~~~~~
+        TIM_HandleTypeDef
+In file included from ../Core/Src/subsystem-can-driver/bms-data-module.hpp:9:0,
+                 from ../Core/Src/subsystem-can-driver/bms-data-module.cpp:5:
+../Core/Src/subsystem-can-driver/subsystem-data-module.hpp:111:8: error: 'CAN_HandleTypeDef' does not name a type; did you mean 'TIM_HandleTypeDef'?
+ static CAN_HandleTypeDef hcan;
+        ^~~~~~~~~~~~~~~~~
+        TIM_HandleTypeDef
+In file included from ../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:5:0:
+../Core/Src/subsystem-can-driver/subsystem-data-module.hpp:111:8: error: 'CAN_HandleTypeDef' does not name a type; did you mean 'TIM_HandleTypeDef'?
+ static CAN_HandleTypeDef hcan;
+        ^~~~~~~~~~~~~~~~~
+        TIM_HandleTypeDef
+In file included from ../Core/Src/subsystem-can-driver/mppt-data-module.hpp:9:0,
+                 from ../Core/Src/subsystem-can-driver/mppt-data-module.cpp:5:
+../Core/Src/subsystem-can-driver/subsystem-data-module.hpp:111:8: error: 'CAN_HandleTypeDef' does not name a type; did you mean 'TIM_HandleTypeDef'?
+ static CAN_HandleTypeDef hcan;
+        ^~~~~~~~~~~~~~~~~
+        TIM_HandleTypeDef
+make: *** [Core/Src/subsystem-can-driver/subdir.mk:29: Core/Src/subsystem-can-driver/bms-data-module.o] Error 1
+make: *** Waiting for unfinished jobs....
+make: *** [Core/Src/subsystem-can-driver/helper-code/subdir.mk:18: Core/Src/subsystem-can-driver/helper-code/rx-module-binary-tree.o] Error 1
+make: *** [Core/Src/subsystem-can-driver/subdir.mk:27: Core/Src/subsystem-can-driver/aux-data-module.o] Error 1
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:11:2: error: 'CAN_HandleTypeDef' does not name a type; did you mean 'TIM_HandleTypeDef'?
+  CAN_HandleTypeDef SUBSYSTEM_DATA_MODULE::hcan;
+  ^~~~~~~~~~~~~~~~~
+  TIM_HandleTypeDef
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:26:40: error: variable or field 'HAL_CAN_RxFifo0MsgPendingCallback' declared void
+ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
+                                        ^~~~~~~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:26:40: error: 'CAN_HandleTypeDef' was not declared in this scope
+In file included from ../Core/Src/main.cpp:26:0:
+C:/Users/Mark/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev2/Core/Src/subsystem-can-driver/subsystem-data-module.hpp:111:8: error: 'CAN_HandleTypeDef' does not name a type; did you mean 'TIM_HandleTypeDef'?
+ static CAN_HandleTypeDef hcan;
+        ^~~~~~~~~~~~~~~~~
+        TIM_HandleTypeDef
+make: *** [Core/Src/subsystem-can-driver/subdir.mk:31: Core/Src/subsystem-can-driver/mppt-data-module.o] Error 1
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:26:40: note: suggested alternative: 'TIM_HandleTypeDef'
+ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
+                                        ^~~~~~~~~~~~~~~~~
+                                        TIM_HandleTypeDef
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:26:59: error: 'hcan' was not declared in this scope
+ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
+                                                           ^~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp: In function 'void CEC_CAN_IRQHandler()':
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:61:46: error: 'hcan' is not a member of 'SUBSYSTEM_DATA_MODULE'
+   HAL_CAN_IRQHandler(&SUBSYSTEM_DATA_MODULE::hcan);
+                                              ^~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:61:3: error: 'HAL_CAN_IRQHandler' was not declared in this scope
+   HAL_CAN_IRQHandler(&SUBSYSTEM_DATA_MODULE::hcan);
+   ^~~~~~~~~~~~~~~~~~
+make: *** [Core/Src/subdir.mk:41: Core/Src/main.o] Error 1
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:61:3: note: suggested alternative: 'CEC_CAN_IRQHandler'
+   HAL_CAN_IRQHandler(&SUBSYSTEM_DATA_MODULE::hcan);
+   ^~~~~~~~~~~~~~~~~~
+   CEC_CAN_IRQHandler
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp: At global scope:
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:73:22: error: variable or field 'HAL_CAN_MspInit' declared void
+ void HAL_CAN_MspInit(CAN_HandleTypeDef* hcan)
+                      ^~~~~~~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:73:22: error: 'CAN_HandleTypeDef' was not declared in this scope
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:73:22: note: suggested alternative: 'TIM_HandleTypeDef'
+ void HAL_CAN_MspInit(CAN_HandleTypeDef* hcan)
+                      ^~~~~~~~~~~~~~~~~
+                      TIM_HandleTypeDef
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:73:41: error: 'hcan' was not declared in this scope
+ void HAL_CAN_MspInit(CAN_HandleTypeDef* hcan)
+                                         ^~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:112:24: error: variable or field 'HAL_CAN_MspDeInit' declared void
+ void HAL_CAN_MspDeInit(CAN_HandleTypeDef* hcan)
+                        ^~~~~~~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:112:24: error: 'CAN_HandleTypeDef' was not declared in this scope
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:112:24: note: suggested alternative: 'TIM_HandleTypeDef'
+ void HAL_CAN_MspDeInit(CAN_HandleTypeDef* hcan)
+                        ^~~~~~~~~~~~~~~~~
+                        TIM_HandleTypeDef
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:112:43: error: 'hcan' was not declared in this scope
+ void HAL_CAN_MspDeInit(CAN_HandleTypeDef* hcan)
+                                           ^~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp: In static member function 'static void SUBSYSTEM_DATA_MODULE::StartCAN()':
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:179:2: error: 'hcan' was not declared in this scope
+  hcan.Instance = CAN;
+  ^~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:181:19: error: 'CAN_MODE_NORMAL' was not declared in this scope
+  hcan.Init.Mode = CAN_MODE_NORMAL;
+                   ^~~~~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:181:19: note: suggested alternative: 'PWR_PVD_MODE_NORMAL'
+  hcan.Init.Mode = CAN_MODE_NORMAL;
+                   ^~~~~~~~~~~~~~~
+                   PWR_PVD_MODE_NORMAL
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:183:28: error: 'CAN_SJW_1TQ' was not declared in this scope
+  hcan.Init.SyncJumpWidth = CAN_SJW_1TQ;
+                            ^~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:184:23: error: 'CAN_BS1_13TQ' was not declared in this scope
+  hcan.Init.TimeSeg1 = CAN_BS1_13TQ;
+                       ^~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:184:23: note: suggested alternative: 'CAN_BTR_TS2'
+  hcan.Init.TimeSeg1 = CAN_BS1_13TQ;
+                       ^~~~~~~~~~~~
+                       CAN_BTR_TS2
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:185:23: error: 'CAN_BS2_2TQ' was not declared in this scope
+  hcan.Init.TimeSeg2 = CAN_BS2_2TQ;
+                       ^~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:185:23: note: suggested alternative: 'CAN_BTR_TS2'
+  hcan.Init.TimeSeg2 = CAN_BS2_2TQ;
+                       ^~~~~~~~~~~
+                       CAN_BTR_TS2
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:192:6: error: 'HAL_CAN_Init' was not declared in this scope
+  if (HAL_CAN_Init(&hcan) != HAL_OK)
+      ^~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:192:6: note: suggested alternative: 'HAL_SPI_Init'
+  if (HAL_CAN_Init(&hcan) != HAL_OK)
+      ^~~~~~~~~~~~
+      HAL_SPI_Init
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:198:2: error: 'CAN_FilterTypeDef' was not declared in this scope
+  CAN_FilterTypeDef sFilterConfig;
+  ^~~~~~~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:198:2: note: suggested alternative: 'CAN_TypeDef'
+  CAN_FilterTypeDef sFilterConfig;
+  ^~~~~~~~~~~~~~~~~
+  CAN_TypeDef
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:199:2: error: 'sFilterConfig' was not declared in this scope
+  sFilterConfig.FilterActivation = CAN_FILTER_ENABLE; /*Enable the filter*/
+  ^~~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:199:2: note: suggested alternative: 'SysTick_Config'
+  sFilterConfig.FilterActivation = CAN_FILTER_ENABLE; /*Enable the filter*/
+  ^~~~~~~~~~~~~
+  SysTick_Config
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:199:35: error: 'CAN_FILTER_ENABLE' was not declared in this scope
+  sFilterConfig.FilterActivation = CAN_FILTER_ENABLE; /*Enable the filter*/
+                                   ^~~~~~~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:199:35: note: suggested alternative: 'CAN_IER_ERRIE'
+  sFilterConfig.FilterActivation = CAN_FILTER_ENABLE; /*Enable the filter*/
+                                   ^~~~~~~~~~~~~~~~~
+                                   CAN_IER_ERRIE
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:200:29: error: 'CAN_FILTERMODE_IDMASK' was not declared in this scope
+  sFilterConfig.FilterMode = CAN_FILTERMODE_IDMASK; /*Mask mode*/
+                             ^~~~~~~~~~~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:203:30: error: 'CAN_FILTERSCALE_32BIT' was not declared in this scope
+  sFilterConfig.FilterScale = CAN_FILTERSCALE_32BIT; /*One 32-bit filter*/
+                              ^~~~~~~~~~~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:206:2: error: 'HAL_CAN_ConfigFilter' was not declared in this scope
+  HAL_CAN_ConfigFilter(&hcan, &sFilterConfig);
+  ^~~~~~~~~~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:206:2: note: suggested alternative: 'HAL_PWR_ConfigPVD'
+  HAL_CAN_ConfigFilter(&hcan, &sFilterConfig);
+  ^~~~~~~~~~~~~~~~~~~~
+  HAL_PWR_ConfigPVD
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:209:38: error: 'CAN_IT_RX_FIFO0_MSG_PENDING' was not declared in this scope
+  HAL_CAN_ActivateNotification(&hcan, CAN_IT_RX_FIFO0_MSG_PENDING);
+                                      ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:209:2: error: 'HAL_CAN_ActivateNotification' was not declared in this scope
+  HAL_CAN_ActivateNotification(&hcan, CAN_IT_RX_FIFO0_MSG_PENDING);
+  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:212:2: error: 'HAL_CAN_Start' was not declared in this scope
+  HAL_CAN_Start(&hcan);
+  ^~~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:212:2: note: suggested alternative: 'HAL_DMA_Start'
+  HAL_CAN_Start(&hcan);
+  ^~~~~~~~~~~~~
+  HAL_DMA_Start
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp: In member function 'void SUBSYSTEM_DATA_MODULE::sendTransmitBufferData()':
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:218:5: error: 'hcan' was not declared in this scope
+  if(hcan.Instance != nullptr)
+     ^~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:221:10: error: 'HAL_CAN_GetTxMailboxesFreeLevel' was not declared in this scope
+   while(!HAL_CAN_GetTxMailboxesFreeLevel(&hcan));
+          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:225:3: error: 'CAN_TxHeaderTypeDef' was not declared in this scope
+   CAN_TxHeaderTypeDef pHeader;
+   ^~~~~~~~~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:225:3: note: suggested alternative: 'HAL_TickFreqTypeDef'
+   CAN_TxHeaderTypeDef pHeader;
+   ^~~~~~~~~~~~~~~~~~~
+   HAL_TickFreqTypeDef
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:226:3: error: 'pHeader' was not declared in this scope
+   pHeader.RTR = CAN_RTR_DATA;
+   ^~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:226:17: error: 'CAN_RTR_DATA' was not declared in this scope
+   pHeader.RTR = CAN_RTR_DATA;
+                 ^~~~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:226:17: note: suggested alternative: 'CAN_RDL1R_DATA0'
+   pHeader.RTR = CAN_RTR_DATA;
+                 ^~~~~~~~~~~~
+                 CAN_RDL1R_DATA0
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:231:18: error: 'CAN_ID_EXT' was not declared in this scope
+    pHeader.IDE = CAN_ID_EXT;
+                  ^~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:231:18: note: suggested alternative: 'CAN_MSR_TXM'
+    pHeader.IDE = CAN_ID_EXT;
+                  ^~~~~~~~~~
+                  CAN_MSR_TXM
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:235:18: error: 'CAN_ID_STD' was not declared in this scope
+    pHeader.IDE = CAN_ID_STD;
+                  ^~~~~~~~~~
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:235:18: note: suggested alternative: 'CAN_RI1R_STID'
+    pHeader.IDE = CAN_ID_STD;
+                  ^~~~~~~~~~
+                  CAN_RI1R_STID
+../Core/Src/subsystem-can-driver/subsystem-data-module.cpp:238:3: error: 'HAL_CAN_AddTxMessage' was not declared in this scope
+   HAL_CAN_AddTxMessage(&hcan, &pHeader, this->transmitBuffer, &pTxMailbox);
+   ^~~~~~~~~~~~~~~~~~~~
+make: *** [Core/Src/subsystem-can-driver/subdir.mk:33: Core/Src/subsystem-can-driver/subsystem-data-module.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
 
-19:37:25 Build Finished. 0 errors, 4 warnings. (took 1s.792ms)
+16:27:26 Build Failed. 48 errors, 2 warnings. (took 916ms)
 

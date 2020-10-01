@@ -1,0 +1,10 @@
+16:27:33 **** Incremental Build of configuration Debug for project mcb_rev3 ****
+make -j12 all 
+arm-none-eabi-size   mcb_rev3.elf 
+   text	   data	    bss	    dec	    hex	filename
+   8920	     24	   1828	  10772	   2a14	mcb_rev3.elf
+Finished building: default.size.stdout
+ 
+
+16:27:33 Build Finished. 0 errors, 0 warnings. (took 308ms)
+
