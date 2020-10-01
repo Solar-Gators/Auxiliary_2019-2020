@@ -30,6 +30,8 @@ Core/Src/subsystem-can-driver/orion-data-module.o: \
  ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pwr_ex.h \
  ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_spi.h \
  ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_spi_ex.h \
+ ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim.h \
+ ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim_ex.h \
  C:/Users/Mark/Google\ Drive/Solar\ Gators/Auxiliary_2019-2020/mcb_rev3/Core/Src/subsystem-can-driver/helper-code/helper-fifo.hpp \
  C:/Users/Mark/Google\ Drive/Solar\ Gators/Auxiliary_2019-2020/mcb_rev3/Core/Src/subsystem-can-driver/helper-code/rx-module-binary-tree.hpp \
  c:\users\mark\google\ drive\solar\ gators\auxiliary_2019-2020\mcb_rev3\core\src\subsystem-can-driver\subsystem-info.hpp
@@ -95,6 +97,10 @@ C:/Users/Mark/Google\ Drive/Solar\ Gators/Auxiliary_2019-2020/mcb_rev3/Core/Src/
 ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_spi.h:
 
 ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_spi_ex.h:
+
+../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim.h:
+
+../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim_ex.h:
 
 C:/Users/Mark/Google\ Drive/Solar\ Gators/Auxiliary_2019-2020/mcb_rev3/Core/Src/subsystem-can-driver/helper-code/helper-fifo.hpp:
 

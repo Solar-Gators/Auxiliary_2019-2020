@@ -1,10 +1,20 @@
-16:27:33 **** Incremental Build of configuration Debug for project mcb_rev3 ****
+14:01:47 **** Incremental Build of configuration Debug for project mcb_rev3 ****
 make -j12 all 
+arm-none-eabi-g++ "../Core/Src/main.cpp" -mcpu=cortex-m0 -std=gnu++14 -g3 -DUSE_HAL_DRIVER -DSTM32F072xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/Mark/Google Drive/Solar Gators/Auxiliary_2019-2020/mcb_rev3/Core/Src/subsystem-can-driver" -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-threadsafe-statics -fno-use-cxa-atexit -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-g++ -o "mcb_rev3.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\Mark\Google Drive\Solar Gators\Auxiliary_2019-2020\mcb_rev3\STM32F072RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="mcb_rev3.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: mcb_rev3.elf
+ 
+arm-none-eabi-objdump -h -S  mcb_rev3.elf  > "mcb_rev3.list"
+arm-none-eabi-objcopy  -O binary  mcb_rev3.elf  "mcb_rev3.bin"
 arm-none-eabi-size   mcb_rev3.elf 
    text	   data	    bss	    dec	    hex	filename
-   8920	     24	   1828	  10772	   2a14	mcb_rev3.elf
+  11188	     24	   1892	  13104	   3330	mcb_rev3.elf
 Finished building: default.size.stdout
  
+Finished building: mcb_rev3.bin
+ 
+Finished building: mcb_rev3.list
+ 
 
-16:27:33 Build Finished. 0 errors, 0 warnings. (took 308ms)
+14:01:48 Build Finished. 0 errors, 0 warnings. (took 1s.864ms)
 

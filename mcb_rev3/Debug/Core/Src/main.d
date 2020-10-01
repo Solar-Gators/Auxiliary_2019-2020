@@ -25,7 +25,16 @@ Core/Src/main.o: ../Core/Src/main.cpp ../Core/Inc/main.h \
  ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pwr.h \
  ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pwr_ex.h \
  ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_spi.h \
- ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_spi_ex.h
+ ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_spi_ex.h \
+ ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim.h \
+ ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim_ex.h \
+ C:/Users/Mark/Google\ Drive/Solar\ Gators/Auxiliary_2019-2020/mcb_rev3/Core/Src/subsystem-can-driver/subsystem-data-module.hpp \
+ C:/Users/Mark/Google\ Drive/Solar\ Gators/Auxiliary_2019-2020/mcb_rev3/Core/Src/subsystem-can-driver/subsystem-info.hpp \
+ C:/Users/Mark/Google\ Drive/Solar\ Gators/Auxiliary_2019-2020/mcb_rev3/Core/Src/subsystem-can-driver/helper-code/helper-fifo.hpp \
+ C:/Users/Mark/Google\ Drive/Solar\ Gators/Auxiliary_2019-2020/mcb_rev3/Core/Src/subsystem-can-driver/helper-code/rx-module-binary-tree.hpp \
+ c:\users\mark\google\ drive\solar\ gators\auxiliary_2019-2020\mcb_rev3\core\src\subsystem-can-driver\subsystem-info.hpp \
+ C:/Users/Mark/Google\ Drive/Solar\ Gators/Auxiliary_2019-2020/mcb_rev3/Core/Src/subsystem-can-driver/aux-data-module.hpp \
+ C:/Users/Mark/Google\ Drive/Solar\ Gators/Auxiliary_2019-2020/mcb_rev3/Core/Src/subsystem-can-driver/subsystem-data-module.hpp
 
 ../Core/Inc/main.h:
 
@@ -82,3 +91,21 @@ Core/Src/main.o: ../Core/Src/main.cpp ../Core/Inc/main.h \
 ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_spi.h:
 
 ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_spi_ex.h:
+
+../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim.h:
+
+../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim_ex.h:
+
+C:/Users/Mark/Google\ Drive/Solar\ Gators/Auxiliary_2019-2020/mcb_rev3/Core/Src/subsystem-can-driver/subsystem-data-module.hpp:
+
+C:/Users/Mark/Google\ Drive/Solar\ Gators/Auxiliary_2019-2020/mcb_rev3/Core/Src/subsystem-can-driver/subsystem-info.hpp:
+
+C:/Users/Mark/Google\ Drive/Solar\ Gators/Auxiliary_2019-2020/mcb_rev3/Core/Src/subsystem-can-driver/helper-code/helper-fifo.hpp:
+
+C:/Users/Mark/Google\ Drive/Solar\ Gators/Auxiliary_2019-2020/mcb_rev3/Core/Src/subsystem-can-driver/helper-code/rx-module-binary-tree.hpp:
+
+c:\users\mark\google\ drive\solar\ gators\auxiliary_2019-2020\mcb_rev3\core\src\subsystem-can-driver\subsystem-info.hpp:
+
+C:/Users/Mark/Google\ Drive/Solar\ Gators/Auxiliary_2019-2020/mcb_rev3/Core/Src/subsystem-can-driver/aux-data-module.hpp:
+
+C:/Users/Mark/Google\ Drive/Solar\ Gators/Auxiliary_2019-2020/mcb_rev3/Core/Src/subsystem-can-driver/subsystem-data-module.hpp:
