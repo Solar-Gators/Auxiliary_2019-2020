@@ -4857,23 +4857,23 @@ OUTPUT(AUX_MotherBoard.elf elf32-littlearm)
  .debug_macro   0x0000000000017c21      0x1b0 Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_tim.o
  .debug_macro   0x0000000000017dd1      0x1af Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_tim_ex.o
 
-.debug_line     0x0000000000000000     0x93bc
- .debug_line    0x0000000000000000      0x925 Core/Src/main.o
- .debug_line    0x0000000000000925      0x6a9 Core/Src/stm32f0xx_hal_msp.o
- .debug_line    0x0000000000000fce      0x723 Core/Src/stm32f0xx_it.o
- .debug_line    0x00000000000016f1      0x742 Core/Src/syscalls.o
- .debug_line    0x0000000000001e33      0x6a3 Core/Src/system_stm32f0xx.o
- .debug_line    0x00000000000024d6       0x89 Core/Startup/startup_stm32f072rbtx.o
- .debug_line    0x000000000000255f      0x7d1 Core/subsystem-can-driver/aux-data-module.o
- .debug_line    0x0000000000002d30      0x99f Core/subsystem-can-driver/subsystem-data-module.o
- .debug_line    0x00000000000036cf      0x92f Core/subsystem-can-driver/helper-code/rx-module-binary-tree.o
- .debug_line    0x0000000000003ffe      0x836 Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal.o
- .debug_line    0x0000000000004834      0xb1d Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_can.o
- .debug_line    0x0000000000005351      0x84e Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_cortex.o
- .debug_line    0x0000000000005b9f      0x810 Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_gpio.o
- .debug_line    0x00000000000063af      0x923 Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rcc.o
- .debug_line    0x0000000000006cd2     0x1a68 Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_tim.o
- .debug_line    0x000000000000873a      0xc82 Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_tim_ex.o
+.debug_line     0x0000000000000000     0x9398
+ .debug_line    0x0000000000000000      0x901 Core/Src/main.o
+ .debug_line    0x0000000000000901      0x6a9 Core/Src/stm32f0xx_hal_msp.o
+ .debug_line    0x0000000000000faa      0x723 Core/Src/stm32f0xx_it.o
+ .debug_line    0x00000000000016cd      0x742 Core/Src/syscalls.o
+ .debug_line    0x0000000000001e0f      0x6a3 Core/Src/system_stm32f0xx.o
+ .debug_line    0x00000000000024b2       0x89 Core/Startup/startup_stm32f072rbtx.o
+ .debug_line    0x000000000000253b      0x7d1 Core/subsystem-can-driver/aux-data-module.o
+ .debug_line    0x0000000000002d0c      0x99f Core/subsystem-can-driver/subsystem-data-module.o
+ .debug_line    0x00000000000036ab      0x92f Core/subsystem-can-driver/helper-code/rx-module-binary-tree.o
+ .debug_line    0x0000000000003fda      0x836 Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal.o
+ .debug_line    0x0000000000004810      0xb1d Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_can.o
+ .debug_line    0x000000000000532d      0x84e Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_cortex.o
+ .debug_line    0x0000000000005b7b      0x810 Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_gpio.o
+ .debug_line    0x000000000000638b      0x923 Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rcc.o
+ .debug_line    0x0000000000006cae     0x1a68 Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_tim.o
+ .debug_line    0x0000000000008716      0xc82 Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_tim_ex.o
 
 .debug_str      0x0000000000000000    0x80453
  .debug_str     0x0000000000000000    0x77cd9 Core/Src/main.o
