@@ -155,6 +155,7 @@ int main(void)
 		else if (HAL_GPIO_ReadPin(Hazards_in_GPIO_Port, Hazards_in_Pin) == GPIO_PIN_SET){
 			auxHandler0.txData.hazardsOn = hazardsToggle;
 			hazardsToggle = !hazardsToggle;
+			HAL_GPIO_ReadPin(Hazards_out_GPIO_Port, Hazards_out_Pin, hazardsToggle);
 		}
 		//_____[Horn]_____
 		else if (HAL_GPIO_ReadPin(Horn_in_GPIO_Port, Horn_in_Pin) == GPIO_PIN_SET){
@@ -167,23 +168,24 @@ int main(void)
 		//_____[Left Turn]_____
 		if (HAL_GPIO_ReadPin(LT_in_GPIO_Port, LT_in_Pin) == GPIO_PIN_SET){
 			auxHandler0.txData.leftOn = true;
-			continue;
+			HAL_GPIO_WritePin(LT_out_GPIO_Port, LT_out_Pin, 1);
 		}
 		else{
 			auxHandler0.txData.leftOn = false;
+			HAL_GPIO_WritePin(LT_out_GPIO_Port, LT_out_Pin, 0);
 		}
 		//_____[Right Turn]_____
 		if (HAL_GPIO_ReadPin(RT_in_GPIO_Port, RT_in_Pin) == GPIO_PIN_SET){
 			auxHandler0.txData.rightOn = true;
-			continue;
+			HAL_GPIO_WritePin(RT_out_GPIO_Port, RT_out_Pin, 1);
 		}
 		else{
 			auxHandler0.txData.rightOn = false;
+			HAL_GPIO_WritePin(RT_out_GPIO_Port, RT_out_Pin, 0);
 		}
 		//_____[Headlights]_____
 		if (HAL_GPIO_ReadPin(Headlights_in_GPIO_Port, Headlights_in_Pin) == GPIO_PIN_SET){
 			auxHandler0.txData.headlightsOn = true;
-			continue;
 		}
 		else{
 			auxHandler0.txData.headlightsOn = false;
@@ -191,10 +193,11 @@ int main(void)
 		//_____[Regen]_____
 		if (HAL_GPIO_ReadPin(Regen_in_GPIO_Port, Regen_in_Pin) == GPIO_PIN_SET){
 			auxHandler0.txData.regenOn = true;
-			continue;
+			HAL_GPIO_WritePin(Regen_out_GPIO_Port, Regen_out_Pin, 1);
 		}
 		else{
 			auxHandler0.txData.regenOn = false;
+			HAL_GPIO_WritePin(Regen_out_GPIO_Port, Regen_out_Pin, 0);
 		}
 	  }
 		auxHandler0.txData.headlightsOn = true;
