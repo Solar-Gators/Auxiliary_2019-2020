@@ -193,6 +193,8 @@ int main(void)
 			auxHandler0.txData.regenOn = false;
 		}
 	  }
+//		auxHandler0.txData.headlightsOn = true;
+//		auxHandler0.txData.rightOn = true;
 	  auxHandler0.SendData();
   }
   /* USER CODE END 3 */
