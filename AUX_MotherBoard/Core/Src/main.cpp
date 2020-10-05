@@ -100,6 +100,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 int main(void)
 {
   /* USER CODE BEGIN 1 */
+	uint8_t cruiseToggle = 0;
 	uint8_t cplusToggle = 0;
 	uint8_t cminusToggle = 0;
 	uint8_t hornToggle = 0;
@@ -141,6 +142,14 @@ int main(void)
   //=====[ BUTTONS ]===== (toggle)
 	  if (btnSignal_flag){
 		  btnSignal_flag = false;
+		//_____[Cruise in]_____
+		if (HAL_GPIO_ReadPin(Cruise_in_GPIO_Port, Cruise_in_Pin) == GPIO_PIN_SET){
+			
+			//Need to figure out where to send cruise data******************************************
+			//auxHandler0.txData.???????? = cruiseToggle;     
+			cruiseToggle = !cruiseToggle;
+			HAL_GPIO_ReadPin(CruiseLED_out_GPIO_Port, CruiseLED_out_Pin, cruiseToggle);
+		}
 		//_____[Cruise +]_____
 		if (HAL_GPIO_ReadPin(CPlus_in_GPIO_Port, CPlus_in_Pin) == GPIO_PIN_SET){
 			auxHandler0.txData.cplusOn = cplusToggle;
