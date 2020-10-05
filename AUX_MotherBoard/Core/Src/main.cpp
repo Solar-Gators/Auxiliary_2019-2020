@@ -148,7 +148,7 @@ int main(void)
 			//Need to figure out where to send cruise data******************************************
 			//auxHandler0.txData.???????? = cruiseToggle;     
 			cruiseToggle = !cruiseToggle;
-			HAL_GPIO_WritePin(CruiseLED_out_GPIO_Port, CruiseLED_out_Pin, cruiseToggle);
+			HAL_GPIO_WritePin(CruisegiLED_out_GPIO_Port, CruiseLED_out_Pin, cruiseToggle);
 		}
 		//_____[Cruise +]_____
 		if (HAL_GPIO_ReadPin(CPlus_in_GPIO_Port, CPlus_in_Pin) == GPIO_PIN_SET){
