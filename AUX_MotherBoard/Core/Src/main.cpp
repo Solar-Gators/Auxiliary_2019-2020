@@ -144,32 +144,31 @@ int main(void)
 		  btnSignal_flag = false;
 		//_____[Cruise in]_____
 		if (HAL_GPIO_ReadPin(Cruise_in_GPIO_Port, Cruise_in_Pin) == GPIO_PIN_SET){
-			
+			cruiseToggle = !cruiseToggle;
 			//Need to figure out where to send cruise data******************************************
 			//auxHandler0git .txData.???????? = cruiseToggle;     
-			cruiseToggle = !cruiseToggle;
 			HAL_GPIO_WritePin(CruiseLED_out_GPIO_Port, CruiseLED_out_Pin, cruiseToggle);
 		}
 		//_____[Cruise +]_____
 		if (HAL_GPIO_ReadPin(CPlus_in_GPIO_Port, CPlus_in_Pin) == GPIO_PIN_SET){
-			auxHandler0.txData.cplusOn = cplusToggle;
 			cplusToggle = !cplusToggle;
+			auxHandler0.txData.cplusOn = cplusToggle;
 		}
 		//_____[Cruise -]_____
 		else if (HAL_GPIO_ReadPin(CMinus_in_GPIO_Port, CMinus_in_Pin) == GPIO_PIN_SET){
-			auxHandler0.txData.cminusOn = cminusToggle;
 			cminusToggle = !cminusToggle;
+			auxHandler0.txData.cminusOn = cminusToggle;
 		}
 		//_____[Hazards]_____
 		else if (HAL_GPIO_ReadPin(Hazards_in_GPIO_Port, Hazards_in_Pin) == GPIO_PIN_SET){
-			auxHandler0.txData.hazardsOn = hazardsToggle;
 			hazardsToggle = !hazardsToggle;
+			auxHandler0.txData.hazardsOn = hazardsToggle;
 			HAL_GPIO_ReadPin(Hazards_out_GPIO_Port, Hazards_out_Pin, hazardsToggle);
 		}
 		//_____[Horn]_____
 		else if (HAL_GPIO_ReadPin(Horn_in_GPIO_Port, Horn_in_Pin) == GPIO_PIN_SET){
-			auxHandler0.txData.hornOn = hornToggle;
 			hornToggle = !hornToggle;
+			auxHandler0.txData.hornOn = hornToggle;
 		}
 	  }
 	//=====[ SWITCHES ]===== (check on or off)
