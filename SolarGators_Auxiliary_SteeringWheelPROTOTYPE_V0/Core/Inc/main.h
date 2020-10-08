@@ -58,36 +58,17 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
-#define Dev_Btn_Pin GPIO_PIN_13
-#define Dev_Btn_GPIO_Port GPIOC
-#define Dev_Btn_EXTI_IRQn EXTI4_15_IRQn
-#define Cruise_LED_Pin GPIO_PIN_0
-#define Cruise_LED_GPIO_Port GPIOA
-#define Eco_in_Pin GPIO_PIN_1
-#define Eco_in_GPIO_Port GPIOA
-#define Dev_LED_Pin GPIO_PIN_5
-#define Dev_LED_GPIO_Port GPIOA
-#define LED_out_Pin GPIO_PIN_12
-#define LED_out_GPIO_Port GPIOC
-#define LT_in_Pin GPIO_PIN_3
-#define LT_in_GPIO_Port GPIOB
-#define Cruise_in_Pin GPIO_PIN_4
-#define Cruise_in_GPIO_Port GPIOB
-#define Cruise_in_EXTI_IRQn EXTI4_15_IRQn
-#define CPlus_in_Pin GPIO_PIN_5
-#define CPlus_in_GPIO_Port GPIOB
-#define CPlus_in_EXTI_IRQn EXTI4_15_IRQn
-#define Hazards_in_Pin GPIO_PIN_6
-#define Hazards_in_GPIO_Port GPIOB
-#define Hazards_in_EXTI_IRQn EXTI4_15_IRQn
-#define Regen_in_Pin GPIO_PIN_7
-#define Regen_in_GPIO_Port GPIOB
-#define Regen_in_EXTI_IRQn EXTI4_15_IRQn
+#define LT_out_Pin GPIO_PIN_10
+#define LT_out_GPIO_Port GPIOC
+#define RT_out_Pin GPIO_PIN_11
+#define RT_out_GPIO_Port GPIOC
+#define Horn_out_Pin GPIO_PIN_4
+#define Horn_out_GPIO_Port GPIOB
+#define Headlights_out_Pin GPIO_PIN_5
+#define Headlights_out_GPIO_Port GPIOB
 /* USER CODE BEGIN Private defines */
 #define Headlights_out_GPIO_Port GPIOB
 #define Headlights_out_Pin GPIO_PIN_5
-#define Reverse_out_GPIO_Port GPIOB
-#define Reverse_out_Pin GPIO_PIN_3
 #define RT_out_GPIO_Port GPIOC
 #define RT_out_Pin GPIO_PIN_11
 #define LT_out_GPIO_Port GPIOC

@@ -104,6 +104,10 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 	{
 		HAL_GPIO_TogglePin(RT_out_GPIO_Port, RT_out_Pin);
 	}
+	else if (auxPacket.hornOn == true)
+	{
+		HAL_GPIO_TogglePin(Horn_out_GPIO_Port, Horn_out_Pin);
+	}
 }
 
 /* USER CODE END 0 */
@@ -150,7 +154,6 @@ int main(void)
 
   {
 
-    /* USER CODE END WHILE */
 	  	auxPacket = aux0.GetOldestDataPacket(&receivedSomething);
 	  	if(receivedSomething)
 	  	{
@@ -196,6 +199,17 @@ int main(void)
 	  			HAL_TIM_Base_Stop_IT(&htim6);
 	  			HAL_GPIO_WritePin(RT_out_GPIO_Port, RT_out_Pin, GPIO_PIN_RESET);
 	  		}
+
+	  		if (auxPacket.hornOn)
+	  		{
+	  			HAL_GPIO_WritePin(Horn_out_GPIO_Port, Horn_out_Pin, GPIO_PIN_SET);
+	  		}
+	  		else
+	  		{
+	  			HAL_GPIO_WritePin(Horn_out_GPIO_Port, Horn_out_Pin, GPIO_PIN_RESET);
+	  		}
+
+	  		/* USER CODE END WHILE */
 	  	}
     /* USER CODE BEGIN 3 */
 
@@ -282,63 +296,29 @@ static void MX_GPIO_Init(void)
   GPIO_InitTypeDef GPIO_InitStruct = {0};
 
   /* GPIO Ports Clock Enable */
-  __HAL_RCC_GPIOC_CLK_ENABLE();
   __HAL_RCC_GPIOA_CLK_ENABLE();
+  __HAL_RCC_GPIOC_CLK_ENABLE();
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(Cruise_LED_GPIO_Port, Cruise_LED_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOC, LT_out_Pin|RT_out_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(Dev_LED_GPIO_Port, Dev_LED_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(GPIOB, Horn_out_Pin|Headlights_out_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(LED_out_GPIO_Port, LED_out_Pin, GPIO_PIN_RESET);
-
-  /*Configure GPIO pin : Dev_Btn_Pin */
-  GPIO_InitStruct.Pin = Dev_Btn_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(Dev_Btn_GPIO_Port, &GPIO_InitStruct);
-
-  /*Configure GPIO pin : Cruise_LED_Pin */
-  GPIO_InitStruct.Pin = Cruise_LED_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
-  HAL_GPIO_Init(Cruise_LED_GPIO_Port, &GPIO_InitStruct);
-
-  /*Configure GPIO pin : Eco_in_Pin */
-  GPIO_InitStruct.Pin = Eco_in_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(Eco_in_GPIO_Port, &GPIO_InitStruct);
-
-  /*Configure GPIO pin : Dev_LED_Pin */
-  GPIO_InitStruct.Pin = Dev_LED_Pin;
+  /*Configure GPIO pins : LT_out_Pin RT_out_Pin */
+  GPIO_InitStruct.Pin = LT_out_Pin|RT_out_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(Dev_LED_GPIO_Port, &GPIO_InitStruct);
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : LED_out_Pin */
-  GPIO_InitStruct.Pin = LED_out_Pin;
+  /*Configure GPIO pins : Horn_out_Pin Headlights_out_Pin */
+  GPIO_InitStruct.Pin = Horn_out_Pin|Headlights_out_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(LED_out_GPIO_Port, &GPIO_InitStruct);
-
-  /*Configure GPIO pins : LT_in_Pin Cruise_in_Pin CPlus_in_Pin Hazards_in_Pin
-                           Regen_in_Pin */
-  GPIO_InitStruct.Pin = LT_in_Pin|Cruise_in_Pin|CPlus_in_Pin|Hazards_in_Pin
-                          |Regen_in_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
-
-  /* EXTI interrupt init*/
-  HAL_NVIC_SetPriority(EXTI4_15_IRQn, 0, 0);
-  HAL_NVIC_EnableIRQ(EXTI4_15_IRQn);
 
 }
 
@@ -388,6 +368,15 @@ void ReceiveAndSend(SUBSYSTEM_DATA_MODULE*)
 		{
 			HAL_TIM_Base_Stop_IT(&htim6);
 			HAL_GPIO_WritePin(RT_out_GPIO_Port, RT_out_Pin, GPIO_PIN_RESET);
+		}
+
+		if (auxPacket.hornOn)
+		{
+			HAL_GPIO_WritePin(Horn_out_GPIO_Port, Horn_out_Pin, GPIO_PIN_SET);
+		}
+		else
+		{
+			HAL_GPIO_WritePin(Horn_out_GPIO_Port, Horn_out_Pin, GPIO_PIN_RESET);
 		}
 	}
 }
