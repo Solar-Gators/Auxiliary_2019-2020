@@ -108,6 +108,10 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 	{
 		HAL_GPIO_TogglePin(Horn_out_GPIO_Port, Horn_out_Pin);
 	}
+	else if (auxPacket.headlightsOn == true)
+	{
+		HAL_GPIO_TogglePin(Headlights_out_GPIO_Port, Headlights_out_Pin);
+	}
 }
 
 /* USER CODE END 0 */
