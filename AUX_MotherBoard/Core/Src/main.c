@@ -1,7 +1,7 @@
 /* USER CODE BEGIN Header */
 /**
   ******************************************************************************
-  * @file           : main.cpp
+  * @file           : main.c
   * @brief          : Main program body
   ******************************************************************************
   * @attention
@@ -20,11 +20,10 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include <stdint.h>
+
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "aux-data-module.hpp"
-#include "subsystem-data-module.hpp"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -43,9 +42,9 @@
 
 /* Private variables ---------------------------------------------------------*/
 CAN_HandleTypeDef hcan;
+
 TIM_HandleTypeDef htim2;
-volatile bool btnSignal_flag = false;
-volatile bool swtchSignal_flag = false;
+
 /* USER CODE BEGIN PV */
 
 /* USER CODE END PV */
@@ -61,36 +60,7 @@ static void MX_TIM2_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
-	//buttons
-	if (GPIO_Pin == CPlus_in_Pin || GPIO_Pin == CMinus_in_Pin ||
-		GPIO_Pin ==  Hazards_in_Pin || GPIO_Pin ==  Horn_in_Pin){
-		HAL_TIM_Base_Start_IT(&htim2);
-	}
-	//switches
-	else if (GPIO_Pin == LT_in_Pin || GPIO_Pin == RT_in_Pin ||
-			GPIO_Pin == Headlights_in_Pin || GPIO_Pin == Regen_in_Pin){
-		swtchSignal_flag = true;
-	}
-}
 
-//For timer interrupt
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
-	HAL_TIM_Base_Stop_IT(&htim2);
-	if (HAL_GPIO_ReadPin(CPlus_in_GPIO_Port, CPlus_in_Pin) == GPIO_PIN_SET){
-		btnSignal_flag = true;
-	}
-	else if (HAL_GPIO_ReadPin(CMinus_in_GPIO_Port, CMinus_in_Pin) == GPIO_PIN_SET){
-		btnSignal_flag = true;
-	}
-	else if (HAL_GPIO_ReadPin(Hazards_in_GPIO_Port, Hazards_in_Pin) == GPIO_PIN_SET){
-		btnSignal_flag = true;
-	}
-	else if (HAL_GPIO_ReadPin(Horn_in_GPIO_Port, Horn_in_Pin) == GPIO_PIN_SET){
-		btnSignal_flag = true;
-	}
-
-}
 /* USER CODE END 0 */
 
 /**
@@ -100,13 +70,9 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-	uint8_t cruiseToggle = 0;
-	uint8_t cplusToggle = 0;
-	uint8_t cminusToggle = 0;
-	uint8_t hornToggle = 0;
-	uint8_t hazardsToggle = 0;
-  /* USER CODE END 1 */
 
+  /* USER CODE END 1 */
+  
 
   /* MCU Configuration--------------------------------------------------------*/
 
@@ -129,88 +95,16 @@ int main(void)
   MX_CAN_Init();
   MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
-  AUX_MESSAGE_0 auxHandler0;
-  auxHandler0.SetupReceive(nullptr);
-  SUBSYSTEM_DATA_MODULE::StartCAN();
 
   /* USER CODE END 2 */
+
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  while (1){
+  while (1)
+  {
     /* USER CODE END WHILE */
+
     /* USER CODE BEGIN 3 */
-  //=====[ BUTTONS ]===== (toggle)
-	  if (btnSignal_flag){
-		  btnSignal_flag = false;
-		//_____[Cruise in]_____
-		if (HAL_GPIO_ReadPin(Cruise_in_GPIO_Port, Cruise_in_Pin) == GPIO_PIN_SET){
-			cruiseToggle = !cruiseToggle;
-			//Need to figure out where to send cruise data******************************************
-			//auxHandler0git .txData.???????? = cruiseToggle;
-			HAL_GPIO_WritePin(CruiseLED_out_GPIO_Port, CruiseLED_out_Pin, cruiseToggle);
-		}
-		//_____[Cruise +]_____
-		if (HAL_GPIO_ReadPin(CPlus_in_GPIO_Port, CPlus_in_Pin) == GPIO_PIN_SET){
-			cplusToggle = !cplusToggle;
-			auxHandler0.txData.cplusOn = cplusToggle;
-		}
-		//_____[Cruise -]_____
-		else if (HAL_GPIO_ReadPin(CMinus_in_GPIO_Port, CMinus_in_Pin) == GPIO_PIN_SET){
-			cminusToggle = !cminusToggle;
-			auxHandler0.txData.cminusOn = cminusToggle;
-		}
-		//_____[Hazards]_____
-		else if (HAL_GPIO_ReadPin(Hazards_in_GPIO_Port, Hazards_in_Pin) == GPIO_PIN_SET){
-			hazardsToggle = !hazardsToggle;
-			auxHandler0.txData.hazardsOn = hazardsToggle;
-			HAL_GPIO_ReadPin(Hazards_out_GPIO_Port, Hazards_out_Pin, hazardsToggle);
-		}
-		//_____[Horn]_____
-		else if (HAL_GPIO_ReadPin(Horn_in_GPIO_Port, Horn_in_Pin) == GPIO_PIN_SET){
-			hornToggle = !hornToggle;
-			auxHandler0.txData.hornOn = hornToggle;
-		}
-	  }
-	//=====[ SWITCHES ]===== (check on or off)
-	if(swtchSignal_flag){ //triggered on change of a signal
-		//_____[Left Turn]_____
-		if (HAL_GPIO_ReadPin(LT_in_GPIO_Port, LT_in_Pin) == GPIO_PIN_SET){
-			auxHandler0.txData.leftOn = true;
-			HAL_GPIO_WritePin(LT_out_GPIO_Port, LT_out_Pin, 1);
-		}
-		else{
-			auxHandler0.txData.leftOn = false;
-			HAL_GPIO_WritePin(LT_out_GPIO_Port, LT_out_Pin, 0);
-		}
-		//_____[Right Turn]_____
-		if (HAL_GPIO_ReadPin(RT_in_GPIO_Port, RT_in_Pin) == GPIO_PIN_SET){
-			auxHandler0.txData.rightOn = true;
-			HAL_GPIO_WritePin(RT_out_GPIO_Port, RT_out_Pin, 1);
-		}
-		else{
-			auxHandler0.txData.rightOn = false;
-			HAL_GPIO_WritePin(RT_out_GPIO_Port, RT_out_Pin, 0);
-		}
-		//_____[Headlights]_____
-		if (HAL_GPIO_ReadPin(Headlights_in_GPIO_Port, Headlights_in_Pin) == GPIO_PIN_SET){
-			auxHandler0.txData.headlightsOn = true;
-		}
-		else{
-			auxHandler0.txData.headlightsOn = false;
-		}
-		//_____[Regen]_____
-		if (HAL_GPIO_ReadPin(Regen_in_GPIO_Port, Regen_in_Pin) == GPIO_PIN_SET){
-			auxHandler0.txData.regenOn = true;
-			HAL_GPIO_WritePin(Regen_out_GPIO_Port, Regen_out_Pin, 1);
-		}
-		else{
-			auxHandler0.txData.regenOn = false;
-			HAL_GPIO_WritePin(Regen_out_GPIO_Port, Regen_out_Pin, 0);
-		}
-	  }
-//		auxHandler0.txData.headlightsOn = true;
-//		auxHandler0.txData.rightOn = true;
-	  auxHandler0.SendData();
   }
   /* USER CODE END 3 */
 }
@@ -224,7 +118,7 @@ void SystemClock_Config(void)
   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
 
-  /** Initializes the CPU, AHB and APB busses clocks
+  /** Initializes the CPU, AHB and APB busses clocks 
   */
   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI48;
   RCC_OscInitStruct.HSI48State = RCC_HSI48_ON;
@@ -233,7 +127,7 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
-  /** Initializes the CPU, AHB and APB busses clocks
+  /** Initializes the CPU, AHB and APB busses clocks 
   */
   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
                               |RCC_CLOCKTYPE_PCLK1;
@@ -426,9 +320,9 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(Headlights_in_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : Hazards_in_Pin CMinus_in_Pin CPlus_in_Pin RT_in_Pin
+  /*Configure GPIO pins : Hazards_in_Pin CMinus_in_Pin CPlus_in_Pin RT_in_Pin 
                            LT_in_Pin */
-  GPIO_InitStruct.Pin = Hazards_in_Pin|CMinus_in_Pin|CPlus_in_Pin|RT_in_Pin
+  GPIO_InitStruct.Pin = Hazards_in_Pin|CMinus_in_Pin|CPlus_in_Pin|RT_in_Pin 
                           |LT_in_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
@@ -468,7 +362,7 @@ void Error_Handler(void)
   * @retval None
   */
 void assert_failed(char *file, uint32_t line)
-{
+{ 
   /* USER CODE BEGIN 6 */
   /* User can add his own implementation to report the file name and line number,
      tex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */

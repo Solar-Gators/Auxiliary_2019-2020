@@ -58,11 +58,30 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
-#define CruiseLED_out_Pin GPIO_PIN_0
-#define CruiseLED_out_GPIO_Port GPIOA
-#define Horn_in_Pin GPIO_PIN_1
-#define Horn_in_GPIO_Port GPIOA
-#define Horn_in_EXTI_IRQn EXTI0_1_IRQn
+#define PC1_Pin GPIO_PIN_1
+#define PC1_GPIO_Port GPIOC
+#define LCD_MISO_Pin GPIO_PIN_2
+#define LCD_MISO_GPIO_Port GPIOC
+#define LCD_MOSI_Pin GPIO_PIN_3
+#define LCD_MOSI_GPIO_Port GPIOC
+#define LCD_RST_Pin GPIO_PIN_4
+#define LCD_RST_GPIO_Port GPIOA
+#define LCD_DC_Pin GPIO_PIN_5
+#define LCD_DC_GPIO_Port GPIOA
+#define Hazards_out_Pin GPIO_PIN_7
+#define Hazards_out_GPIO_Port GPIOA
+#define Regen_out_Pin GPIO_PIN_4
+#define Regen_out_GPIO_Port GPIOC
+#define LT_out_Pin GPIO_PIN_5
+#define LT_out_GPIO_Port GPIOC
+#define Throttle_in_Pin GPIO_PIN_0
+#define Throttle_in_GPIO_Port GPIOB
+#define LCD_CS_Pin GPIO_PIN_1
+#define LCD_CS_GPIO_Port GPIOB
+#define LCD_SCK_Pin GPIO_PIN_10
+#define LCD_SCK_GPIO_Port GPIOB
+#define RT_out_Pin GPIO_PIN_6
+#define RT_out_GPIO_Port GPIOC
 #define TMS_Pin GPIO_PIN_13
 #define TMS_GPIO_Port GPIOA
 #define TCK_Pin GPIO_PIN_14
@@ -73,6 +92,8 @@ void Error_Handler(void);
 #define Reserved0_Pin GPIO_PIN_10
 #define Reserved0_GPIO_Port GPIOC
 #define Reserved0_EXTI_IRQn EXTI4_15_IRQn
+#define Horn_in_Pin GPIO_PIN_11
+#define Horn_in_GPIO_Port GPIOC
 #define Regen_in_Pin GPIO_PIN_12
 #define Regen_in_GPIO_Port GPIOC
 #define Regen_in_EXTI_IRQn EXTI4_15_IRQn
@@ -94,6 +115,10 @@ void Error_Handler(void);
 #define LT_in_Pin GPIO_PIN_7
 #define LT_in_GPIO_Port GPIOB
 #define LT_in_EXTI_IRQn EXTI4_15_IRQn
+#define Cruise_in_Pin GPIO_PIN_1
+#define Cruise_in_GPIO_Port GPIOC
+#define CruiseLED_out_Pin GPIO_PIN_0
+#define CruiseLED_out_GPIO_Port GPIOC
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
