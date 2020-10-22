@@ -91,6 +91,9 @@ volatile bool state = true;
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 
 {
+
+	HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
+
 	if(auxPacket.hazardsOn == true)
 	{
 		HAL_GPIO_TogglePin(LT_out_GPIO_Port, LT_out_Pin);
@@ -134,14 +137,16 @@ int main(void)
   SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
-
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+
   MX_TIM6_Init();
   /* USER CODE BEGIN 2 */
   SUBSYSTEM_DATA_MODULE::StartCAN();
+
+  HAL_TIM_Base_Start_IT(&htim6);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -255,6 +260,7 @@ void SystemClock_Config(void)
 
 
 /* USER CODE BEGIN 4 */
+
 static void MX_TIM6_Init(void)
 {
 

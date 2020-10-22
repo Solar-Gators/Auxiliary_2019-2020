@@ -49,13 +49,16 @@ default.size.stdout \
 OBJDUMP_LIST += \
 SolarGators_Auxiliary_SteeringWheelPROTOTYPE_V0.list \
 
+OBJCOPY_BIN += \
+SolarGators_Auxiliary_SteeringWheelPROTOTYPE_V0.bin \
+
 
 # All Target
 all: SolarGators_Auxiliary_SteeringWheelPROTOTYPE_V0.elf secondary-outputs
 
 # Tool invocations
-SolarGators_Auxiliary_SteeringWheelPROTOTYPE_V0.elf: $(OBJS) $(USER_OBJS) D:\Documents\Solar\ Gators\ Programming\SolarGators_Auxiliary_SteeringWheelPROTOTYPE_V0\STM32F072RBTX_FLASH.ld
-	arm-none-eabi-g++ -o "SolarGators_Auxiliary_SteeringWheelPROTOTYPE_V0.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m0 -T"D:\Documents\Solar Gators Programming\SolarGators_Auxiliary_SteeringWheelPROTOTYPE_V0\STM32F072RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SolarGators_Auxiliary_SteeringWheelPROTOTYPE_V0.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+SolarGators_Auxiliary_SteeringWheelPROTOTYPE_V0.elf: $(OBJS) $(USER_OBJS) C:\GitHub\ Stuff\Solar\ Gators\Lights-Code\Auxiliary_2019-2020\SolarGators_Auxiliary_SteeringWheelPROTOTYPE_V0\STM32F072RBTX_FLASH.ld
+	arm-none-eabi-g++ -o "SolarGators_Auxiliary_SteeringWheelPROTOTYPE_V0.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m0 -T"C:\GitHub Stuff\Solar Gators\Lights-Code\Auxiliary_2019-2020\SolarGators_Auxiliary_SteeringWheelPROTOTYPE_V0\STM32F072RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SolarGators_Auxiliary_SteeringWheelPROTOTYPE_V0.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -69,12 +72,17 @@ SolarGators_Auxiliary_SteeringWheelPROTOTYPE_V0.list: $(EXECUTABLES)
 	@echo 'Finished building: $@'
 	@echo ' '
 
+SolarGators_Auxiliary_SteeringWheelPROTOTYPE_V0.bin: $(EXECUTABLES)
+	arm-none-eabi-objcopy  -O binary $(EXECUTABLES) "SolarGators_Auxiliary_SteeringWheelPROTOTYPE_V0.bin"
+	@echo 'Finished building: $@'
+	@echo ' '
+
 # Other Targets
 clean:
 	-$(RM) *
 	-@echo ' '
 
-secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)
+secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_BIN)
 
 .PHONY: all clean dependents
 .SECONDARY:
