@@ -1,9 +1,9 @@
 Core/subsystem-can-driver/orion-data-module.o: \
  ../Core/subsystem-can-driver/orion-data-module.cpp \
- C:/Users/jenni/Documents/Solar\ Gators/Auxiliary_2019-2020/AUX_MotherBoard/Core/subsystem-can-driver/orion-data-module.hpp \
- C:/Users/jenni/Documents/Solar\ Gators/Auxiliary_2019-2020/AUX_MotherBoard/Core/subsystem-can-driver/subsystem-data-module.hpp \
- C:/Users/jenni/Documents/Solar\ Gators/Auxiliary_2019-2020/AUX_MotherBoard/Core/subsystem-can-driver/subsystem-info.hpp \
- ../Core/Inc/main.h ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h \
+ ../Core/subsystem-can-driver/orion-data-module.hpp \
+ ../Core/subsystem-can-driver/subsystem-data-module.hpp \
+ ../Core/subsystem-can-driver/subsystem-info.hpp ../Core/Inc/main.h \
+ ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h \
  ../Core/Inc/stm32f0xx_hal_conf.h \
  ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc.h \
  ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_def.h \
@@ -30,15 +30,15 @@ Core/subsystem-can-driver/orion-data-module.o: \
  ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pwr_ex.h \
  ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim.h \
  ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim_ex.h \
- C:/Users/jenni/Documents/Solar\ Gators/Auxiliary_2019-2020/AUX_MotherBoard/Core/subsystem-can-driver/helper-code/helper-fifo.hpp \
- C:/Users/jenni/Documents/Solar\ Gators/Auxiliary_2019-2020/AUX_MotherBoard/Core/subsystem-can-driver/helper-code/rx-module-binary-tree.hpp \
- c:\users\jenni\documents\solar\ gators\auxiliary_2019-2020\aux_motherboard\core\subsystem-can-driver\subsystem-info.hpp
+ ../Core/subsystem-can-driver/helper-code/helper-fifo.hpp \
+ ../Core/subsystem-can-driver/helper-code/rx-module-binary-tree.hpp \
+ ../Core/subsystem-can-driver/helper-code/../subsystem-info.hpp
 
-C:/Users/jenni/Documents/Solar\ Gators/Auxiliary_2019-2020/AUX_MotherBoard/Core/subsystem-can-driver/orion-data-module.hpp:
+../Core/subsystem-can-driver/orion-data-module.hpp:
 
-C:/Users/jenni/Documents/Solar\ Gators/Auxiliary_2019-2020/AUX_MotherBoard/Core/subsystem-can-driver/subsystem-data-module.hpp:
+../Core/subsystem-can-driver/subsystem-data-module.hpp:
 
-C:/Users/jenni/Documents/Solar\ Gators/Auxiliary_2019-2020/AUX_MotherBoard/Core/subsystem-can-driver/subsystem-info.hpp:
+../Core/subsystem-can-driver/subsystem-info.hpp:
 
 ../Core/Inc/main.h:
 
@@ -96,8 +96,8 @@ C:/Users/jenni/Documents/Solar\ Gators/Auxiliary_2019-2020/AUX_MotherBoard/Core/
 
 ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim_ex.h:
 
-C:/Users/jenni/Documents/Solar\ Gators/Auxiliary_2019-2020/AUX_MotherBoard/Core/subsystem-can-driver/helper-code/helper-fifo.hpp:
+../Core/subsystem-can-driver/helper-code/helper-fifo.hpp:
 
-C:/Users/jenni/Documents/Solar\ Gators/Auxiliary_2019-2020/AUX_MotherBoard/Core/subsystem-can-driver/helper-code/rx-module-binary-tree.hpp:
+../Core/subsystem-can-driver/helper-code/rx-module-binary-tree.hpp:
 
-c:\users\jenni\documents\solar\ gators\auxiliary_2019-2020\aux_motherboard\core\subsystem-can-driver\subsystem-info.hpp:
+../Core/subsystem-can-driver/helper-code/../subsystem-info.hpp:

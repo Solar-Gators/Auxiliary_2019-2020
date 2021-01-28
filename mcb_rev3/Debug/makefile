@@ -9,9 +9,9 @@ RM := rm -rf
 # All of the sources participating in the build are defined here
 -include sources.mk
 -include Drivers/STM32F0xx_HAL_Driver/Src/subdir.mk
--include Core/subsystem-can-driver/helper-code/subdir.mk
--include Core/subsystem-can-driver/subdir.mk
 -include Core/Startup/subdir.mk
+-include Core/Src/subsystem-can-driver/helper-code/subdir.mk
+-include Core/Src/subsystem-can-driver/subdir.mk
 -include Core/Src/subdir.mk
 -include subdir.mk
 -include objects.mk
@@ -47,24 +47,24 @@ endif
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
-AUX_MotherBoard.elf \
+mcb_rev3.elf \
 
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
-AUX_MotherBoard.list \
+mcb_rev3.list \
 
 OBJCOPY_BIN += \
-AUX_MotherBoard.bin \
+mcb_rev3.bin \
 
 
 # All Target
-all: AUX_MotherBoard.elf secondary-outputs
+all: mcb_rev3.elf secondary-outputs
 
 # Tool invocations
-AUX_MotherBoard.elf: $(OBJS) $(USER_OBJS) C:\Users\ajp47\source\repos\Auxiliary_2019-2020\AUX_MotherBoard\STM32F072RBTX_FLASH.ld
-	arm-none-eabi-g++ -o "AUX_MotherBoard.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m0 -T"C:\Users\ajp47\source\repos\Auxiliary_2019-2020\AUX_MotherBoard\STM32F072RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="AUX_MotherBoard.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+mcb_rev3.elf: $(OBJS) $(USER_OBJS) C:\Users\ajp47\source\repos\Auxiliary_2019-2020\mcb_rev3\STM32F072RBTX_FLASH.ld
+	arm-none-eabi-g++ -o "mcb_rev3.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m0 -T"C:\Users\ajp47\source\repos\Auxiliary_2019-2020\mcb_rev3\STM32F072RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="mcb_rev3.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -73,13 +73,13 @@ default.size.stdout: $(EXECUTABLES)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-AUX_MotherBoard.list: $(EXECUTABLES)
-	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "AUX_MotherBoard.list"
+mcb_rev3.list: $(EXECUTABLES)
+	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "mcb_rev3.list"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-AUX_MotherBoard.bin: $(EXECUTABLES)
-	arm-none-eabi-objcopy  -O binary $(EXECUTABLES) "AUX_MotherBoard.bin"
+mcb_rev3.bin: $(EXECUTABLES)
+	arm-none-eabi-objcopy  -O binary $(EXECUTABLES) "mcb_rev3.bin"
 	@echo 'Finished building: $@'
 	@echo ' '
 

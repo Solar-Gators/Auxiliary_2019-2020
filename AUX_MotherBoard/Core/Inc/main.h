@@ -58,8 +58,10 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
-#define PC1_Pin GPIO_PIN_1
-#define PC1_GPIO_Port GPIOC
+#define CruiseLED_out_Pin GPIO_PIN_0
+#define CruiseLED_out_GPIO_Port GPIOC
+#define Cruise_in_Pin GPIO_PIN_1
+#define Cruise_in_GPIO_Port GPIOC
 #define LCD_MISO_Pin GPIO_PIN_2
 #define LCD_MISO_GPIO_Port GPIOC
 #define LCD_MOSI_Pin GPIO_PIN_3
@@ -115,10 +117,6 @@ void Error_Handler(void);
 #define LT_in_Pin GPIO_PIN_7
 #define LT_in_GPIO_Port GPIOB
 #define LT_in_EXTI_IRQn EXTI4_15_IRQn
-#define Cruise_in_Pin GPIO_PIN_1
-#define Cruise_in_GPIO_Port GPIOC
-#define CruiseLED_out_Pin GPIO_PIN_0
-#define CruiseLED_out_GPIO_Port GPIOC
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */

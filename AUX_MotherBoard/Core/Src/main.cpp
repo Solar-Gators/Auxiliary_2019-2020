@@ -23,8 +23,8 @@
 #include <stdint.h>
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "aux-data-module.hpp"
-#include "subsystem-data-module.hpp"
+#include "..\subsystem-can-driver\aux-data-module.hpp"
+#include "..\subsystem-can-driver\subsystem-data-module.hpp"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -145,9 +145,12 @@ int main(void)
 		//_____[Cruise in]_____
 		if (HAL_GPIO_ReadPin(Cruise_in_GPIO_Port, Cruise_in_Pin) == GPIO_PIN_SET){
 			cruiseToggle = !cruiseToggle;
-			//Need to figure out where to send cruise data******************************************
-			//auxHandler0git .txData.???????? = cruiseToggle;
-			HAL_GPIO_WritePin(CruiseLED_out_GPIO_Port, CruiseLED_out_Pin, cruiseToggle);
+			//auxHandler0.txData.cruiseOn = cruiseToggle;
+			if (cruiseToggle)
+				HAL_GPIO_WritePin(CruiseLED_out_GPIO_Port, CruiseLED_out_Pin, GPIO_PIN_SET);
+			else
+				HAL_GPIO_WritePin(CruiseLED_out_GPIO_Port, CruiseLED_out_Pin, GPIO_PIN_RESET);
+
 		}
 		//_____[Cruise +]_____
 		if (HAL_GPIO_ReadPin(CPlus_in_GPIO_Port, CPlus_in_Pin) == GPIO_PIN_SET){
@@ -163,7 +166,10 @@ int main(void)
 		else if (HAL_GPIO_ReadPin(Hazards_in_GPIO_Port, Hazards_in_Pin) == GPIO_PIN_SET){
 			hazardsToggle = !hazardsToggle;
 			auxHandler0.txData.hazardsOn = hazardsToggle;
-			HAL_GPIO_ReadPin(Hazards_out_GPIO_Port, Hazards_out_Pin, hazardsToggle);
+			if (hazardsToggle)
+				HAL_GPIO_WritePin(Hazards_out_GPIO_Port, CruiseLED_out_Pin, GPIO_PIN_SET);
+			else
+				HAL_GPIO_WritePin(Hazards_out_GPIO_Port, CruiseLED_out_Pin, GPIO_PIN_RESET);
 		}
 		//_____[Horn]_____
 		else if (HAL_GPIO_ReadPin(Horn_in_GPIO_Port, Horn_in_Pin) == GPIO_PIN_SET){
@@ -176,20 +182,20 @@ int main(void)
 		//_____[Left Turn]_____
 		if (HAL_GPIO_ReadPin(LT_in_GPIO_Port, LT_in_Pin) == GPIO_PIN_SET){
 			auxHandler0.txData.leftOn = true;
-			HAL_GPIO_WritePin(LT_out_GPIO_Port, LT_out_Pin, 1);
+			HAL_GPIO_WritePin(LT_out_GPIO_Port, LT_out_Pin, GPIO_PIN_SET);
 		}
 		else{
 			auxHandler0.txData.leftOn = false;
-			HAL_GPIO_WritePin(LT_out_GPIO_Port, LT_out_Pin, 0);
+			HAL_GPIO_WritePin(LT_out_GPIO_Port, LT_out_Pin, GPIO_PIN_RESET);
 		}
 		//_____[Right Turn]_____
 		if (HAL_GPIO_ReadPin(RT_in_GPIO_Port, RT_in_Pin) == GPIO_PIN_SET){
 			auxHandler0.txData.rightOn = true;
-			HAL_GPIO_WritePin(RT_out_GPIO_Port, RT_out_Pin, 1);
+			HAL_GPIO_WritePin(RT_out_GPIO_Port, RT_out_Pin, GPIO_PIN_SET);
 		}
 		else{
 			auxHandler0.txData.rightOn = false;
-			HAL_GPIO_WritePin(RT_out_GPIO_Port, RT_out_Pin, 0);
+			HAL_GPIO_WritePin(RT_out_GPIO_Port, RT_out_Pin, GPIO_PIN_RESET);
 		}
 		//_____[Headlights]_____
 		if (HAL_GPIO_ReadPin(Headlights_in_GPIO_Port, Headlights_in_Pin) == GPIO_PIN_SET){
@@ -201,11 +207,11 @@ int main(void)
 		//_____[Regen]_____
 		if (HAL_GPIO_ReadPin(Regen_in_GPIO_Port, Regen_in_Pin) == GPIO_PIN_SET){
 			auxHandler0.txData.regenOn = true;
-			HAL_GPIO_WritePin(Regen_out_GPIO_Port, Regen_out_Pin, 1);
+			HAL_GPIO_WritePin(Regen_out_GPIO_Port, Regen_out_Pin, GPIO_PIN_SET);
 		}
 		else{
 			auxHandler0.txData.regenOn = false;
-			HAL_GPIO_WritePin(Regen_out_GPIO_Port, Regen_out_Pin, 0);
+			HAL_GPIO_WritePin(Regen_out_GPIO_Port, Regen_out_Pin, GPIO_PIN_RESET);
 		}
 	  }
 		auxHandler0.txData.headlightsOn = true;
@@ -345,16 +351,22 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOD_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOC, PC1_Pin|Regen_out_Pin|LT_out_Pin|RT_out_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOC, Cruise_in_Pin|Regen_out_Pin|LT_out_Pin|RT_out_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, CruiseLED_out_Pin|LCD_RST_Pin|LCD_DC_Pin|Hazards_out_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, LCD_RST_Pin|LCD_DC_Pin|Hazards_out_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(LCD_CS_GPIO_Port, LCD_CS_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pins : PC1_Pin Regen_out_Pin LT_out_Pin RT_out_Pin */
-  GPIO_InitStruct.Pin = PC1_Pin|Regen_out_Pin|LT_out_Pin|RT_out_Pin;
+  /*Configure GPIO pins : CruiseLED_out_Pin Reserved0_Pin */
+  GPIO_InitStruct.Pin = CruiseLED_out_Pin|Reserved0_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : Cruise_in_Pin Regen_out_Pin LT_out_Pin RT_out_Pin */
+  GPIO_InitStruct.Pin = Cruise_in_Pin|Regen_out_Pin|LT_out_Pin|RT_out_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -368,8 +380,8 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Alternate = GPIO_AF1_SPI2;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : CruiseLED_out_Pin LCD_RST_Pin LCD_DC_Pin Hazards_out_Pin */
-  GPIO_InitStruct.Pin = CruiseLED_out_Pin|LCD_RST_Pin|LCD_DC_Pin|Hazards_out_Pin;
+  /*Configure GPIO pins : LCD_RST_Pin LCD_DC_Pin Hazards_out_Pin */
+  GPIO_InitStruct.Pin = LCD_RST_Pin|LCD_DC_Pin|Hazards_out_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -401,12 +413,6 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(Reserved1_GPIO_Port, &GPIO_InitStruct);
-
-  /*Configure GPIO pin : Reserved0_Pin */
-  GPIO_InitStruct.Pin = Reserved0_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(Reserved0_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pin : Horn_in_Pin */
   GPIO_InitStruct.Pin = Horn_in_Pin;
