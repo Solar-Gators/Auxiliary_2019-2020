@@ -64,7 +64,7 @@ static void MX_TIM2_Init(void);
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
 	//buttons
 	if (GPIO_Pin == CPlus_in_Pin || GPIO_Pin == CMinus_in_Pin ||
-		GPIO_Pin ==  Hazards_in_Pin || GPIO_Pin ==  Horn_in_Pin){
+		GPIO_Pin ==  Hazards_in_Pin || GPIO_Pin ==  Horn_in_Pin || GPIO_Pin == Cruise_in_Pin){
 		HAL_TIM_Base_Start_IT(&htim2);
 	}
 	//switches
@@ -87,6 +87,9 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 		btnSignal_flag = true;
 	}
 	else if (HAL_GPIO_ReadPin(Horn_in_GPIO_Port, Horn_in_Pin) == GPIO_PIN_SET){
+		btnSignal_flag = true;
+	}
+	else if (HAL_GPIO_ReadPin(Cruise_in_GPIO_Port, Cruise_in_Pin) == GPIO_PIN_SET){
 		btnSignal_flag = true;
 	}
 
@@ -145,7 +148,6 @@ int main(void)
 		//_____[Cruise in]_____
 		if (HAL_GPIO_ReadPin(Cruise_in_GPIO_Port, Cruise_in_Pin) == GPIO_PIN_SET){
 			cruiseToggle = !cruiseToggle;
-			//auxHandler0.txData.cruiseOn = cruiseToggle;
 			if (cruiseToggle)
 				HAL_GPIO_WritePin(CruiseLED_out_GPIO_Port, CruiseLED_out_Pin, GPIO_PIN_SET);
 			else
@@ -198,6 +200,7 @@ int main(void)
 			HAL_GPIO_WritePin(RT_out_GPIO_Port, RT_out_Pin, GPIO_PIN_RESET);
 		}
 		//_____[Headlights]_____
+		// To do. Make sure switching headlights off triggers EXTI and turns logic off
 		if (HAL_GPIO_ReadPin(Headlights_in_GPIO_Port, Headlights_in_Pin) == GPIO_PIN_SET){
 			auxHandler0.txData.headlightsOn = true;
 		}
@@ -351,7 +354,7 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOD_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOC, Cruise_in_Pin|Regen_out_Pin|LT_out_Pin|RT_out_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOC, CruiseLED_out_Pin|Regen_out_Pin|LT_out_Pin|RT_out_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOA, LCD_RST_Pin|LCD_DC_Pin|Hazards_out_Pin, GPIO_PIN_RESET);
@@ -359,17 +362,17 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(LCD_CS_GPIO_Port, LCD_CS_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pins : CruiseLED_out_Pin Reserved0_Pin */
-  GPIO_InitStruct.Pin = CruiseLED_out_Pin|Reserved0_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
-
-  /*Configure GPIO pins : Cruise_in_Pin Regen_out_Pin LT_out_Pin RT_out_Pin */
-  GPIO_InitStruct.Pin = Cruise_in_Pin|Regen_out_Pin|LT_out_Pin|RT_out_Pin;
+  /*Configure GPIO pins : CruiseLED_out_Pin Regen_out_Pin LT_out_Pin RT_out_Pin */
+  GPIO_InitStruct.Pin = CruiseLED_out_Pin|Regen_out_Pin|LT_out_Pin|RT_out_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : Cruise_in_Pin Reserved0_Pin */
+  GPIO_InitStruct.Pin = Cruise_in_Pin|Reserved0_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
   /*Configure GPIO pins : LCD_MISO_Pin LCD_MOSI_Pin */
@@ -441,6 +444,9 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
   /* EXTI interrupt init*/
+  HAL_NVIC_SetPriority(EXTI0_1_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(EXTI0_1_IRQn);
+
   HAL_NVIC_SetPriority(EXTI2_3_IRQn, 0, 0);
   HAL_NVIC_EnableIRQ(EXTI2_3_IRQn);
 
@@ -448,7 +454,6 @@ static void MX_GPIO_Init(void)
   HAL_NVIC_EnableIRQ(EXTI4_15_IRQn);
 
 }
-
 /* USER CODE BEGIN 4 */
 
 /* USER CODE END 4 */
