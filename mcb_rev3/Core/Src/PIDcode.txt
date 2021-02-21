@@ -12,6 +12,10 @@ float Kc = 10;  //(through trial and error) Kc is PID constant
 float tau_i=.1; //constant used for Integral control. Formally, it accounts for integral delay
 //PID - currently takes ~20 seconds to fully correct when a short sudden large resistance is applied
         
+
+//Read in RPM from CAN
+//Read in throttle voltage to ADC
+
 if ((PORTE_IN & 0x02) == 0) {   //Checks for button press then debounces - just for test
     delay(100000);
     if((PORTE_IN & 0x02) == 0) {

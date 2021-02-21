@@ -57,6 +57,7 @@ typedef enum slave
 SPI_HandleTypeDef hspi2;
 
 TIM_HandleTypeDef htim2;
+TIM_HandleTypeDef htim3;
 
 /* USER CODE BEGIN PV */
 
@@ -92,8 +93,22 @@ static double wantSpeed = 0;
 static double actualSpeed = 0;
 
 //AJ DEBUGGING CODE BELOW!!!!!!!!
-static int tickDebug = 0;
+//static int tickDebug = 0;
 static bool sysDebug = true;
+
+//PID Variables
+/*volatile uint8_t buttonFlag=0;
+volatile uint8_t pidFlag=0;
+volatile float setPoint;    //set pointtarget value
+volatile float inputBias;   //initial u
+volatile float input = 2730;    //input given to motor. For car would be something like %pedal.
+volatile float error;   //How far off the current rpm is from the set pointtarget value
+volatile float sum_int; //Sum of total accumulated error over time
+float timeEst;  //experimentally determined constant that estimates time between PID calculation updates - necessary for integral control
+float Kc=13.65; //(mathmatically estiamted)
+//float Kc = 10;  //(through trial and error) Kc is PID constant
+float tau_i=.1; //constant used for Integral control. Formally, it accounts for integral delay
+*/
 
 /* USER CODE END PV */
 
@@ -102,6 +117,7 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_SPI2_Init(void);
 static void MX_TIM2_Init(void);
+static void MX_TIM3_Init(void);
 /* USER CODE BEGIN PFP */
 
 // ----------------------------
@@ -176,6 +192,7 @@ int main(void)
   MX_GPIO_Init();
   MX_SPI2_Init();
   MX_TIM2_Init();
+  MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */
@@ -189,6 +206,8 @@ int main(void)
   HAL_GPIO_WritePin(PRE_MOTOR_GPIO_Port, PRE_MOTOR_Pin, GPIO_PIN_SET); //set PRE_MOTOR high
   __HAL_TIM_SET_COUNTER(&htim2, 0);
   HAL_TIM_Base_Start_IT(&htim2);
+  __HAL_TIM_SET_COUNTER(&htim3, 0);
+  HAL_TIM_Base_Start_IT(&htim3);
   while (1)
   {
     /* USER CODE END WHILE */
@@ -357,7 +376,7 @@ static void MX_TIM2_Init(void)
 {
 
   /* USER CODE BEGIN TIM2_Init 0 */
-
+	// Info. Tim2 clocks at 1 hz, or one callback per second
   /* USER CODE END TIM2_Init 0 */
 
   TIM_ClockConfigTypeDef sClockSourceConfig = {0};
@@ -390,6 +409,50 @@ static void MX_TIM2_Init(void)
   /* USER CODE BEGIN TIM2_Init 2 */
 
   /* USER CODE END TIM2_Init 2 */
+
+}
+
+/**
+  * @brief TIM3 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_TIM3_Init(void)
+{
+
+  /* USER CODE BEGIN TIM3_Init 0 */
+  /* USER CODE END TIM3_Init 0 */
+
+  TIM_ClockConfigTypeDef sClockSourceConfig = {0};
+  TIM_MasterConfigTypeDef sMasterConfig = {0};
+
+  /* USER CODE BEGIN TIM3_Init 1 */
+
+  /* USER CODE END TIM3_Init 1 */
+  htim3.Instance = TIM3;
+  htim3.Init.Prescaler = 47999;
+  htim3.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim3.Init.Period = 99;
+  htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  htim3.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+  if (HAL_TIM_Base_Init(&htim3) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
+  if (HAL_TIM_ConfigClockSource(&htim3, &sClockSourceConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+  if (HAL_TIMEx_MasterConfigSynchronization(&htim3, &sMasterConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN TIM3_Init 2 */
+
+  /* USER CODE END TIM3_Init 2 */
 
 }
 
@@ -481,19 +544,6 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 	// check which timer triggered interrupt
 	if(htim->Instance == TIM2)
 	{
-		if (sysDebug)
-		{
-			if (tickDebug >=5)
-			{
-				tickDebug = 0;
-				HAL_GPIO_WritePin(DEBUG_OUT_GPIO_Port, DEBUG_OUT_Pin, GPIO_PIN_SET);
-				sysDebug = false;
-			}
-			else
-			{
-				++tickDebug;
-			}
-		}
 		if(sysMPPTPrecharge)
 		{
 			if(tickPrecharge >= 17)  // 15 seconds to deal and PRE_MPPT
@@ -519,6 +569,18 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 			}
 			else ++tickStartup;
 		}
+	}
+	else if(htim->Instance == TIM3)
+	{
+		if (sysDebug)
+		{
+			HAL_GPIO_WritePin(DEBUG_OUT_GPIO_Port, DEBUG_OUT_Pin, GPIO_PIN_RESET);
+		}
+		else
+		{
+			HAL_GPIO_WritePin(DEBUG_OUT_GPIO_Port, DEBUG_OUT_Pin, GPIO_PIN_SET);
+		}
+		sysDebug = !sysDebug;
 	}
 	else __NOP();	// no operation
 }
