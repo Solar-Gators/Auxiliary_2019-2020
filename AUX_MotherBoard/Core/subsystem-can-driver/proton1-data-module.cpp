@@ -2,7 +2,7 @@
 //Description: This implements mppt-specific data storage functions
 
 //Include Files
-#include "proton1-data-module.hpp"
+#include <proton1-data-module.hpp>
 
 //Private Constants
 /*This is an example description for constants and variables. Delete this if it is unused here and copy and paste it to where it is needed. */

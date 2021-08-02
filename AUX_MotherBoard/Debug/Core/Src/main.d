@@ -25,14 +25,7 @@ Core/Src/main.o: ../Core/Src/main.cpp ../Core/Inc/main.h \
  ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pwr.h \
  ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pwr_ex.h \
  ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim.h \
- ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim_ex.h \
- ../Core/Src/..\subsystem-can-driver\aux-data-module.hpp \
- ../Core/Src/..\subsystem-can-driver\subsystem-data-module.hpp \
- ../Core/Src/..\subsystem-can-driver\subsystem-info.hpp \
- ../Core/Src/..\subsystem-can-driver\helper-code/helper-fifo.hpp \
- ../Core/Src/..\subsystem-can-driver\helper-code/rx-module-binary-tree.hpp \
- ../Core/Src/..\subsystem-can-driver\helper-code/../subsystem-info.hpp \
- ../Core/Src/..\subsystem-can-driver\subsystem-data-module.hpp
+ ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim_ex.h
 
 ../Core/Inc/main.h:
 
@@ -89,17 +82,3 @@ Core/Src/main.o: ../Core/Src/main.cpp ../Core/Inc/main.h \
 ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim.h:
 
 ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim_ex.h:
-
-../Core/Src/..\subsystem-can-driver\aux-data-module.hpp:
-
-../Core/Src/..\subsystem-can-driver\subsystem-data-module.hpp:
-
-../Core/Src/..\subsystem-can-driver\subsystem-info.hpp:
-
-../Core/Src/..\subsystem-can-driver\helper-code/helper-fifo.hpp:
-
-../Core/Src/..\subsystem-can-driver\helper-code/rx-module-binary-tree.hpp:
-
-../Core/Src/..\subsystem-can-driver\helper-code/../subsystem-info.hpp:
-
-../Core/Src/..\subsystem-can-driver\subsystem-data-module.hpp:

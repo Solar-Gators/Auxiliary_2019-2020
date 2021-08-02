@@ -20,11 +20,10 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include <stdint.h>
+
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "..\subsystem-can-driver\aux-data-module.hpp"
-#include "..\subsystem-can-driver\subsystem-data-module.hpp"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -34,6 +33,22 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
+#define hazardsBm 0x01
+#define hazardsBp 0
+#define headlightsBm 0x02
+#define headlightsBp 1
+#define leftBm 0x04
+#define leftBp 2
+#define rightBm 0x08
+#define rightBp 3
+#define cplusBm 0x10
+#define cplusBp 4
+#define cminusBm 0x20
+#define cminusBp 5
+#define hornBm 0x40
+#define hornBp 6
+#define regenBm 0x80
+#define regenBp 7
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -43,11 +58,21 @@
 
 /* Private variables ---------------------------------------------------------*/
 CAN_HandleTypeDef hcan;
-TIM_HandleTypeDef htim2;
-volatile bool btnSignal_flag = false;
-volatile bool swtchSignal_flag = false;
-/* USER CODE BEGIN PV */
 
+TIM_HandleTypeDef htim2;
+TIM_HandleTypeDef htim3;
+/* USER CODE BEGIN PV */
+volatile uint8_t btnSignal_flag = 0x00;
+volatile uint8_t swtchSignal_flag = 0x00;
+volatile uint8_t CANupdateFlag = 0x00;
+volatile uint8_t dataArray[8];
+volatile uint8_t timerRunning = 0x00;
+CAN_TxHeaderTypeDef pHeader;
+CAN_RxHeaderTypeDef pRxHeader;
+uint32_t TxMailbox;
+uint8_t outData = 0x00;
+uint8_t inData = 0x00;
+CAN_FilterTypeDef sFilterConfig;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -55,43 +80,115 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_CAN_Init(void);
 static void MX_TIM2_Init(void);
+static void MX_TIM3_Init(void);
 /* USER CODE BEGIN PFP */
-
-/* USER CODE END PFP */
-
-/* Private user code ---------------------------------------------------------*/
-/* USER CODE BEGIN 0 */
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
 	//buttons
 	if (GPIO_Pin == CPlus_in_Pin || GPIO_Pin == CMinus_in_Pin ||
-		GPIO_Pin ==  Hazards_in_Pin || GPIO_Pin ==  Horn_in_Pin || GPIO_Pin == Cruise_in_Pin){
+		GPIO_Pin ==  Hazards_in_Pin || GPIO_Pin ==  Horn_in_Pin || GPIO_Pin == Regen_in_Pin){
 		HAL_TIM_Base_Start_IT(&htim2);
 	}
 	//switches
 	else if (GPIO_Pin == LT_in_Pin || GPIO_Pin == RT_in_Pin ||
-			GPIO_Pin == Headlights_in_Pin || GPIO_Pin == Regen_in_Pin){
-		swtchSignal_flag = true;
+			GPIO_Pin == Headlights_in_Pin){
+		swtchSignal_flag = 0x01;
 	}
 }
 
 //For timer interrupt
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
-	HAL_TIM_Base_Stop_IT(&htim2);
-	if (HAL_GPIO_ReadPin(CPlus_in_GPIO_Port, CPlus_in_Pin) == GPIO_PIN_SET){
-		btnSignal_flag = true;
+
+	if (htim == &htim2) {
+
+		// stop the timer
+		HAL_TIM_Base_Stop_IT(&htim2);
+
+		if (HAL_GPIO_ReadPin(CPlus_in_GPIO_Port, CPlus_in_Pin) == GPIO_PIN_SET){
+			btnSignal_flag = 0x01;
+			dataArray[cplusBp] = 0x01;
+		}
+		else if (HAL_GPIO_ReadPin(CMinus_in_GPIO_Port, CMinus_in_Pin) == GPIO_PIN_SET){
+			btnSignal_flag = 0x01;
+			dataArray[cminusBp] = 0x01;
+		}
+		else if (HAL_GPIO_ReadPin(Hazards_in_GPIO_Port, Hazards_in_Pin) == GPIO_PIN_SET){
+			btnSignal_flag = 0x01;
+			dataArray[hazardsBp] = !dataArray[hazardsBp];
+			HAL_GPIO_WritePin(RT_out_GPIO_Port, RT_out_Pin, GPIO_PIN_RESET);
+			HAL_GPIO_WritePin(LT_out_GPIO_Port, LT_out_Pin, GPIO_PIN_RESET);
+			HAL_GPIO_TogglePin(Hazards_out_GPIO_Port, Hazards_out_Pin);
+		}
+		else if (HAL_GPIO_ReadPin(Horn_in_GPIO_Port, Horn_in_Pin) == GPIO_PIN_SET){
+			dataArray[hornBp] = 0x01;
+			btnSignal_flag = 0x01;
+		}
+		else if (HAL_GPIO_ReadPin(Regen_in_GPIO_Port, Regen_in_Pin) == GPIO_PIN_SET){
+			btnSignal_flag = 0x01;
+			dataArray[regenBp] = !dataArray[regenBp];
+			HAL_GPIO_TogglePin(Regen_out_GPIO_Port, Regen_out_Pin);
+		}
+		else if (HAL_GPIO_ReadPin(Cruise_in_GPIO_Port, Cruise_in_Pin) == GPIO_PIN_SET) {
+			btnSignal_flag = 0x01;
+			HAL_GPIO_TogglePin(CruiseLED_out_GPIO_Port, CruiseLED_out_Pin);
+		}
+
+		if (HAL_GPIO_ReadPin(Horn_in_GPIO_Port, Horn_in_Pin) == GPIO_PIN_RESET) {
+			dataArray[hornBp] = 0x00;
+			btnSignal_flag = 0x01;
+		}
+
+	} else if (htim == &htim3) {
+
+		// turn signal timer, timer 3
+		if (dataArray[hazardsBp]) {
+
+			// hazards
+			HAL_GPIO_TogglePin(LT_out_GPIO_Port, LT_out_Pin);
+			HAL_GPIO_TogglePin(RT_out_GPIO_Port, RT_out_Pin);
+
+		} else if (dataArray[leftBp]) {
+
+			// left turn
+			HAL_GPIO_TogglePin(LT_out_GPIO_Port, LT_out_Pin);
+
+		} else if (dataArray[rightBp]) {
+
+			// right turn
+			HAL_GPIO_TogglePin(RT_out_GPIO_Port, RT_out_Pin);
+
+		}
+
 	}
-	else if (HAL_GPIO_ReadPin(CMinus_in_GPIO_Port, CMinus_in_Pin) == GPIO_PIN_SET){
-		btnSignal_flag = true;
-	}
-	else if (HAL_GPIO_ReadPin(Hazards_in_GPIO_Port, Hazards_in_Pin) == GPIO_PIN_SET){
-		btnSignal_flag = true;
-	}
-	else if (HAL_GPIO_ReadPin(Horn_in_GPIO_Port, Horn_in_Pin) == GPIO_PIN_SET){
-		btnSignal_flag = true;
-	}
-	else if (HAL_GPIO_ReadPin(Cruise_in_GPIO_Port, Cruise_in_Pin) == GPIO_PIN_SET){
-		btnSignal_flag = true;
-	}
+
+}
+/* USER CODE END PFP */
+
+/* Private user code ---------------------------------------------------------*/
+/* USER CODE BEGIN 0 */
+void CAN_init(void) {
+
+	// configure the outgoing message
+	pHeader.DLC = 1;
+	  pHeader.IDE = CAN_ID_STD;
+	  pHeader.RTR = CAN_RTR_DATA;
+
+	// this is the Aux team's CAN ID
+	  pHeader.StdId = 0x3FF;
+
+	  sFilterConfig.FilterFIFOAssignment=CAN_FILTER_FIFO0;
+
+	  // The CAN filter is set to only receive from CAN messages of identifier 0x3FF, or 1023.
+	  // This is the auxiliary CAN identifier for Sunbreaker.
+	  sFilterConfig.FilterIdHigh=0x3FF;
+	  sFilterConfig.FilterIdLow=0x3FF;
+	  sFilterConfig.FilterMaskIdHigh=0;
+	  sFilterConfig.FilterMaskIdLow=0;
+	  sFilterConfig.FilterScale=CAN_FILTERSCALE_32BIT;
+	  sFilterConfig.FilterActivation=ENABLE;
+	  HAL_CAN_ConfigFilter(&hcan, &sFilterConfig);
+
+	  HAL_CAN_Start(&hcan);
+	  HAL_CAN_ActivateNotification(&hcan, CAN_IT_RX_FIFO0_MSG_PENDING);
 
 }
 /* USER CODE END 0 */
@@ -103,13 +200,8 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-	uint8_t cruiseToggle = 0;
-	uint8_t cplusToggle = 0;
-	uint8_t cminusToggle = 0;
-	uint8_t hornToggle = 0;
-	uint8_t hazardsToggle = 0;
-  /* USER CODE END 1 */
 
+  /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
 
@@ -131,95 +223,140 @@ int main(void)
   MX_GPIO_Init();
   MX_CAN_Init();
   MX_TIM2_Init();
+  MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
-  AUX_MESSAGE_0 auxHandler0;
-  auxHandler0.SetupReceive(nullptr);
-  SUBSYSTEM_DATA_MODULE::StartCAN(); //removed &hcan in parameter?
-
+  CAN_init();
+  btnSignal_flag = 0x01;
+  swtchSignal_flag = 0x01;
   /* USER CODE END 2 */
+
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  while (1){
-    /* USER CODE END WHILE */
-    /* USER CODE BEGIN 3 */
-  //=====[ BUTTONS ]===== (toggle)
-	  if (btnSignal_flag){
-		  btnSignal_flag = false;
-		//_____[Cruise in]_____
-		if (HAL_GPIO_ReadPin(Cruise_in_GPIO_Port, Cruise_in_Pin) == GPIO_PIN_SET){
-			cruiseToggle = !cruiseToggle;
-			if (cruiseToggle)
-				HAL_GPIO_WritePin(CruiseLED_out_GPIO_Port, CruiseLED_out_Pin, GPIO_PIN_SET);
-			else
-				HAL_GPIO_WritePin(CruiseLED_out_GPIO_Port, CruiseLED_out_Pin, GPIO_PIN_RESET);
+  while (1)
+  {
+	  // TODO: HANDLE CPLUS, CMINUS, AND HORN WHEN THEY ARE TRUE
+	  if (btnSignal_flag || swtchSignal_flag) {
+
+		  //update switches in memory
+		  dataArray[leftBp] = HAL_GPIO_ReadPin(LT_in_GPIO_Port, LT_in_Pin);
+		  dataArray[rightBp] = HAL_GPIO_ReadPin(RT_in_GPIO_Port, RT_in_Pin);
+		  dataArray[headlightsBp] = HAL_GPIO_ReadPin(Headlights_in_GPIO_Port, Headlights_in_Pin);
+
+		  // mark the CAN flag
+		  CANupdateFlag = 0x01;
+
+		  // clear the other flags
+		  btnSignal_flag = 0x00;
+		  swtchSignal_flag = 0x00;
+
+		  outData = 0x00;
+
+		  // update outData
+		  if (dataArray[hazardsBp]) {
+			  outData |= hazardsBm;
+		  }
+		  if (dataArray[headlightsBp]) {
+			  outData |= headlightsBm;
+		  }
+		  if (dataArray[leftBp]) {
+			  outData |= leftBm;
+		  }
+		  if (dataArray[rightBp]) {
+			  outData |= rightBm;
+		  }
+		  if (dataArray[cplusBp]) {
+			  outData |= cplusBm;
+		  }
+		  if (dataArray[cminusBp]) {
+			  outData |= cminusBm;
+		  }
+		  if (dataArray[hornBp]) {
+			  outData |= hornBm;
+		  }
+		  if (dataArray[regenBp]) {
+			  outData |= regenBm;
+		  }
+
+//		  outData |= (hazardsBm & dataArray[hazardsBp]);
+//		  outData |= (headlightsBm & dataArray[headlightsBp]);
+//		  outData |= (leftBm & dataArray[leftBp]);
+//		  outData |= (rightBm & dataArray[rightBp]);
+//		  outData |= (cplusBm & dataArray[cplusBp]);
+//		  outData |= (cminusBm & dataArray[cminusBp]);
+//		  outData |= (hornBm & dataArray[hornBp]);
+//		  outData |= (regenBm & dataArray[regenBp]);
+
+	  }
+
+	  // Only send a new TX message if the outgoing mailbox is empty
+	  if ((HAL_CAN_IsTxMessagePending(&hcan,TxMailbox) == 0) && (CANupdateFlag)) {
+
+		  // turn off the flag
+		  CANupdateFlag = 0x00;
+
+		  HAL_CAN_AddTxMessage(&hcan, &pHeader, &outData, &TxMailbox);
+
+		  // clear buttons that should only send data once, aka cplus and cminus
+		  dataArray[cplusBp] = 0x00;
+		  dataArray[cminusBp] = 0x00;
+		  outData &= ~cplusBm;
+		  outData &= ~cminusBm;
+
+	  }
+
+	  // START A TIMER FOR HAZARDS OR TURN SIGNAL
+	  	if (dataArray[hazardsBp]) {
+
+	  		if (!timerRunning) {
+
+	  			// write pin states
+				HAL_GPIO_WritePin(LT_out_GPIO_Port, LT_out_Pin, GPIO_PIN_SET);
+				HAL_GPIO_WritePin(RT_out_GPIO_Port, RT_out_Pin, GPIO_PIN_SET);
+				HAL_TIM_Base_Start_IT(&htim3);
+				timerRunning = 0x01;
+
+	  		}
+
+		} else if (dataArray[leftBp]) {
+
+			HAL_GPIO_WritePin(RT_out_GPIO_Port, RT_out_Pin, GPIO_PIN_RESET);
+
+			if (!timerRunning) {
+
+				// left turn
+				HAL_GPIO_WritePin(LT_out_GPIO_Port, LT_out_Pin, GPIO_PIN_SET);
+				HAL_TIM_Base_Start_IT(&htim3);
+				timerRunning = 0x01;
+
+			}
+
+		} else if (dataArray[rightBp]) {
+
+			HAL_GPIO_WritePin(LT_out_GPIO_Port, LT_out_Pin, GPIO_PIN_RESET);
+
+			if (!timerRunning) {
+
+				// right turn
+				HAL_GPIO_WritePin(RT_out_GPIO_Port, RT_out_Pin, GPIO_PIN_SET);
+				HAL_TIM_Base_Start_IT(&htim3);
+				timerRunning = 0x01;
+
+			}
+
+		} else {
+
+		  // stop timer 3
+		  timerRunning = 0x00;
+		  HAL_TIM_Base_Stop_IT(&htim3);
+		  // clear LEDs
+		  HAL_GPIO_WritePin(LT_out_GPIO_Port, LT_out_Pin, GPIO_PIN_RESET);
+		  HAL_GPIO_WritePin(RT_out_GPIO_Port, RT_out_Pin, GPIO_PIN_RESET);
 
 		}
-		//_____[Cruise +]_____
-		if (HAL_GPIO_ReadPin(CPlus_in_GPIO_Port, CPlus_in_Pin) == GPIO_PIN_SET){
-			cplusToggle = !cplusToggle;
-			auxHandler0.txData.cplusOn = cplusToggle;
-		}
-		//_____[Cruise -]_____
-		else if (HAL_GPIO_ReadPin(CMinus_in_GPIO_Port, CMinus_in_Pin) == GPIO_PIN_SET){
-			cminusToggle = !cminusToggle;
-			auxHandler0.txData.cminusOn = cminusToggle;
-		}
-		//_____[Hazards]_____
-		else if (HAL_GPIO_ReadPin(Hazards_in_GPIO_Port, Hazards_in_Pin) == GPIO_PIN_SET){
-			hazardsToggle = !hazardsToggle;
-			auxHandler0.txData.hazardsOn = hazardsToggle;
-			if (hazardsToggle)
-				HAL_GPIO_WritePin(Hazards_out_GPIO_Port, CruiseLED_out_Pin, GPIO_PIN_SET);
-			else
-				HAL_GPIO_WritePin(Hazards_out_GPIO_Port, CruiseLED_out_Pin, GPIO_PIN_RESET);
-		}
-		//_____[Horn]_____
-		else if (HAL_GPIO_ReadPin(Horn_in_GPIO_Port, Horn_in_Pin) == GPIO_PIN_SET){
-			hornToggle = !hornToggle;
-			auxHandler0.txData.hornOn = hornToggle;
-		}
-	  }
-	//=====[ SWITCHES ]===== (check on or off)
-	if(swtchSignal_flag){ //triggered on change of a signal
-		//_____[Left Turn]_____
-		if (HAL_GPIO_ReadPin(LT_in_GPIO_Port, LT_in_Pin) == GPIO_PIN_SET){
-			auxHandler0.txData.leftOn = true;
-			HAL_GPIO_WritePin(LT_out_GPIO_Port, LT_out_Pin, GPIO_PIN_SET);
-		}
-		else{
-			auxHandler0.txData.leftOn = false;
-			HAL_GPIO_WritePin(LT_out_GPIO_Port, LT_out_Pin, GPIO_PIN_RESET);
-		}
-		//_____[Right Turn]_____
-		if (HAL_GPIO_ReadPin(RT_in_GPIO_Port, RT_in_Pin) == GPIO_PIN_SET){
-			auxHandler0.txData.rightOn = true;
-			HAL_GPIO_WritePin(RT_out_GPIO_Port, RT_out_Pin, GPIO_PIN_SET);
-		}
-		else{
-			auxHandler0.txData.rightOn = false;
-			HAL_GPIO_WritePin(RT_out_GPIO_Port, RT_out_Pin, GPIO_PIN_RESET);
-		}
-		//_____[Headlights]_____
-		// To do. Make sure switching headlights off triggers EXTI and turns logic off
-		if (HAL_GPIO_ReadPin(Headlights_in_GPIO_Port, Headlights_in_Pin) == GPIO_PIN_SET){
-			auxHandler0.txData.headlightsOn = true;
-		}
-		else{
-			auxHandler0.txData.headlightsOn = false;
-		}
-		//_____[Regen]_____
-		if (HAL_GPIO_ReadPin(Regen_in_GPIO_Port, Regen_in_Pin) == GPIO_PIN_SET){
-			auxHandler0.txData.regenOn = true;
-			HAL_GPIO_WritePin(Regen_out_GPIO_Port, Regen_out_Pin, GPIO_PIN_SET);
-		}
-		else{
-			auxHandler0.txData.regenOn = false;
-			HAL_GPIO_WritePin(Regen_out_GPIO_Port, Regen_out_Pin, GPIO_PIN_RESET);
-		}
-	  }
-		auxHandler0.txData.headlightsOn = true;
-		auxHandler0.txData.rightOn = true;
-	  auxHandler0.SendData();
+
+    /* USER CODE END WHILE */
+
+    /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
 }
@@ -272,11 +409,11 @@ static void MX_CAN_Init(void)
 
   /* USER CODE END CAN_Init 1 */
   hcan.Instance = CAN;
-  hcan.Init.Prescaler = 16;
+  hcan.Init.Prescaler = 6;
   hcan.Init.Mode = CAN_MODE_NORMAL;
   hcan.Init.SyncJumpWidth = CAN_SJW_1TQ;
-  hcan.Init.TimeSeg1 = CAN_BS1_1TQ;
-  hcan.Init.TimeSeg2 = CAN_BS2_1TQ;
+  hcan.Init.TimeSeg1 = CAN_BS1_13TQ;
+  hcan.Init.TimeSeg2 = CAN_BS2_2TQ;
   hcan.Init.TimeTriggeredMode = DISABLE;
   hcan.Init.AutoBusOff = DISABLE;
   hcan.Init.AutoWakeUp = DISABLE;
@@ -339,6 +476,51 @@ static void MX_TIM2_Init(void)
 }
 
 /**
+  * @brief TIM3 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_TIM3_Init(void)
+{
+
+  /* USER CODE BEGIN TIM3_Init 0 */
+
+  /* USER CODE END TIM3_Init 0 */
+
+  TIM_ClockConfigTypeDef sClockSourceConfig = {0};
+  TIM_MasterConfigTypeDef sMasterConfig = {0};
+
+  /* USER CODE BEGIN TIM3_Init 1 */
+
+  /* USER CODE END TIM3_Init 1 */
+  htim3.Instance = TIM3;
+  htim3.Init.Prescaler = 1024;
+  htim3.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim3.Init.Period = 26000;
+  htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  htim3.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+  if (HAL_TIM_Base_Init(&htim3) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
+  if (HAL_TIM_ConfigClockSource(&htim3, &sClockSourceConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+  if (HAL_TIMEx_MasterConfigSynchronization(&htim3, &sMasterConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN TIM3_Init 2 */
+
+  /* USER CODE END TIM3_Init 2 */
+
+}
+
+/**
   * @brief GPIO Initialization Function
   * @param None
   * @retval None
@@ -369,8 +551,8 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : Cruise_in_Pin Reserved0_Pin */
-  GPIO_InitStruct.Pin = Cruise_in_Pin|Reserved0_Pin;
+  /*Configure GPIO pins : Cruise_in_Pin Reserved0_Pin Regen_in_Pin */
+  GPIO_InitStruct.Pin = Cruise_in_Pin|Reserved0_Pin|Regen_in_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
@@ -419,15 +601,9 @@ static void MX_GPIO_Init(void)
 
   /*Configure GPIO pin : Horn_in_Pin */
   GPIO_InitStruct.Pin = Horn_in_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(Horn_in_GPIO_Port, &GPIO_InitStruct);
-
-  /*Configure GPIO pin : Regen_in_Pin */
-  GPIO_InitStruct.Pin = Regen_in_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING_FALLING;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(Regen_in_GPIO_Port, &GPIO_InitStruct);
+  HAL_GPIO_Init(Horn_in_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pin : Headlights_in_Pin */
   GPIO_InitStruct.Pin = Headlights_in_Pin;
@@ -435,18 +611,19 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(Headlights_in_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : Hazards_in_Pin CMinus_in_Pin CPlus_in_Pin RT_in_Pin
-                           LT_in_Pin */
-  GPIO_InitStruct.Pin = Hazards_in_Pin|CMinus_in_Pin|CPlus_in_Pin|RT_in_Pin
-                          |LT_in_Pin;
+  /*Configure GPIO pins : Hazards_in_Pin CMinus_in_Pin CPlus_in_Pin */
+  GPIO_InitStruct.Pin = Hazards_in_Pin|CMinus_in_Pin|CPlus_in_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
-  /* EXTI interrupt init*/
-  HAL_NVIC_SetPriority(EXTI0_1_IRQn, 0, 0);
-  HAL_NVIC_EnableIRQ(EXTI0_1_IRQn);
+  /*Configure GPIO pins : RT_in_Pin LT_in_Pin */
+  GPIO_InitStruct.Pin = RT_in_Pin|LT_in_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING_FALLING;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
+  /* EXTI interrupt init*/
   HAL_NVIC_SetPriority(EXTI2_3_IRQn, 0, 0);
   HAL_NVIC_EnableIRQ(EXTI2_3_IRQn);
 
@@ -454,6 +631,7 @@ static void MX_GPIO_Init(void)
   HAL_NVIC_EnableIRQ(EXTI4_15_IRQn);
 
 }
+
 /* USER CODE BEGIN 4 */
 
 /* USER CODE END 4 */

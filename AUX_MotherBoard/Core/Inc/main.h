@@ -62,7 +62,6 @@ void Error_Handler(void);
 #define CruiseLED_out_GPIO_Port GPIOC
 #define Cruise_in_Pin GPIO_PIN_1
 #define Cruise_in_GPIO_Port GPIOC
-#define Cruise_in_EXTI_IRQn EXTI0_1_IRQn
 #define LCD_MISO_Pin GPIO_PIN_2
 #define LCD_MISO_GPIO_Port GPIOC
 #define LCD_MOSI_Pin GPIO_PIN_3
@@ -97,6 +96,7 @@ void Error_Handler(void);
 #define Reserved0_EXTI_IRQn EXTI4_15_IRQn
 #define Horn_in_Pin GPIO_PIN_11
 #define Horn_in_GPIO_Port GPIOC
+#define Horn_in_EXTI_IRQn EXTI4_15_IRQn
 #define Regen_in_Pin GPIO_PIN_12
 #define Regen_in_GPIO_Port GPIOC
 #define Regen_in_EXTI_IRQn EXTI4_15_IRQn

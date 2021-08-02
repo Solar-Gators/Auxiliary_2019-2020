@@ -56,9 +56,15 @@
 /* USER CODE END 0 */
 
 /* External variables --------------------------------------------------------*/
+extern CAN_HandleTypeDef hcan;
 extern TIM_HandleTypeDef htim2;
+extern TIM_HandleTypeDef htim3;
 /* USER CODE BEGIN EV */
-
+extern CAN_TxHeaderTypeDef pHeader;
+extern CAN_RxHeaderTypeDef pRxHeader;
+extern uint32_t TxMailbox;
+extern uint8_t inData,outData;
+extern CAN_FilterTypeDef sFilterConfig;
 /* USER CODE END EV */
 
 /******************************************************************************/
@@ -140,20 +146,6 @@ void SysTick_Handler(void)
 /******************************************************************************/
 
 /**
-  * @brief This function handles EXTI line 0 and 1 interrupts.
-  */
-void EXTI0_1_IRQHandler(void)
-{
-  /* USER CODE BEGIN EXTI0_1_IRQn 0 */
-
-  /* USER CODE END EXTI0_1_IRQn 0 */
-  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_1);
-  /* USER CODE BEGIN EXTI0_1_IRQn 1 */
-
-  /* USER CODE END EXTI0_1_IRQn 1 */
-}
-
-/**
   * @brief This function handles EXTI line 2 and 3 interrupts.
   */
 void EXTI2_3_IRQHandler(void)
@@ -181,6 +173,7 @@ void EXTI4_15_IRQHandler(void)
   HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_6);
   HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_7);
   HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_10);
+  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_11);
   HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_12);
   HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_15);
   /* USER CODE BEGIN EXTI4_15_IRQn 1 */
@@ -200,6 +193,34 @@ void TIM2_IRQHandler(void)
   /* USER CODE BEGIN TIM2_IRQn 1 */
 
   /* USER CODE END TIM2_IRQn 1 */
+}
+
+/**
+  * @brief This function handles TIM3 global interrupt.
+  */
+void TIM3_IRQHandler(void)
+{
+  /* USER CODE BEGIN TIM3_IRQn 0 */
+
+  /* USER CODE END TIM3_IRQn 0 */
+  HAL_TIM_IRQHandler(&htim3);
+  /* USER CODE BEGIN TIM3_IRQn 1 */
+
+  /* USER CODE END TIM3_IRQn 1 */
+}
+
+/**
+  * @brief This function handles HDMI-CEC and CAN interrupts / HDMI-CEC wake-up interrupt through EXTI line 27.
+  */
+void CEC_CAN_IRQHandler(void)
+{
+  /* USER CODE BEGIN CEC_CAN_IRQn 0 */
+
+  /* USER CODE END CEC_CAN_IRQn 0 */
+  HAL_CAN_IRQHandler(&hcan);
+  /* USER CODE BEGIN CEC_CAN_IRQn 1 */
+  HAL_CAN_GetRxMessage(&hcan, CAN_RX_FIFO0, &pRxHeader, &inData);
+  /* USER CODE END CEC_CAN_IRQn 1 */
 }
 
 /* USER CODE BEGIN 1 */

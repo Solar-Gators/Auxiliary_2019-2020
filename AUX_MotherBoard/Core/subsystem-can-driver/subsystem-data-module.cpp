@@ -53,16 +53,17 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
 /**
   * @brief This function handles HDMI-CEC and CAN interrupts / HDMI-CEC wake-up interrupt through EXTI line 27.
   */
-void CEC_CAN_IRQHandler(void)
-{
-  /* USER CODE BEGIN CEC_CAN_IRQn 0 */
 
-  /* USER CODE END CEC_CAN_IRQn 0 */
-  HAL_CAN_IRQHandler(&SUBSYSTEM_DATA_MODULE::hcan);
-  /* USER CODE BEGIN CEC_CAN_IRQn 1 */
-
-  /* USER CODE END CEC_CAN_IRQn 1 */
-}
+//void CEC_CAN_IRQHandler(void)
+//{
+//  /* USER CODE BEGIN CEC_CAN_IRQn 0 */
+//
+//  /* USER CODE END CEC_CAN_IRQn 0 */
+//  HAL_CAN_IRQHandler(&SUBSYSTEM_DATA_MODULE::hcan);
+//  /* USER CODE BEGIN CEC_CAN_IRQn 1 */
+//
+//  /* USER CODE END CEC_CAN_IRQn 1 */
+//}
 
 /**
 * @brief CAN MSP Initialization
@@ -70,38 +71,39 @@ void CEC_CAN_IRQHandler(void)
 * @param hcan: CAN handle pointer
 * @retval None
 */
-void HAL_CAN_MspInit(CAN_HandleTypeDef* hcan)
-{
-  GPIO_InitTypeDef GPIO_InitStruct = {0};
-  if(hcan->Instance==CAN)
-  {
-  /* USER CODE BEGIN CAN_MspInit 0 */
 
-  /* USER CODE END CAN_MspInit 0 */
-    /* Peripheral clock enable */
-    __HAL_RCC_CAN1_CLK_ENABLE();
-
-    __HAL_RCC_GPIOA_CLK_ENABLE();
-    /**CAN GPIO Configuration
-    PA11     ------> CAN_RX
-    PA12     ------> CAN_TX
-    */
-    GPIO_InitStruct.Pin = GPIO_PIN_11|GPIO_PIN_12;
-    GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
-    GPIO_InitStruct.Pull = GPIO_NOPULL;
-    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
-    GPIO_InitStruct.Alternate = GPIO_AF4_CAN;
-    HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-
-    /* CAN interrupt Init */
-    HAL_NVIC_SetPriority(CEC_CAN_IRQn, 0, 0);
-    HAL_NVIC_EnableIRQ(CEC_CAN_IRQn);
-  /* USER CODE BEGIN CAN_MspInit 1 */
-
-  /* USER CODE END CAN_MspInit 1 */
-  }
-
-}
+//void HAL_CAN_MspInit(CAN_HandleTypeDef* hcan)
+//{
+//  GPIO_InitTypeDef GPIO_InitStruct = {0};
+//  if(hcan->Instance==CAN)
+//  {
+//  /* USER CODE BEGIN CAN_MspInit 0 */
+//
+//  /* USER CODE END CAN_MspInit 0 */
+//    /* Peripheral clock enable */
+//    __HAL_RCC_CAN1_CLK_ENABLE();
+//
+//    __HAL_RCC_GPIOA_CLK_ENABLE();
+//    /**CAN GPIO Configuration
+//    PA11     ------> CAN_RX
+//    PA12     ------> CAN_TX
+//    */
+//    GPIO_InitStruct.Pin = GPIO_PIN_11|GPIO_PIN_12;
+//    GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+//    GPIO_InitStruct.Pull = GPIO_NOPULL;
+//    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+//    GPIO_InitStruct.Alternate = GPIO_AF4_CAN;
+//    HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+//
+//    /* CAN interrupt Init */
+//    HAL_NVIC_SetPriority(CEC_CAN_IRQn, 0, 0);
+//    HAL_NVIC_EnableIRQ(CEC_CAN_IRQn);
+//  /* USER CODE BEGIN CAN_MspInit 1 */
+//
+//  /* USER CODE END CAN_MspInit 1 */
+//  }
+//
+//}
 
 /**
 * @brief CAN MSP De-Initialization
@@ -109,30 +111,30 @@ void HAL_CAN_MspInit(CAN_HandleTypeDef* hcan)
 * @param hcan: CAN handle pointer
 * @retval None
 */
-void HAL_CAN_MspDeInit(CAN_HandleTypeDef* hcan)
-{
-  if(hcan->Instance==CAN)
-  {
-  /* USER CODE BEGIN CAN_MspDeInit 0 */
-
-  /* USER CODE END CAN_MspDeInit 0 */
-    /* Peripheral clock disable */
-    __HAL_RCC_CAN1_CLK_DISABLE();
-
-    /**CAN GPIO Configuration
-    PA11     ------> CAN_RX
-    PA12     ------> CAN_TX
-    */
-    HAL_GPIO_DeInit(GPIOA, GPIO_PIN_11|GPIO_PIN_12);
-
-    /* CAN interrupt DeInit */
-    HAL_NVIC_DisableIRQ(CEC_CAN_IRQn);
-  /* USER CODE BEGIN CAN_MspDeInit 1 */
-
-  /* USER CODE END CAN_MspDeInit 1 */
-  }
-
-}
+//void HAL_CAN_MspDeInit(CAN_HandleTypeDef* hcan)
+//{
+//  if(hcan->Instance==CAN)
+//  {
+//  /* USER CODE BEGIN CAN_MspDeInit 0 */
+//
+//  /* USER CODE END CAN_MspDeInit 0 */
+//    /* Peripheral clock disable */
+//    __HAL_RCC_CAN1_CLK_DISABLE();
+//
+//    /**CAN GPIO Configuration
+//    PA11     ------> CAN_RX
+//    PA12     ------> CAN_TX
+//    */
+//    HAL_GPIO_DeInit(GPIOA, GPIO_PIN_11|GPIO_PIN_12);
+//
+//    /* CAN interrupt DeInit */
+//    HAL_NVIC_DisableIRQ(CEC_CAN_IRQn);
+//  /* USER CODE BEGIN CAN_MspDeInit 1 */
+//
+//  /* USER CODE END CAN_MspDeInit 1 */
+//  }
+//
+//}
 
 }//End extern "C"
 //Private Function Definitions
@@ -195,8 +197,8 @@ void SUBSYSTEM_DATA_MODULE::StartCAN(void)
 	//Initialize CAN itself
 	hcan.Instance = CAN;
 	hcan.Init.Prescaler = 6;
-//	hcan.Init.Mode = CAN_MODE_NORMAL;
-	hcan.Init.Mode = CAN_MODE_LOOPBACK;
+	hcan.Init.Mode = CAN_MODE_NORMAL;
+//	hcan.Init.Mode = CAN_MODE_LOOPBACK;
 	hcan.Init.SyncJumpWidth = CAN_SJW_1TQ;
 	hcan.Init.TimeSeg1 = CAN_BS1_13TQ;
 	hcan.Init.TimeSeg2 = CAN_BS2_2TQ;

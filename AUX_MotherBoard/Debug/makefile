@@ -45,6 +45,11 @@ endif
 
 -include ../makefile.defs
 
+BUILD_ARTIFACT_NAME := AUX_MotherBoard
+BUILD_ARTIFACT_EXTENSION := elf
+BUILD_ARTIFACT_PREFIX := 
+BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME).$(BUILD_ARTIFACT_EXTENSION)
+
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
 AUX_MotherBoard.elf \
@@ -60,11 +65,14 @@ AUX_MotherBoard.bin \
 
 
 # All Target
-all: AUX_MotherBoard.elf secondary-outputs
+all: main-build
+
+# Main-build Target
+main-build: AUX_MotherBoard.elf secondary-outputs
 
 # Tool invocations
-AUX_MotherBoard.elf: $(OBJS) $(USER_OBJS) C:\Users\ajp47\source\repos\Auxiliary_2019-2020\AUX_MotherBoard\STM32F072RBTX_FLASH.ld
-	arm-none-eabi-g++ -o "AUX_MotherBoard.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m0 -T"C:\Users\ajp47\source\repos\Auxiliary_2019-2020\AUX_MotherBoard\STM32F072RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="AUX_MotherBoard.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+AUX_MotherBoard.elf: $(OBJS) $(USER_OBJS) C:\Users\Taylor\ Gerke\Desktop\AUX_MotherBoard\STM32F072RBTX_FLASH.ld
+	arm-none-eabi-g++ -o "AUX_MotherBoard.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m0 -T"C:\Users\Taylor Gerke\Desktop\AUX_MotherBoard\STM32F072RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="AUX_MotherBoard.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -90,7 +98,14 @@ clean:
 
 secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_BIN)
 
-.PHONY: all clean dependents
+fail-specified-linker-script-missing:
+	@echo 'Error: Cannot find the specified linker script. Check the linker settings in the build configuration.'
+	@exit 2
+
+warn-no-linker-script-specified:
+	@echo 'Warning: No linker script specified. Check the linker settings in the build configuration.'
+
+.PHONY: all clean dependents fail-specified-linker-script-missing warn-no-linker-script-specified
 .SECONDARY:
 
 -include ../makefile.targets
