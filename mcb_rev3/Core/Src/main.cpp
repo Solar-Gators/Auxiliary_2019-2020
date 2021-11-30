@@ -25,11 +25,22 @@
 
 #include "subsystem-data-module.hpp"
 #include "aux-data-module.hpp"
+#include "mitsuba-driver-data-module.hpp"
 
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
+
+/**
+ * Defines for the specific CAN Address codes needed to communicate with Mitsuba
+ * When declaring a MITSUBA_DRIVER Frame (Rx frames 0-2 or Tx), input these IDs to the
+ * object constructor.
+ */
+#define MC_REQUEST_ID 		0x08F89540
+#define MC_RX_FRAME0_ID		0x08850225
+#define MC_RX_FRAME1_ID		0x08950225
+#define MC_RX_FRAME2_ID		0x08A50225
 
 /**
  * Enumeration for the SPI slave devices this uC will communicate with
@@ -55,7 +66,7 @@ typedef enum slave
 
 /* Private variables ---------------------------------------------------------*/
 SPI_HandleTypeDef hspi2;
-
+CAN_HandleTypeDef hcan;
 TIM_HandleTypeDef htim2;
 TIM_HandleTypeDef htim3;
 
@@ -64,6 +75,8 @@ TIM_HandleTypeDef htim3;
 // CAN-related objects and variables
 static AUX_MESSAGE_0_DATA_PACKET aux0Packet;
 static AUX_MESSAGE_0 aux0;
+static MITSUBA_DRIVER_RX_FRAME_0 mcFrame0(MC_REQUEST_ID);
+static MITSUBA_DRIVER_RX_FRAME_0_DATA_PACKET mcFrame0Packet;
 
 // ISR-affected objects and variables
 //turned on when CHG_TRIP goes high
@@ -89,8 +102,8 @@ static int tickStartup = 0;
 
 static bool newInput_CAN = false;
 
-static double wantSpeed = 0;
-static double actualSpeed = 0;
+static float wantSpeed = 0;
+static float actualSpeed = 0;
 
 //AJ DEBUGGING CODE BELOW!!!!!!!!
 //static int tickDebug = 0;
@@ -118,6 +131,7 @@ static void MX_GPIO_Init(void);
 static void MX_SPI2_Init(void);
 static void MX_TIM2_Init(void);
 static void MX_TIM3_Init(void);
+static void MX_CAN_Init(void);
 /* USER CODE BEGIN PFP */
 
 // ----------------------------
@@ -135,6 +149,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim);
  *
  */
 void AUX_MotherReceive_Callback(SUBSYSTEM_DATA_MODULE*);
+void MC_Receive_Callback(SUBSYSTEM_DATA_MODULE*);
 
 // ---------------------------------
 // --- FUNCTION PROTOTYPE(S) -------
@@ -193,6 +208,7 @@ int main(void)
   MX_SPI2_Init();
   MX_TIM2_Init();
   MX_TIM3_Init();
+  //MX_CAN_Init();
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */
@@ -208,8 +224,20 @@ int main(void)
   HAL_TIM_Base_Start_IT(&htim2);
   __HAL_TIM_SET_COUNTER(&htim3, 0);
   HAL_TIM_Base_Start_IT(&htim3);
+
+  //Debugging mcrequest here
+  MITSUBA_DRIVER_TX_RL_MESSAGE mcRequest(0x08F89540);
+  mcRequest.txData.requestFrame0 = true;
+  mcRequest.txData.requestFrame1 = false;
+  mcRequest.txData.requestFrame2 = false;
+  mcRequest.SendData();
+
+  mcFrame0.SetupReceive(MC_Receive_Callback);
+  SUBSYSTEM_DATA_MODULE::StartCAN();
   while (1)
   {
+	  mcRequest.SendData(); // Send our mc.request
+
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -293,10 +321,6 @@ int main(void)
   /* USER CODE END 3 */
 }
 
-/**
-  * @brief System Clock Configuration
-  * @retval None
-  */
 void SystemClock_Config(void)
 {
   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
@@ -305,9 +329,8 @@ void SystemClock_Config(void)
   /** Initializes the RCC Oscillators according to the specified parameters
   * in the RCC_OscInitTypeDef structure.
   */
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
-  RCC_OscInitStruct.HSIState = RCC_HSI_ON;
-  RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_DEFAULT;
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI48;
+  RCC_OscInitStruct.HSI48State = RCC_HSI48_ON;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_NONE;
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
   {
@@ -317,14 +340,51 @@ void SystemClock_Config(void)
   */
   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
                               |RCC_CLOCKTYPE_PCLK1;
-  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_HSI;
+  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_HSI48;
   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
 
-  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_0) != HAL_OK)
+  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_1) != HAL_OK)
   {
     Error_Handler();
   }
+}
+
+/**
+  * @brief CAN Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_CAN_Init(void)
+{
+
+  /* USER CODE BEGIN CAN_Init 0 */
+
+  /* USER CODE END CAN_Init 0 */
+
+  /* USER CODE BEGIN CAN_Init 1 */
+
+  /* USER CODE END CAN_Init 1 */
+  hcan.Instance = CAN;
+  hcan.Init.Prescaler = 16;
+  hcan.Init.Mode = CAN_MODE_NORMAL;
+  hcan.Init.SyncJumpWidth = CAN_SJW_1TQ;
+  hcan.Init.TimeSeg1 = CAN_BS1_1TQ;
+  hcan.Init.TimeSeg2 = CAN_BS2_1TQ;
+  hcan.Init.TimeTriggeredMode = DISABLE;
+  hcan.Init.AutoBusOff = DISABLE;
+  hcan.Init.AutoWakeUp = DISABLE;
+  hcan.Init.AutoRetransmission = DISABLE;
+  hcan.Init.ReceiveFifoLocked = DISABLE;
+  hcan.Init.TransmitFifoPriority = DISABLE;
+  if (HAL_CAN_Init(&hcan) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN CAN_Init 2 */
+
+  /* USER CODE END CAN_Init 2 */
+
 }
 
 /**
@@ -376,7 +436,7 @@ static void MX_TIM2_Init(void)
 {
 
   /* USER CODE BEGIN TIM2_Init 0 */
-	// Info. Tim2 clocks at 1 hz, or one callback per second
+
   /* USER CODE END TIM2_Init 0 */
 
   TIM_ClockConfigTypeDef sClockSourceConfig = {0};
@@ -421,6 +481,7 @@ static void MX_TIM3_Init(void)
 {
 
   /* USER CODE BEGIN TIM3_Init 0 */
+
   /* USER CODE END TIM3_Init 0 */
 
   TIM_ClockConfigTypeDef sClockSourceConfig = {0};
@@ -455,7 +516,6 @@ static void MX_TIM3_Init(void)
   /* USER CODE END TIM3_Init 2 */
 
 }
-
 
 /**
   * @brief GPIO Initialization Function
@@ -519,6 +579,25 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 
+/* USER CODE END 4 */
+
+/**
+  * @brief  This function is executed in case of error occurrence.
+  * @retval None
+  */
+void Error_Handler(void)
+{
+  /* USER CODE BEGIN Error_Handler_Debug */
+  /* User can add his own implementation to report the HAL error return state */
+  __disable_irq();
+  while (1)
+  {
+  }
+  /* USER CODE END Error_Handler_Debug */
+}
+
+/* USER CODE BEGIN 4 */
+
 // -----------------------------
 // --- ISR DEFINITION(S) -------
 // -----------------------------
@@ -572,6 +651,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 	}
 	else if(htim->Instance == TIM3)
 	{
+		//mcRequest.SendData();
 		if (sysDebug)
 		{
 			HAL_GPIO_WritePin(DEBUG_OUT_GPIO_Port, DEBUG_OUT_Pin, GPIO_PIN_RESET);
@@ -588,6 +668,13 @@ void AUX_MotherReceive_Callback(SUBSYSTEM_DATA_MODULE*)
 {
 	if(!aux0.isFifoEmpty())
 		aux0Packet = aux0.GetOldestDataPacket(&newInput_CAN);
+}
+
+void MC_Receive_Callback(SUBSYSTEM_DATA_MODULE*) {
+	if(!mcFrame0.isFifoEmpty())
+		mcFrame0Packet = mcFrame0.GetOldestDataPacket(&newInput_CAN);
+	int x = 0;
+	x = x +1;
 }
 
 // ----------------------------------
@@ -641,17 +728,6 @@ int DAC_SpliceWrite(slave_t slave, uint8_t command, uint16_t *data)
 
 /* USER CODE END 4 */
 
-/**
-  * @brief  This function is executed in case of error occurrence.
-  * @retval None
-  */
-void Error_Handler(void)
-{
-  /* USER CODE BEGIN Error_Handler_Debug */
-  /* User can add his own implementation to report the HAL error return state */
-
-  /* USER CODE END Error_Handler_Debug */
-}
 
 #ifdef  USE_FULL_ASSERT
 /**
